@@ -107,9 +107,6 @@ res.json(resultado);
 });
 
 });
-
-
-
 app.post("/prestamos",(req,res)=>{
 
 const {
@@ -127,7 +124,11 @@ conexion.query(
 (errorUsuario,usuarios)=>{
 
 
-if(errorUsuario)return res.status(500).json({mensaje:"Error usuario"});
+if(errorUsuario){
+console.log("❌ Error buscando usuario:", errorUsuario);
+return res.status(500).json({mensaje:"Error usuario"});
+}
+
 
 if(usuarios.length===0)
 return res.status(404).json({mensaje:"Usuario no encontrado"});
@@ -136,19 +137,34 @@ return res.status(404).json({mensaje:"Usuario no encontrado"});
 const id_usuario=usuarios[0].id_usuario;
 
 
+
 conexion.query(
-"SELECT id_libro FROM libros WHERE titulo=?",
+"SELECT id_libro,cantidad FROM libros WHERE titulo=?",
 [libro],
 (errorLibro,libros)=>{
 
 
-if(errorLibro)return res.status(500).json({mensaje:"Error libro"});
+if(errorLibro)
+return res.status(500).json({mensaje:"Error libro"});
+
 
 if(libros.length===0)
 return res.status(404).json({mensaje:"Libro no encontrado"});
 
 
 const id_libro=libros[0].id_libro;
+const cantidad=libros[0].cantidad;
+
+
+
+if(cantidad<=0){
+
+return res.json({
+mensaje:"Libro no disponible"
+});
+
+}
+
 
 
 conexion.query(
@@ -171,11 +187,33 @@ if(error){
 
 console.log("❌ Error préstamo:",error);
 
-return res.status(500).json({mensaje:"Error préstamo"});
+return res.status(500).json({
+mensaje:"Error préstamo"
+});
 
 }
 
 
+
+// RESTAR STOCK DEL LIBRO //
+console.log("Intentando actualizar stock del libro:", id_libro);
+conexion.query(
+`
+UPDATE libros
+SET cantidad=cantidad-1
+WHERE id_libro=?
+`,
+[id_libro],
+function(errorStock){
+
+    if(errorStock){
+        console.log("❌ Error actualizando stock:", errorStock);
+    }else{
+        console.log("✅ Stock actualizado");
+    }
+
+}
+);
 res.json({
 
 mensaje:"Préstamo guardado",
@@ -186,12 +224,14 @@ codigo:resultado.insertId
 
 });
 
-});
 
 });
 
+
 });
 
+
+});
 
 
 app.get("/",(req,res)=>{
@@ -199,7 +239,6 @@ app.get("/",(req,res)=>{
 res.send("Servidor Biblioteca funcionando");
 
 });
-
 
 
 app.listen(PORT,()=>{

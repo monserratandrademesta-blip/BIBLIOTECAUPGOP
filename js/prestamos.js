@@ -74,7 +74,7 @@ document.getElementById("modal").style.display="flex";
 }else{
 
 
-alert(data.mensaje);
+alert("📚 " + data.mensaje);
 
 
 }
@@ -88,7 +88,7 @@ alert(data.mensaje);
 
 console.log("Error:",error);
 
-alert("No se pudo conectar con el servidor");
+alert("❌ No se pudo conectar con el servidor");
 
 
 });
