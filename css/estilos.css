@@ -1,120 +1,126 @@
-/* configuración base de toda la página */
+/* configuración base de toda la página - MEJORADO */
+* {
+    box-sizing: border-box;
+}
 body {
-    font-family: Georgia, sans-serif; /* tipografía principal */
-    margin: 0; /* elimina márgenes por defecto del navegador */
-    background-color: #a7b9db; /* color de fondo de la página */
+    font-family: Georgia, sans-serif;
+    margin: 0;
+    background-color: #a7b9db;
+    line-height: 1.5;
 }
 
-/* encabezado de la página */
+/* encabezado de la página - TAMAÑO Y ESPACIOS AJUSTADOS */
 .header {
-    background-color: #ffffff; /* fondo blanco */
-    color: #022875; /* color del texto */
-    padding: 55px; /* espacio interno */
-    display: flex; /* usa flexbox */
-    align-items: center; /* centra verticalmente */
-    justify-content: space-between; /* separa elementos a los extremos */
+    background-color: #ffffff;
+    color: #022875;
+    padding: 15px 30px; /* AJUSTE: antes 55px, ahora más uniforme */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* ESTILO MEJORADO */
 }
 
-/* tamaño de los logos */
+/* tamaño de los logos - TAMAÑO AJUSTADO */
 .logo {
-    width: 150px; /* ancho fijo del logo */
-    height: auto; /* altura automática para mantener proporciones */
-    object-fit: contain; /* ajusta el contenido sin recortar */
+    width: 60px; /* AJUSTE: antes 150px muy grande */
+    height: 60px;
+    object-fit: contain;
 }
 
 /* contenedor del título */
 .titulo {
-    text-align: center; /* centra el texto */
-    flex: 1; /* ocupa el espacio restante */
-    padding: 0 20px; /* espacio a izquierda y derecha */
+    text-align: center;
+    flex: 1;
+    padding: 0 20px;
 }
 
-/* título principal */
+/* título principal - TAMAÑO UNIFORME */
 .header h1 {
-    margin: 0; /* quita margen por defecto */
-    font-size: 38px; /* tamaño del título */
+    margin: 0;
+    font-size: 26px; /* AJUSTE: antes 38px */
 }
 
-/* subtítulo */
+/* subtítulo - TAMAÑO UNIFORME */
 .header p {
-    font-size: 28px; /* tamaño del subtítulo */
+    font-size: 14px; /* AJUSTE: antes 28px */
+    margin: 5px 0 0 0;
 }
 
-
-/* contenedor de tarjetas */
+/* contenedor de tarjetas - ESPACIOS MEJORADOS */
 .menu {
-    display: flex; /* usa flexbox */
-    justify-content: center; /* centra las tarjetas horizontalmente */
-    gap: 25px; /* espacio entre tarjetas */
-    padding: 50px 20px; /* espacio arriba/abajo y a los lados */
-    flex-wrap: wrap; /* permite que las tarjetas se pasen a otra línea */
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* AJUSTE: espacio uniforme */
+    padding: 30px 20px; /* AJUSTE: antes 50px */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* tarjetas */
+/* tarjetas - TAMAÑO UNIFORME Y ESTILO MEJORADO */
 .card {
-    background: #ffffff; /* fondo blanco */
-    width: 220px; /* ancho fijo */
-    height: 190px; /* alto fijo */
-    padding: 18px; /* espacio interno */
-    text-align: center; /* centra el texto dentro */
-    border-radius: 15px; /* bordes redondeados */
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18); /* sombra */
-    display: flex; /* flexbox */
-    flex-direction: column; /* apila elementos en columna */
-    transition: 0.3s; /* animación suave */
+    background: #ffffff;
+    width: 260px; /* AJUSTE: mismo ancho para todas */
+    min-height: 320px; /* AJUSTE: antes 190px, ahora no se amontona */
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s;
 }
 
-/* hover de tarjeta */
 .card:hover {
-    transform: translateY(-8px); /* levanta la tarjeta al pasar el mouse */
-    box-shadow: 0 8px 18px rgba(0, 0, 0, .25); /* aumenta la sombra */
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
 
-/* imagen */
+/* imagen - TAMAÑO UNIFORME */
 .card img {
-    width: 90px; /* ancho de la imagen */
-    height: 90px; /* alto de la imagen */
-    object-fit: contain; /* mantiene proporción sin recortar */
-    margin: 0 auto 15px; /* centra horizontalmente y deja margen inferior */
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin: 0 auto 15px;
 }
 
-/* título de tarjeta */
 .card h2 {
-    color: #022875; /* color del título */
-    font-size: 20px; /* tamaño del título */
-    margin: 10px 0; /* margen vertical */
+    color: #022875;
+    font-size: 18px; /* Tamaño uniforme */
+    margin: 10px 0;
 }
 
-/* texto */
 .card p {
-    flex-grow: 1; /* permite que el texto ocupe el espacio disponible */
-    font-size: 17px; /* tamaño del texto */
-    margin: 10px 0 20px; /* márgenes: arriba, horizontal, abajo */
+    flex-grow: 1;
+    font-size: 14px; /* Tamaño uniforme */
+    margin: 10px 0 20px;
+    color: #555;
 }
 
-/* enlace */
 .card a {
-    display: flex; /* usa flexbox */
-    justify-content: center; /* centra el contenido del enlace */
-    text-decoration: none; /* quita el subrayado */
-    margin-top: auto; /* empuja el enlace al final de la tarjeta */
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: auto;
 }
 
-/* botón */
+/* botón - ESTILO UNIFORME */
 button {
-    background-color: #022875; /* color de fondo */
-    color: white; /* color del texto */
-    border: none; /* elimina borde */
-    padding: 10px 22px; /* espaciado interno */
-    border-radius: 8px; /* bordes redondeados */
-    cursor: pointer; /* cursor tipo mano */
-    font-size: 15px; /* tamaño de fuente */
-    transition: .3s; /* animación suave */
+    background-color: #022875;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Espacio mejorado */
+    border-radius: 10px; /* Más redondeado y uniforme */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%; /* BOTONES DEL MISMO TAMAÑO */
+    transition: .3s;
 }
 
-/* hover botón */
 button:hover {
-    background-color: #FFD54F; /* cambia el fondo al pasar el mouse */
-    transform: scale(1.05); /* agranda ligeramente */
-    color: rgb(0, 0, 0); /* cambia el color del texto a negro */
+    background-color: #FFD54F;
+    transform: scale(1.05);
+    color: #000;
 }
