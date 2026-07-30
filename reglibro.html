@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Codificación UTF-8 para procesar acentos, caracteres especiales y la letra ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Configuración para que el diseño sea totalmente responsivo en dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título descriptivo que aparece en la pestaña del navegador -->
+    <title>Registro de Libros</title>
+
+    <!-- Hoja de estilos CSS específica para el formulario de alta de libros -->
+    <link rel="stylesheet" href="css/reglibro.css">
+
+</head>
+
+<body>
+
+<!-- Contenedor principal que centra y encierra el formulario -->
+<div class="contenedor">
+
+    <!-- Título principal de la pantalla de registro de libros -->
+    <h2>REGISTRO DE LIBRO</h2>
+
+
+    <!-- Formulario con ID único para capturar el evento submit desde JavaScript -->
+    <form id="formLibro">
+
+
+        <!-- Campo para el título o nombre del libro -->
+        <label>Título del Libro</label>
+
+        <input 
+            id="titulo"
+            type="text"
+            placeholder="Ingrese el título"
+            required>
+
+
+        <!-- Campo para el nombre del autor o autores del libro -->
+        <label>Autor</label>
+
+        <input 
+            id="autor"
+            type="text"
+            placeholder="Nombre del autor"
+            required>
+
+
+
+        <!-- Lista desplegable para asignar la categoría o carrera correspondiente -->
+        <label>Categoría</label>
+
+        <select id="categoria" required>
+
+            <!-- Opción por defecto deshabilitada implícitamente para obligar a seleccionar una -->
+            <option value="">
+                Seleccione una categoría
+            </option>
+
+            <!-- Opciones de carreras y áreas de lectura de la universidad -->
+            <option>TID</option>
+            <option>CIA</option>
+            <option>IAEV</option>
+            <option>IMA</option>
+            <option>IBIO</option>
+            <option>LECTURA GENERAL EN ESPAÑOL</option>
+            <option>LECTURA GENERAL EN INGLES</option>
+
+        </select>
+
+
+
+        <!-- Campo numérico para registrar el stock o número de copias disponibles -->
+        <label>Cantidad en Existencia</label>
+
+        <input 
+            id="cantidad"
+            type="number"
+            placeholder="0"
+            required>
+
+
+
+        <!-- Botón de tipo submit que procesa y envía el formulario al script de JS -->
+        <button type="submit">
+            Registrar Libro
+        </button>
+
+
+        <!-- Botón de tipo reset que limpia automáticamente todos los inputs del formulario -->
+        <button 
+            type="reset"
+            class="cancelar">
+
+            Limpiar
+
+        </button>
+
+
+    </form>
+
+
+</div>
+
+
+<!-- Archivo JavaScript encargado de capturar los datos y enviarlos a la base de datos MySQL -->
+<script src="js/reglibro.js"></script>
+
+
+</body>
+
+</html>

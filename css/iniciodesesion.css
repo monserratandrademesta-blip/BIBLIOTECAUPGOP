@@ -1,0 +1,152 @@
+/* estilos generales de toda la página */
+body{
+    font-family: Arial, sans-serif; /* tipo de letra */
+    background:#A7B9DB; /* fondo */
+    display:flex; /* centra el formulario */
+    justify-content:center; /* centra horizontal */
+    align-items:center; /* centra vertical */
+    height:100vh; /* ocupa toda la pantalla */
+    margin:0; /* quita espacios por defecto */
+}
+
+/* caja principal del login */
+.login{
+    background:#FFFFFF; /* fondo blanco */
+    padding:40px; /* espacio interno */
+    border-radius:15px; /* bordes redondeados */
+    box-shadow:0 10px 25px rgba(0,0,0,0.2); /* sombra */
+    width:350px; /* ancho fijo */
+    text-align:center; /* centra texto */
+    position:relative; /* necesario para la X de cerrar */
+}
+
+/* mensaje de bienvenida */
+.bienvenida{
+    font-size:18px; /* tamaño de texto */
+    margin-bottom:10px; /* separación */
+    color:#000000; /* color texto */
+}
+
+/* título principal */
+h1{
+    color:#022875; /* azul institucional */
+    margin-bottom:10px; /* separación abajo */
+}
+
+/* texto descriptivo */
+p{
+    color:#000000; /* texto */
+    margin-bottom:20px; /* espacio abajo */
+}
+
+/* campos donde se escribe usuario y contraseña */
+input{
+    width:100%; /* ocupa todo el ancho */
+    padding:12px; /* espacio interno */
+    margin:10px 0; /* separación entre campos */
+    border-radius:8px; /* bordes redondeados */
+    border:1px solid #A7B9DB; /* borde */
+}
+
+/* botón de iniciar sesión */
+button{
+    width:100%; /* ocupa todo el ancho */
+    padding:12px; /* tamaño del botón */
+    background:#022875; /* azul */
+    color:#FFFFFF; /* texto blanco */
+    border:none; /* sin borde */
+    border-radius:8px; /* bordes redondeados */
+    cursor:pointer; /* mano al pasar mouse */
+    margin-top:10px; /* separación arriba */
+    font-size:16px; /* tamaño del texto */
+    transition:.3s; /* animación */
+}
+
+/* efecto cuando pasa el mouse */
+button:hover{
+    background:#FFD54F; /* amarillo */
+    color:#000000; /* texto negro */
+}
+
+/* botón de cerrar (la X) */
+.cerrar{
+    position:absolute; /* lo coloca en esquina */
+    top:15px; /* arriba */
+    right:15px; /* derecha */
+    font-size:32px; /* tamaño grande */
+    font-weight:bold; /* negrita */
+    color:#d32f2f; /* rojo */
+    cursor:pointer; /* mano */
+    user-select:none; /* evita selección */
+    transition:all 0.3s ease; /* animación suave */
+}
+
+/* efecto al pasar el mouse en la X */
+.cerrar:hover{
+    color:#c32121; /* rojo más fuerte */
+    transform:translateY(-5px); /* sube la X */
+}
+/* Contenedor donde se muestran las tarjetas de los libros */
+.lista-libros{
+
+    display:flex; /* Activa Flexbox para organizar las tarjetas */
+    flex-wrap:wrap; /* Permite que las tarjetas pasen a otra fila si no caben en la misma */
+    justify-content:center; /* Centra las tarjetas horizontalmente */
+    gap:20px; /* Agrega una separación de 20px entre las tarjetas */
+    margin:20px 0; /* Agrega un margen de 20px arriba y abajo, y 0 a los lados */
+
+}
+
+
+/* Tarjeta de cada libro */
+.libro{
+
+    background:white; /* Establece un fondo blanco para la tarjeta */
+    padding:18px; /* Agrega un espacio interior de 18px */
+    width:240px; /* Define un ancho fijo de 240px */
+    border-radius:12px; /* Redondea las esquinas de la tarjeta */
+    box-shadow:0 4px 12px rgba(0,0,0,.15); /* Agrega una sombra alrededor de la tarjeta */
+
+    text-transform:uppercase; /* Convierte todo el texto de la tarjeta a mayúsculas */
+
+}
+
+
+/* Título del libro */
+.libro h3{
+
+    margin-top:0; /* Elimina el margen superior del título */
+    font-size:18px; /* Define un tamaño de letra de 18px */
+
+}
+
+
+/* Información del libro */
+.libro p{
+
+    margin:8px 0; /* Agrega un margen de 8px arriba y abajo, y 0 a los lados */
+
+}
+
+
+/* Botón de préstamo */
+.prestamo{
+
+    background:#022875; /* Establece un fondo azul oscuro */
+    color:white; /* Define el color del texto en blanco */
+    border:none; /* Elimina el borde predeterminado del botón */
+    padding:10px 15px; /* Agrega un espacio interior de 10px arriba y abajo y 15px a los lados */
+    border-radius:8px; /* Redondea las esquinas del botón */
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    transition:.3s; /* Hace que los cambios de estilo sean suaves en 0.3 segundos */
+
+}
+
+
+/* Efecto al pasar el cursor sobre el botón de préstamo */
+.prestamo:hover{
+
+    background:#FFD54F; /* Cambia el color de fondo a amarillo */
+    color:black; /* Cambia el color del texto a negro */
+
+}

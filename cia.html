@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Codificación de caracteres para acentos y caracteres especiales como la ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Adaptación para celulares y pantallas móviles (pantalla adaptable) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título que se muestra en la pestaña del navegador -->
+    <title>CIA</title>
+
+    <!-- Enlace a la hoja de estilos CSS específica de esta categoría -->
+    <link rel="stylesheet" href="../css/cia.css">
+
+</head>
+
+
+<!-- Atributo data-categoria que libros.js lee para saber qué libros cargar de la base de datos -->
+<body data-categoria="CIA">
+
+
+<!-- Contenedor principal para organizar el diseño en dos columnas (texto e imagen) -->
+<div class="contenedor">
+
+
+    <!-- Columna izquierda: Información textual y contenedor dinámico de libros -->
+    <div class="texto">
+
+
+        <!-- Título principal de la categoría -->
+        <h1>CIA</h1>
+
+
+        <!-- Subtítulo con el nombre completo de la carrera -->
+        <h3>
+            Licenciatura en Comercio Internacional y Aduanas
+        </h3>
+
+
+        <!-- Texto descriptivo de la sección -->
+        <p>
+            Bienvenido a la sección CIA de la biblioteca.
+            Aquí encontrarás información y material de consulta
+            para apoyar tus actividades académicas.
+        </p>
+
+
+        <!-- Encabezado de la lista de libros -->
+        <h2>Libros disponibles</h2>
+
+
+        <!-- Contenedor vacío donde el archivo libros.js inyecta automáticamente las tarjetas de los libros -->
+        <div id="listaLibros" class="lista-libros"></div>
+
+
+
+        <!-- Enlace de navegación para volver a la página de categorías -->
+        <a href="catalogo.html" class="boton">
+            Regresar al Catálogo
+        </a>
+
+
+    </div>
+
+
+
+
+    <!-- Columna derecha: Imagen representativa de la carrera -->
+    <div class="imagen">
+
+
+        <!-- Imagen con su texto alternativo para accesibilidad -->
+        <img src="../img/cia.jpeg" alt="CIA">
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- Archivo JavaScript encargado de consultar la base de datos (MySQL) y renderizar los libros -->
+<script src="../js/libros.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Codificación UTF-8 para procesar acentos y caracteres como la ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Configuración del viewport para garantizar una correcta adaptación a pantallas móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Título que se despliega en la pestaña del navegador -->
+    <title>LEC.GEN.ING</title>
+
+
+    <!-- Hoja de estilos CSS propia para la vista de Lectura en Inglés -->
+    <link rel="stylesheet" href="../css/lecturaeningles.css">
+
+</head>
+
+
+
+<!-- El atributo data-categoria pasa el nombre exacto de la sección para que libros.js filtre en MySQL -->
+<body data-categoria="LECTURA GENERAL EN INGLES">
+
+
+<!-- Contenedor principal que mantiene la maquetación en dos columnas -->
+<div class="contenedor">
+
+
+    <!-- Columna izquierda: Información, bienvenida y contenedor de libros -->
+    <div class="texto">
+
+
+        <!-- Sigla o código identificador de la categoría -->
+        <h1>LEC.GEN.ING</h1>
+
+
+        <!-- Nombre descriptivo completo de la materia/sección -->
+        <h3>
+            Lectura General en Inglés
+        </h3>
+
+
+        <!-- Texto introductorio y de orientación para los usuarios -->
+        <p>
+            Bienvenido a la sección LEC.GEN.ING de la biblioteca.
+            Aquí encontrarás información y material de consulta
+            para apoyar tus actividades académicas.
+        </p>
+
+
+
+        <!-- Encabezado para la sección donde se listan las obras -->
+        <h2>Libros disponibles</h2>
+
+
+
+        <!-- Elemento contenedor con el ID clave usado por JavaScript para inyectar los registros de MySQL -->
+        <div id="listaLibros" class="lista-libros"></div>
+
+
+
+        <!-- Enlace con aspecto de botón para regresar al menú principal de categorías -->
+        <a href="catalogo.html" class="boton">
+            Regresar al Catálogo
+        </a>
+
+
+    </div>
+
+
+
+
+    <!-- Columna derecha: Ilustración gráfica de la categoría -->
+    <div class="imagen">
+
+
+        <!-- Elemento de imagen con la portada representativa de la sección en inglés -->
+        <img src="../img/LEC.GEN.ING.jpeg" alt="Lectura General en Inglés">
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- Inclusión del script JavaScript que consulta los datos y genera las tarjetas de libros -->
+<script src="../js/libros.js"></script>
+
+
+</body>
+
+</html>

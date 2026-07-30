@@ -1,0 +1,148 @@
+/* Configuración global de la página */
+* {
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el espacio interno predeterminado de todos los elementos */
+    box-sizing: border-box; /* Hace que el ancho y alto incluyan el padding y el borde */
+    font-family: "Georgia", serif; /* Define la fuente principal del texto */
+}
+
+/* Fondo y centrado de toda la pantalla */
+body {
+    background: #A7B9DB; /* Establece el color de fondo de toda la página */
+    display: flex; /* Activa Flexbox para organizar elementos */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    min-height: 100vh; /* Hace que el cuerpo tenga como mínimo la altura completa de la pantalla */
+}
+
+/* Contenedor principal del formulario */
+.contenedor {
+    width: 950px; /* Define el ancho del contenedor en 950 píxeles */
+    background: #FFFFFF; /* Establece un fondo blanco para el contenedor */
+    border-radius: 20px; /* Redondea las esquinas del contenedor */
+    box-shadow: 0 10px 30px rgba(0,0,0,.15); /* Agrega una sombra para dar profundidad */
+    overflow: hidden; /* Oculta cualquier contenido que salga de los límites del contenedor */
+}
+
+/* Título principal */
+h1 {
+    background: #022875; /* Coloca un fondo azul oscuro en el título */
+    color: #FFFFFF; /* Define el color del texto en blanco */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 25px; /* Agrega espacio interno alrededor del título */
+    font-size: 34px; /* Define un tamaño de letra de 34 píxeles */
+    font-weight: bold; /* Hace que el texto aparezca en negrita */
+}
+
+/* Texto descriptivo */
+p {
+    text-align: center; /* Centra el texto horizontalmente */
+    color: #000000; /* Establece el color del texto en negro */
+    margin: 20px; /* Agrega un margen de 20 píxeles alrededor del párrafo */
+}
+
+/* Estructura del formulario */
+.formulario {
+    display: flex; /* Activa Flexbox para organizar las secciones */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    gap: 40px; /* Agrega una separación de 40px entre elementos */
+    padding: 40px; /* Agrega espacio interno alrededor del formulario */
+}
+
+/* Lado izquierdo del formulario */
+.izquierda {
+    width: 60%; /* Hace que esta sección ocupe el 60% del ancho disponible */
+    display: flex; /* Activa Flexbox dentro de la sección */
+    flex-direction: column; /* Coloca los elementos uno debajo de otro */
+}
+
+/* Lado derecho del formulario */
+.derecha {
+    width: 35%; /* Hace que esta sección ocupe el 35% del ancho disponible */
+    display: flex; /* Activa Flexbox dentro de la sección */
+    flex-direction: column; /* Organiza los elementos en una columna */
+    justify-content: center; /* Centra los elementos verticalmente */
+    gap: 18px; /* Agrega una separación de 18px entre elementos */
+}
+
+/* Etiquetas de los campos */
+label {
+    margin-top: 15px; /* Agrega un espacio superior de 15px */
+    margin-bottom: 6px; /* Agrega un espacio inferior de 6px */
+    font-weight: bold; /* Muestra el texto en negrita */
+    color: #000000; /* Define el color del texto en negro */
+}
+
+/* Campos de texto */
+input {
+    width: 100%; /* Hace que el campo ocupe todo el ancho disponible */
+    padding: 12px; /* Agrega espacio interno de 12px */
+    border: 1px solid #A7B9DB; /* Define un borde de 1px con color azul claro */
+    border-radius: 10px; /* Redondea las esquinas del campo */
+    background: #FFFFFF; /* Establece un fondo blanco */
+    font-size: 15px; /* Define el tamaño de letra */
+    transition: .3s; /* Hace que los cambios visuales sean suaves */
+}
+
+/* Efecto cuando se escribe en un campo */
+input:focus {
+    outline: none; /* Elimina el borde de selección predeterminado */
+    border: 2px solid #022875; /* Cambia el borde a un grosor de 2px y color azul oscuro */
+    background: #FFFFFF; /* Mantiene el fondo blanco */
+}
+
+/* Estilo base de botones */
+button {
+    padding: 14px; /* Agrega espacio interno al botón */
+    border: none; /* Elimina el borde del botón */
+    border-radius: 10px; /* Redondea las esquinas del botón */
+    font-size: 16px; /* Define el tamaño del texto del botón */
+    font-weight: bold; /* Muestra el texto en negrita */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    transition: .3s; /* Hace que los cambios de estilo sean suaves */
+}
+
+/* Botón crear usuario */
+.crear {
+    background: #022875; /* Establece un fondo azul oscuro */
+    color: #FFFFFF; /* Define el texto en color blanco */
+}
+
+/* Efecto del botón crear usuario */
+.crear:hover {
+    background: #FFD54F; /* Cambia el fondo a amarillo al pasar el cursor */
+    color: #000000; /* Cambia el texto a negro */
+}
+
+/* Botón contraseña */
+.contra {
+    background: #FFD54F; /* Establece un fondo amarillo */
+    color: #000000; /* Define el texto en color negro */
+}
+
+/* Efecto del botón contraseña */
+.contra:hover {
+    background: #022875; /* Cambia el fondo a azul oscuro */
+    color: #FFFFFF; /* Cambia el texto a blanco */
+}
+
+/* Botón menú */
+.menu {
+    background: #022875; /* Establece un fondo azul oscuro */
+    color: #FFFFFF; /* Define el texto en color blanco */
+}
+
+/* Efecto del botón menú */
+.menu:hover {
+    background: #FFD54F; /* Cambia el fondo a amarillo */
+    color: #000000; /* Cambia el texto a negro */
+}
+
+/* Caja de mensajes */
+.mensaje {
+    height: 80px; /* Define una altura fija de 80 píxeles */
+    border-radius: 10px; /* Redondea las esquinas del cuadro */
+    border: 1px solid #A7B9DB; /* Agrega un borde de 1px color azul claro */
+    padding: 10px; /* Agrega espacio interno de 10px */
+    background: #FFFFFF; /* Establece un fondo blanco */
+}

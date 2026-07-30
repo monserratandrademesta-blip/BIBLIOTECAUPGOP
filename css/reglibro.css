@@ -1,0 +1,126 @@
+/* Configuración general de la página */
+*{
+    margin:0; /* Elimina el margen predeterminado de todos los elementos */
+    padding:0; /* Elimina el espacio interno predeterminado de todos los elementos */
+    box-sizing:border-box; /* Hace que el tamaño del elemento incluya padding y borde */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define la familia de fuentes del texto */
+}
+
+/* Fondo de toda la pantalla */
+body{
+    background:#A7B9DB; /* Establece un color azul claro como fondo de la página */
+    display:flex; /* Activa Flexbox para organizar elementos */
+    justify-content:center; /* Centra el contenido horizontalmente */
+    align-items:center; /* Centra el contenido verticalmente */
+    min-height:100vh; /* Hace que el cuerpo ocupe como mínimo toda la altura de la pantalla */
+}
+
+/* Contenedor del formulario */
+.contenedor{
+    width:460px; /* Define un ancho fijo de 460 píxeles para el formulario */
+    background:#FFFFFF; /* Establece un fondo blanco */
+    padding:35px; /* Agrega un espacio interno de 35px alrededor del contenido */
+    border-radius:18px; /* Redondea las esquinas del contenedor */
+    box-shadow:0 15px 35px rgba(0,0,0,.15); /* Agrega una sombra para dar profundidad */
+    border-top:8px solid #022875; /* Agrega un borde superior azul de 8px */
+}
+
+/* Título del formulario */
+h2{
+    text-align:center; /* Centra el texto horizontalmente */
+    color:#022875; /* Cambia el color del título a azul oscuro */
+    margin-bottom:25px; /* Agrega un espacio debajo del título */
+    font-size:32px; /* Define un tamaño de letra de 32px */
+    letter-spacing:1px; /* Agrega separación entre las letras */
+}
+
+/* Etiquetas de los campos */
+label{
+    display:block; /* Hace que la etiqueta ocupe una línea completa */
+    margin-top:14px; /* Agrega un espacio superior de 14px */
+    margin-bottom:6px; /* Agrega un espacio inferior de 6px */
+    font-size:17px; /* Define un tamaño de letra de 17px */
+    font-weight:600; /* Aplica un grosor de letra seminegrita */
+    color:#000000; /* Establece el color del texto en negro */
+}
+
+/* Campos de entrada */
+input,
+select,
+textarea{
+    width:100%; /* Hace que los campos ocupen todo el ancho disponible */
+    padding:12px; /* Agrega espacio interno de 12px */
+    border:1px solid #A7B9DB; /* Define un borde delgado de color azul claro */
+    border-radius:10px; /* Redondea las esquinas de los campos */
+    background:#FFFFFF; /* Establece un fondo blanco */
+    font-size:16px; /* Define el tamaño de letra de los campos */
+    outline:none; /* Elimina el borde de selección predeterminado del navegador */
+    transition:.3s; /* Hace que los cambios visuales sean suaves durante 0.3 segundos */
+}
+
+/* Efecto cuando se escribe o selecciona un campo */
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#022875; /* Cambia el color del borde a azul oscuro */
+    background:#FFFFFF; /* Mantiene el fondo blanco */
+    box-shadow:0 0 8px rgba(2,40,117,.30); /* Agrega una sombra azul alrededor del campo */
+}
+
+/* Evita que el usuario pueda cambiar el tamaño del textarea */
+textarea{
+    resize:none; /* Desactiva el cambio manual de tamaño del área de texto */
+}
+
+/* Estilo base de botones */
+button{
+    width:100%; /* Hace que el botón ocupe todo el ancho disponible */
+    margin-top:18px; /* Agrega un margen superior de 18px */
+    padding:13px; /* Agrega espacio interno de 13px */
+    border:none; /* Elimina el borde del botón */
+    border-radius:10px; /* Redondea las esquinas del botón */
+    font-size:17px; /* Define un tamaño de letra de 17px */
+    font-weight:bold; /* Muestra el texto en negrita */
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    transition:.3s; /* Hace que los cambios de estilo sean suaves */
+}
+
+/* Botón guardar */
+button[type="submit"]{
+    background:#022875; /* Establece un fondo azul oscuro */
+    color:#FFFFFF; /* Define el color del texto en blanco */
+}
+
+/* Efecto al pasar el cursor sobre el botón guardar */
+button[type="submit"]:hover{
+    background:#FFD54F; /* Cambia el fondo a amarillo */
+    color:#000000; /* Cambia el texto a negro */
+    transform:translateY(-2px); /* Mueve el botón 2px hacia arriba */
+}
+
+/* Botón cancelar */
+.cancelar{
+    background:#FFD54F; /* Establece un fondo amarillo */
+    color:#000000; /* Define el texto en color negro */
+    margin-top:10px; /* Agrega un margen superior de 10px */
+}
+
+/* Efecto al pasar el cursor sobre cancelar */
+.cancelar:hover{
+    background:#022875; /* Cambia el fondo a azul oscuro */
+    color:#FFFFFF; /* Cambia el texto a blanco */
+    transform:translateY(-2px); /* Mueve el botón 2px hacia arriba */
+}
+
+/* Texto de ayuda dentro de los inputs */
+::placeholder{
+    color:#A7B9DB; /* Cambia el color del texto de ejemplo */
+}
+
+/* Animaciones generales */
+input,
+select,
+textarea,
+button{
+    transition:all .3s ease; /* Aplica una transición suave a todos los cambios de estos elementos */
+}

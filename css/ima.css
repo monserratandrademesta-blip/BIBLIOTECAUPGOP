@@ -1,0 +1,315 @@
+/* Selector universal: aplica estos estilos a todos los elementos de la página */
+*{
+    margin:0; /* Elimina el margen exterior predeterminado de todos los elementos */
+    padding:0; /* Elimina el espacio interior predeterminado de todos los elementos */
+    box-sizing:border-box; /* Hace que el ancho y alto incluyan el padding y el borde */
+    font-family:'Segoe UI',Arial,sans-serif; /* Define la fuente del texto de toda la página */
+}
+
+/* Cuerpo de la página */
+body{
+    background:#f4f7f6; /* Establece un color de fondo gris claro */
+}
+
+/* Contenedor principal */
+.contenedor{
+    width:1200px; /* Define un ancho fijo de 1200 píxeles */
+    max-width:90%; /* Permite que en pantallas pequeñas ocupe como máximo el 90% del ancho */
+    margin:40px auto; /* Agrega un margen de 40px arriba y abajo y centra el contenedor horizontalmente */
+    background:#fff; /* Coloca un fondo blanco */
+    padding:35px; /* Agrega un espacio interior de 35px */
+    border-radius:20px; /* Redondea las esquinas del contenedor */
+    box-shadow:0 5px 15px rgba(0,0,0,.08); /* Agrega una sombra alrededor del contenedor */
+    position:relative; /* Permite posicionar elementos hijos de forma absoluta tomando este contenedor como referencia */
+}
+
+/* Área de información */
+.texto{
+    width:100%; /* Hace que el contenedor de texto ocupe todo el ancho disponible */
+}
+
+/* Título principal de la categoría CIA */
+.texto h1{
+    font-size:55px; /* Define un tamaño de letra de 55 píxeles */
+    color:#dc2626; /* Asigna un color rojo al texto */
+}
+
+/* Subtítulo */
+.texto h3{
+    width:70%; /* Hace que el subtítulo ocupe el 70% del ancho del contenedor */
+    color:#1e293b; /* Establece un color azul oscuro */
+    margin:10px 0; /* Agrega un margen de 10px arriba y abajo */
+    font-size:22px; /* Define un tamaño de letra de 22 píxeles */
+}
+
+/* Párrafos de información */
+.texto p{
+    width:70%; /* Hace que el párrafo ocupe el 70% del ancho del contenedor */
+    margin:15px 0; /* Agrega un margen de 15px arriba y abajo */
+    color:#64748b; /* Establece un color gris azulado para el texto */
+    line-height:1.6; /* Aumenta el espacio entre líneas para facilitar la lectura */
+}
+
+/* Título de la sección de libros */
+.texto h2{
+    margin-top:25px; /* Agrega un margen superior de 25px */
+    color:#022875; /* Asigna un color azul oscuro */
+    text-align:center; /* Centra el texto horizontalmente */
+}
+
+/* Contenedor de la imagen de la categoría */
+.imagen{
+    position:absolute; /* Coloca la imagen en una posición absoluta dentro del contenedor */
+    right:40px; /* Separa la imagen 40px del borde derecho */
+    top:40px; /* Separa la imagen 40px del borde superior */
+}
+
+/* Imagen de la categoría */
+.imagen img{
+    width:300px; /* Define un ancho de 300 píxeles */
+    border-radius:15px; /* Redondea las esquinas de la imagen */
+}
+
+/* Contenedor donde se muestran los libros */
+.lista-libros{
+    display:grid; /* Activa CSS Grid para organizar las tarjetas */
+    grid-template-columns:repeat(3,220px); /* Crea 3 columnas de 220px de ancho cada una */
+    gap:20px; /* Agrega una separación de 20px entre filas y columnas */
+    justify-content:center; /* Centra toda la cuadrícula horizontalmente */
+    margin:30px auto; /* Agrega un margen de 30px arriba y abajo y centra el contenedor */
+}
+
+
+/* Tarjeta de cada libro */
+.libro{
+    width:220px; /* Define un ancho fijo de 220px */
+    background:white; /* Establece un fondo blanco para la tarjeta */
+    padding:18px; /* Agrega un espacio interior de 18px */
+    border-radius:15px; /* Redondea las esquinas de la tarjeta */
+    box-shadow:0 5px 15px rgba(0,0,0,.15); /* Agrega una sombra para dar profundidad */
+    transition:.3s; /* Hace que los cambios de estilo sean suaves en 0.3 segundos */
+}
+
+
+/* Efecto al pasar el cursor sobre la tarjeta */
+.libro:hover{
+    transform:translateY(-5px); /* Mueve la tarjeta 5px hacia arriba */
+}
+
+
+/* Título del libro */
+.libro h3{
+    width:100%; /* Hace que el título ocupe todo el ancho de la tarjeta */
+    font-size:18px; /* Define un tamaño de letra de 18px */
+    color:#022875; /* Asigna un color azul oscuro al texto */
+    margin-bottom:10px; /* Agrega un margen inferior de 10px */
+}
+
+
+/* Información del libro */
+.libro p{
+    width:100%; /* Hace que el párrafo ocupe todo el ancho disponible */
+    margin:5px 0; /* Agrega un margen de 5px arriba y abajo */
+    font-size:14px; /* Define un tamaño de letra de 14px */
+    color:#64748b; /* Establece un color gris azulado para el texto */
+}
+
+
+/* Botón de préstamo */
+.prestamo{
+    width:100%; /* Hace que el botón ocupe todo el ancho de la tarjeta */
+    margin-top:15px; /* Agrega un margen superior de 15px */
+    padding:10px; /* Agrega un espacio interior de 10px */
+    background:#1f3c88; /* Establece un fondo azul oscuro */
+    color:white; /* Define el color del texto en blanco */
+    border:none; /* Elimina el borde predeterminado */
+    border-radius:8px; /* Redondea las esquinas del botón */
+    font-weight:bold; /* Muestra el texto en negrita */
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    transition:.3s; /* Hace que los cambios de estilo sean suaves */
+}
+
+
+/* Efecto al pasar el cursor sobre el botón de préstamo */
+.prestamo:hover{
+    background:#ffd54f; /* Cambia el fondo a color amarillo */
+    color:#000; /* Cambia el color del texto a negro */
+}
+
+
+/* Botón para regresar */
+.boton{
+    display:inline-block; /* Permite ajustar ancho y alto manteniéndose en línea */
+    margin-top:20px; /* Agrega un margen superior de 20px */
+    background:#1f3c88; /* Establece un fondo azul oscuro */
+    color:white; /* Define el color del texto en blanco */
+    text-decoration:none; /* Elimina el subrayado del enlace */
+    padding:12px 25px; /* Agrega espacio interior: 12px arriba y abajo, 25px a los lados */
+    border-radius:8px; /* Redondea las esquinas del botón */
+    font-weight:600; /* Aplica un grosor de fuente seminegrita */
+    transition:.3s; /* Hace que los cambios de estilo sean suaves en 0.3 segundos */
+}
+
+/* Efecto al pasar el cursor sobre el botón de regresar */
+.boton:hover{
+    background:#ffd54f; /* Cambia el color de fondo a amarillo */
+    color:#000; /* Cambia el color del texto a negro */
+}
+
+
+/* Adaptación para dispositivos móviles */
+@media(max-width:900px){ /* Aplica estos estilos cuando la pantalla mide 900px o menos */
+
+/* Contenedor principal */
+.contenedor{
+    width:90%; /* Hace que el contenedor ocupe el 90% del ancho de la pantalla */
+}
+
+/* Contenedor de la imagen */
+.imagen{
+    position:static; /* Coloca la imagen en su posición normal dentro del documento */
+    text-align:center; /* Centra la imagen horizontalmente */
+    margin-top:25px; /* Agrega un margen superior de 25px */
+}
+
+/* Imagen */
+.imagen img{
+    width:250px; /* Reduce el ancho de la imagen a 250px */
+}
+
+/* Subtítulos y párrafos */
+.texto h3,
+.texto p{
+    width:100%; /* Hace que ocupen todo el ancho disponible */
+}
+
+/* Contenedor de los libros */
+.lista-libros{
+    grid-template-columns:1fr; /* Cambia la cuadrícula a una sola columna */
+}
+
+/* Tarjeta del libro */
+.libro{
+    width:100%; /* Hace que cada tarjeta ocupe todo el ancho disponible */
+}
+
+}
+
+/* Tarjetas de libros */
+.lista-libros{
+
+    display:flex; /* Activa Flexbox para organizar las tarjetas */
+    flex-wrap:wrap; /* Permite que las tarjetas pasen a otra fila si no caben */
+    justify-content:center; /* Centra las tarjetas horizontalmente */
+    gap:20px; /* Agrega una separación de 20px entre las tarjetas */
+    margin:20px 0; /* Agrega un margen de 20px arriba y abajo */
+
+}
+
+
+/* Tarjeta de cada libro */
+.libro{
+
+    background:white; /* Establece un fondo blanco */
+    padding:18px; /* Agrega un espacio interior de 18px */
+    width:240px; /* Define un ancho fijo de 240px */
+    border-radius:12px; /* Redondea las esquinas de la tarjeta */
+    box-shadow:0 4px 12px rgba(0,0,0,.15); /* Agrega una sombra alrededor de la tarjeta */
+
+    text-transform:uppercase; /* Convierte todo el texto a mayúsculas */
+
+}
+
+
+/* Título del libro */
+.libro h3{
+
+    margin-top:0; /* Elimina el margen superior */
+    font-size:18px; /* Define un tamaño de letra de 18px */
+
+}
+
+
+/* Información del libro */
+.libro p{
+
+    margin:8px 0; /* Agrega un margen de 8px arriba y abajo */
+
+}
+
+
+/* Botón de préstamo */
+.prestamo{
+
+    background:#022875; /* Establece un fondo azul oscuro */
+    color:white; /* Define el color del texto en blanco */
+    border:none; /* Elimina el borde predeterminado del botón */
+    padding:10px 15px; /* Agrega un espacio interior de 10px arriba y abajo y 15px a los lados */
+    border-radius:8px; /* Redondea las esquinas del botón */
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    transition:.3s; /* Hace que los cambios de estilo sean suaves en 0.3 segundos */
+
+}
+
+
+/* Efecto al pasar el cursor sobre el botón */
+.prestamo:hover{
+
+    background:#FFD54F; /* Cambia el color de fondo a amarillo */
+    color:black; /* Cambia el color del texto a negro */
+
+}
+
+/* Contenedor de las tarjetas de libros */
+.lista-libros{
+    display:flex; /* Activa Flexbox para organizar las tarjetas */
+    flex-wrap:wrap; /* Permite que las tarjetas pasen a otra fila si no caben */
+    justify-content:center; /* Centra las tarjetas horizontalmente */
+    gap:20px; /* Agrega una separación de 20px entre las tarjetas */
+    margin:25px 0; /* Agrega un margen de 25px arriba y abajo */
+}
+
+/* Tarjeta de cada libro */
+.libro{
+    background:#fff; /* Establece un fondo blanco */
+    width:240px; /* Define un ancho fijo de 240px */
+    padding:18px; /* Agrega un espacio interior de 18px */
+    border-radius:12px; /* Redondea las esquinas de la tarjeta */
+    box-shadow:0 4px 12px rgba(0,0,0,.15); /* Agrega una sombra alrededor de la tarjeta */
+
+    display:flex; /* Convierte la tarjeta en un contenedor Flexbox */
+    flex-direction:column; /* Organiza los elementos internos en una columna */
+}
+
+/* Título del libro */
+.libro h3{
+    text-align:center; /* Centra el texto horizontalmente */
+    text-transform:uppercase; /* Convierte el texto a mayúsculas */
+    margin-bottom:10px; /* Agrega un margen inferior de 10px */
+}
+
+/* Información del libro */
+.libro p{
+    margin:6px 0; /* Agrega un margen de 6px arriba y abajo */
+}
+
+/* Botón de préstamo */
+.prestamo{
+    margin-top:auto; /* Empuja el botón hasta la parte inferior de la tarjeta */
+    align-self:center; /* Centra el botón horizontalmente dentro del contenedor Flex */
+
+    background:#022875; /* Establece un fondo azul oscuro */
+    color:#fff; /* Define el color del texto en blanco */
+    border:none; /* Elimina el borde predeterminado del botón */
+    padding:10px 18px; /* Agrega un espacio interior de 10px arriba y abajo y 18px a los lados */
+    border-radius:8px; /* Redondea las esquinas del botón */
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    font-weight:600; /* Aplica un grosor de fuente seminegrita */
+    transition:.3s; /* Hace que los cambios de estilo sean suaves en 0.3 segundos */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+.prestamo:hover{
+    background:#FFD54F; /* Cambia el color de fondo a amarillo */
+    color:#000; /* Cambia el color del texto a negro */
+}

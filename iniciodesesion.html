@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Define la codificación UTF-8 para mostrar acentos y caracteres como la ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Configura la ventana gráfica para que el diseño se adapte a dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Texto que se despliega en la pestaña superior del navegador -->
+    <title>Inicio de Sesión | Biblioteca UPGOP</title>
+
+    <!-- Hoja de estilos CSS específica para la vista de login -->
+    <link rel="stylesheet" href="css/iniciodesesion.css">
+
+</head>
+
+<body>
+
+    <!-- Tarjeta o contenedor central que encierra el formulario de autenticación -->
+    <div class="login">
+
+        <!-- Elemento interactivo tipo 'X' que redirige mediante JavaScript a la página de inicio -->
+        <span class="cerrar" onclick="window.location.href='index.html'">&times;</span>
+
+
+        <!-- Div contenedor donde JavaScript puede inyectar un saludo personalizado -->
+        <div class="bienvenida" id="bienvenida">
+            Bienvenido
+        </div>
+
+
+        <!-- Título principal de la tarjeta de inicio de sesión -->
+        <h1>Iniciar Sesión</h1>
+
+
+        <!-- Indicación breve para guiar al usuario sobre los datos requeridos -->
+        <p>Ingresa tu usuario y contraseña</p>
+
+
+        <!-- Campo de entrada de texto sencillo para capturar el nombre de usuario o matrícula -->
+        <input 
+            type="text" 
+            id="usuario" 
+            placeholder="Usuario">
+
+
+        <!-- Campo de entrada tipo password que oculta los caracteres tipeados por seguridad -->
+        <input 
+            type="password" 
+            id="password" 
+            placeholder="Contraseña">
+
+
+        <!-- Botón que desencadena la función login() definida en el archivo JS -->
+        <button onclick="login()">Entrar</button>
+
+
+        <!-- Archivo JavaScript encargado de validar credenciales y conectar con MySQL -->
+        <script src="js/login.js"></script>
+
+    </div>
+
+</body>
+
+</html>

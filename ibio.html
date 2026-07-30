@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Define la codificación de caracteres para acentos y la letra ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Hace que la página sea responsiva y se adapte al tamaño de celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título que se muestra en la pestaña del navegador -->
+    <title>IBIO</title>
+
+
+    <!-- Hoja de estilos CSS específica de la categoría IBIO -->
+    <link rel="stylesheet" href="../css/ibio.css">
+
+</head>
+
+
+
+<!-- Atributo data-categoria que libros.js lee para saber que debe filtrar por IBIO -->
+<body data-categoria="IBIO">
+
+
+<!-- Contenedor principal que organiza el contenido (texto a un lado, imagen al otro) -->
+<div class="contenedor">
+
+
+    <!-- Columna izquierda: Información textual y catálogo de libros -->
+    <div class="texto">
+
+
+        <!-- Sigla principal de la carrera -->
+        <h1>IBIO</h1>
+
+
+        <!-- Nombre completo de la ingeniería -->
+        <h3>
+            Ingeniería en Biotecnología
+        </h3>
+
+
+        <!-- Mensaje de bienvenida para los estudiantes de la sección -->
+        <p>
+            Bienvenido a la sección IBIO de la biblioteca.
+            Aquí encontrarás información y material de consulta
+            para apoyar tus actividades académicas.
+        </p>
+
+
+        <!-- Subtítulo de la sección de libros -->
+        <h2>Libros disponibles</h2>
+
+
+        <!-- Contenedor dinámico donde el archivo libros.js colocará los libros de la base de datos -->
+        <div id="listaLibros" class="lista-libros"></div>
+
+
+
+        <!-- Enlace de retorno para navegar de vuelta al catálogo principal -->
+        <a href="catalogo.html" class="boton">
+            Regresar al Catálogo
+        </a>
+
+
+    </div>
+
+
+
+
+    <!-- Columna derecha: Imagen representativa de la carrera -->
+    <div class="imagen">
+
+        <!-- Imagen de portada con su texto de apoyo (alt) -->
+        <img src="../img/ibio.jpeg" alt="IBIO">
+
+    </div>
+
+
+</div>
+
+
+
+<!-- Archivo JavaScript encargado de hacer la consulta a MySQL y mostrar los libros -->
+<script src="../js/libros.js"></script>
+
+
+</body>
+
+</html>

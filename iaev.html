@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Codificación de caracteres para procesar correctamente acentos y la letra ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Configuración para que el sitio sea responsivo y se adapte a dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título que se despliega en la pestaña superior del navegador -->
+    <title>IAEV</title>
+
+    <!-- Hoja de estilos CSS propia de la categoría IAEV -->
+    <link rel="stylesheet" href="../css/iaev.css">
+
+</head>
+
+
+<!-- Atributo data-categoria que identifica el área para que libros.js filtre en la base de datos -->
+<body data-categoria="IAEV">
+
+
+<!-- Contenedor principal que envuelve el layout de la página -->
+<div class="contenedor">
+
+
+    <!-- Bloque de contenido de texto e información general -->
+    <div class="texto">
+
+
+        <!-- Título con el código/sigla de la carrera -->
+        <h1>IAEV</h1>
+
+
+        <!-- Nombre completo descriptivo de la carrera -->
+        <h3>
+            Ingeniería en Animación y Efectos Visuales
+        </h3>
+
+
+        <!-- Párrafo de bienvenida con instrucciones para el usuario -->
+        <p>
+            Bienvenido a la sección IAEV de la biblioteca.
+            Aquí encontrarás información y material de consulta
+            para apoyar tus actividades académicas.
+        </p>
+
+
+        <!-- Subencabezado para la sección del catálogo de libros -->
+        <h2>Libros disponibles</h2>
+
+
+        <!-- Elemento contenedor (ID usado por JS para insertar dinámicamente las tarjetas) -->
+        <div id="listaLibros" class="lista-libros"></div>
+
+
+
+        <!-- Enlace con apariencia de botón para regresar al menú de categorías principales -->
+        <a href="catalogo.html" class="boton">
+            Regresar al Catálogo
+        </a>
+
+
+    </div>
+
+
+
+
+    <!-- Bloque para la ilustración o logo representativo -->
+    <div class="imagen">
+
+        <!-- Imagen de portada con texto alternativo de accesibilidad -->
+        <img src="../img/iaev.jpeg" alt="IAEV">
+
+    </div>
+
+
+</div>
+
+
+
+<!-- Script que realiza la petición y renderiza el listado de libros desde MySQL -->
+<script src="../js/libros.js"></script>
+
+
+</body>
+
+</html>

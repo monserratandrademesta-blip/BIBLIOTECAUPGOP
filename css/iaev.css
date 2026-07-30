@@ -1,0 +1,310 @@
+*{
+    margin:0; /* Elimina margen por defecto */
+    padding:0; /* Elimina padding por defecto */
+    box-sizing:border-box; /* Hace que el ancho/alto incluya padding y borde */
+    font-family:'Segoe UI',Arial,sans-serif; /* Tipografía global */
+}
+
+
+body{
+    background:#f4f7f6; /* Color de fondo general */
+}
+
+
+/* Contenedor principal */
+.contenedor{
+    width:1200px; /* Ancho fijo */
+    max-width:90%; /* Respeta ancho máximo en pantallas pequeñas */
+    margin:40px auto; /* Centra horizontalmente con margen superior */
+    background:#fff; /* Fondo blanco del contenedor */
+    padding:35px; /* Espaciado interno */
+    border-radius:20px; /* Bordes redondeados */
+    box-shadow:0 5px 15px rgba(0,0,0,.08); /* Sombra sutil */
+    position:relative; /* Permite posicionar elementos absolutamente dentro */
+}
+
+
+/* Información */
+.texto{
+    width:100%; /* Ocupa todo el ancho del contenedor */
+}
+
+
+/* Color propio IMA */
+.texto h1{
+    font-size:55px; /* Tamaño del h1 */
+    color:#FDB515; /* Color del título principal */
+}
+
+
+.texto h3{
+    width:70%; /* Limita ancho para el h3 */
+    color:#1e293b; /* Color del h3 */
+    margin:10px 0; /* Margen vertical */
+    font-size:22px; /* Tamaño del h3 */
+}
+
+
+.texto p{
+    width:70%; /* Limita ancho del párrafo */
+    margin:15px 0; /* Margen vertical */
+    color:#64748b; /* Color del texto */
+    line-height:1.6; /* Interlineado */
+}
+
+
+/* Título libros */
+.texto h2{
+    margin-top:25px; /* Margen superior para separar */
+    color:#022875; /* Color del h2 */
+    text-align:center; /* Centra el texto */
+}
+
+
+/* Imagen */
+.imagen{
+    position:absolute; /* Posiciona la imagen respecto al contenedor */
+    right:40px; /* A la derecha */
+    top:40px; /* Desde arriba */
+}
+
+
+.imagen img{
+    width:300px; /* Ancho fijo de la imagen */
+    border-radius:15px; /* Bordes redondeados */
+}
+
+
+/* Libros centrados */
+.lista-libros{
+    display:grid; /* Uso de grid */
+    grid-template-columns:repeat(3,220px); /* 3 columnas de 220px */
+    gap:20px; /* Espacio entre elementos */
+    justify-content:center; /* Centra la grilla */
+    margin:30px auto; /* Centra vertical con margen */
+}
+
+
+/* Tarjeta */
+.libro{
+    width:220px; /* Ancho fijo de tarjeta */
+    background:white; /* Fondo blanco */
+    padding:18px; /* Espaciado interno */
+    border-radius:15px; /* Bordes redondeados */
+    box-shadow:0 5px 15px rgba(0,0,0,.15); /* Sombra */
+    transition:.3s; /* Transición al hacer hover */
+}
+
+
+.libro:hover{
+    transform:translateY(-5px); /* Levanta la tarjeta al pasar el mouse */
+}
+
+
+.libro h3{
+    width:100%; /* Ocupa todo el ancho */
+    font-size:18px; /* Tamaño del h3 */
+    color:#022875; /* Color del título */
+    margin-bottom:10px; /* Separación inferior */
+}
+
+
+.libro p{
+    width:100%; /* Ocupa todo el ancho */
+    margin:5px 0; /* Margen vertical */
+    font-size:14px; /* Tamaño del párrafo */
+    color:#64748b; /* Color del texto */
+}
+
+
+/* Botón préstamo */
+.prestamo{
+    width:100%; /* El botón ocupa todo el ancho */
+    margin-top:15px; /* Separación superior */
+    padding:10px; /* Espaciado interno */
+    background:#1f3c88; /* Fondo del botón */
+    color:white; /* Color del texto */
+    border:none; /* Sin borde */
+    border-radius:8px; /* Bordes redondeados */
+    font-weight:bold; /* Texto en negrita */
+    cursor:pointer; /* Cambia cursor a mano */
+    transition:.3s; /* Transición suave */
+}
+
+
+.prestamo:hover{
+    background:#ffd54f; /* Cambia fondo */
+    color:#000; /* Cambia color del texto */
+}
+
+
+/* Botón regresar */
+.boton{
+    display:inline-block; /* Mantiene formato de bloque en línea */
+    margin-top:20px; /* Separación superior */
+    background:#1f3c88; /* Fondo */
+    color:white; /* Texto blanco */
+    text-decoration:none; /* Quita subrayado */
+    padding:12px 25px; /* Espaciado interno */
+    border-radius:8px; /* Bordes redondeados */
+    font-weight:600; /* Grosor intermedio */
+    transition:.3s; /* Transición suave */
+}
+
+
+.boton:hover{
+    background:#ffd54f; /* Fondo al hover */
+    color:#000; /* Texto negro al hover */
+}
+
+
+/* Celular */
+@media(max-width:900px){
+
+.contenedor{
+    width:90%; /* Ajusta ancho del contenedor */
+}
+
+
+.imagen{
+    position:static; /* Quita posicionamiento absoluto */
+    text-align:center; /* Centra la imagen */
+    margin-top:25px; /* Separación superior */
+}
+
+
+.imagen img{
+    width:250px; /* Cambia tamaño de imagen */
+}
+
+
+.texto h3,
+.texto p{
+    width:100%; /* Ocupa todo ancho en móvil */
+}
+
+
+.lista-libros{
+    grid-template-columns:1fr; /* Una sola columna en grid */
+}
+
+
+.libro{
+    width:100%; /* Tarjetas ocupan todo el ancho */
+}
+
+}
+/* Tarjetas de libros */
+.lista-libros{
+
+    display:flex; /* Usa flexbox */
+    flex-wrap:wrap; /* Permite saltos de línea */
+    justify-content:center; /* Centra tarjetas */
+    gap:20px; /* Espacio entre tarjetas */
+    margin:20px 0; /* Margen */
+}
+
+/* Tarjeta (estilos repetidos más abajo) */
+.libro{
+
+    background:white; /* Fondo blanco */
+    padding:18px; /* Espaciado interno */
+    width:240px; /* Ancho */
+    border-radius:12px; /* Bordes redondeados */
+    box-shadow:0 4px 12px rgba(0,0,0,.15); /* Sombra */
+    
+    text-transform:uppercase; /* Convierte texto a mayúsculas */
+}
+
+
+/* Títulos de tarjetas */
+.libro h3{
+
+    margin-top:0; /* Sin margen superior */
+    font-size:18px; /* Tamaño */
+    
+}
+
+
+/* Párrafos dentro de la tarjeta */
+.libro p{
+
+    margin:8px 0; /* Margen vertical */
+    
+}
+
+
+/* Botón dentro de tarjetas (reinicio de estilo) */
+.prestamo{
+
+    background:#022875; /* Fondo azul */
+    color:white; /* Texto blanco */
+    border:none; /* Sin borde */
+    padding:10px 15px; /* Espaciado */
+    border-radius:8px; /* Bordes redondeados */
+    cursor:pointer; /* Cursor mano */
+    transition:.3s; /* Transición */
+    
+}
+
+
+.prestamo:hover{
+
+    background:#FFD54F; /* Fondo amarillo */
+    color:black; /* Texto negro al hover */
+    
+}
+
+
+/* (Se repite el contenedor de tarjetas) */
+.lista-libros{
+    display:flex; /* Flexbox */
+    flex-wrap:wrap; /* Envolver */
+    justify-content:center; /* Centrado */
+    gap:20px; /* Espaciado */
+    margin:25px 0; /* Margen */
+}
+
+/* (Se repite la tarjeta) */
+.libro{
+    background:#fff; /* Fondo blanco */
+    width:240px; /* Ancho */
+    padding:18px; /* Espaciado interno */
+    border-radius:12px; /* Bordes redondeados */
+    box-shadow:0 4px 12px rgba(0,0,0,.15); /* Sombra */
+    
+    display:flex; /* Flexbox en la tarjeta */
+    flex-direction:column; /* Apila en columna */
+}
+
+/* (Se repite el título de la tarjeta) */
+.libro h3{
+    text-align:center; /* Centra texto */
+    text-transform:uppercase; /* Mayúsculas */
+    margin-bottom:10px; /* Separación inferior */
+}
+
+/* (Se repite el párrafo) */
+.libro p{
+    margin:6px 0; /* Margen */
+}
+
+/* (Se repite el botón) */
+.prestamo{
+    margin-top:auto; /* Empuja el botón al final usando el espacio disponible */
+    align-self:center; /* Centra el botón horizontalmente dentro del flex */
+    
+    background:#022875; /* Fondo */
+    color:#fff; /* Texto blanco */
+    border:none; /* Sin borde */
+    padding:10px 18px; /* Espaciado */
+    border-radius:8px; /* Bordes redondeados */
+    cursor:pointer; /* Cursor mano */
+    font-weight:600; /* Negrita media */
+    transition:.3s; /* Transición */
+}
+
+.prestamo:hover{
+    background:#FFD54F; /* Amarillo */
+    color:#000; /* Texto negro */
+}

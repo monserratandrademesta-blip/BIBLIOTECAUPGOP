@@ -1,0 +1,326 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif; /* tipografia principal */
+}
+
+
+body{
+    background:#f4f7f6; /* fondo gris claro suave */
+}
+
+
+/* Contenedor principal */
+.contenedor{
+    width:1200px; /* ancho fijo */
+    max-width:90%; /* que no sobrepase */
+    margin:40px auto; /* centrado horizontalmente */
+    background:#fff; /* fondo blanco */
+    padding:35px; /* espacio interno */
+    border-radius:20px; /* bordes muy redondeados */
+    box-shadow:0 5px 15px rgba(0,0,0,.08); /* sombra suave */
+    position:relative; /* permite posicionar elementos */
+}
+
+
+/* Información de categoría */
+.texto{
+    width:100%; /* ocupa el ancho completo dentro del contenedor */
+}
+
+
+/* Color propio CIA */
+.texto h1{
+    font-size:55px; /* tamaño de letra */
+    color:#6B2FA3;
+}
+
+
+.texto h3{
+    width:70%; /* limita el ancho */
+    color:#1e293b; 
+    margin:10px 0; /* margen arriba y abajo */
+    font-size:22px;
+}
+
+
+.texto p{
+    width:70%; /* aliniado con el subtítulo */
+    margin:15px 0;
+    color:#64748b;
+    line-height:1.6; /* interlineado para mejor legibilidad */
+}
+
+
+/* Título de libros */
+.texto h2{
+    margin-top:25px;
+    color:#022875;
+    text-align:center; /* centrado horizontalmente */
+}
+
+
+/* Imagen */
+.imagen{
+    position:absolute; /* posicionamiento flotente */
+    right:40px; /* distancia desde la derecha */
+    top:40px; /* distancia desde arriba */
+}
+
+
+.imagen img{
+    width:300px; /* ancho fijo de la imagen */
+    border-radius:15px; /* bordes redondeados */ 
+}
+
+
+/* Lista de libros */
+.lista-libros{
+    display:grid; /* Activa el sistema de cuadrícula para organizar los libros */
+    grid-template-columns:repeat(3,220px); /* Crea 3 columnas con un ancho de 220px cada una */
+    gap:20px; /* Define el espacio entre cada tarjeta */
+    justify-content:center; /* Centra la cuadrícula horizontalmente */
+    margin:30px auto; /* Agrega margen superior e inferior y centra el elemento */
+}
+
+
+/* Tarjetas */
+.libro{
+    width:220px; /* Define el ancho de cada tarjeta */
+    background:white; /* Establece el fondo blanco */
+    padding:18px; /* Agrega espacio interno alrededor del contenido */
+    border-radius:15px; /* Redondea las esquinas de la tarjeta */
+    box-shadow:0 5px 15px rgba(0,0,0,.15); /* Agrega sombra para dar profundidad */
+    transition:.3s; /* Suaviza los cambios visuales */
+}
+
+
+/* Efecto al pasar el mouse sobre la tarjeta */
+.libro:hover{
+    transform:translateY(-5px); /* Mueve la tarjeta 5px hacia arriba */
+}
+
+
+/* Título del libro */
+.libro h3{
+    width:100%; /* Hace que el título ocupe todo el ancho disponible */
+    font-size:18px; /* Define el tamaño del texto */
+    color:#022875; /* Cambia el color del título a azul oscuro */
+    margin-bottom:10px; /* Agrega espacio debajo del título */
+}
+
+
+/* Información del libro */
+.libro p{
+    width:100%; /* Hace que el texto ocupe todo el ancho */
+    margin:5px 0; /* Agrega separación arriba y abajo */
+    font-size:14px; /* Define el tamaño de letra */
+    color:#64748b; /* Establece un color gris azulado */
+}
+
+
+/* Botón solicitar préstamo */
+.prestamo{
+    width:100%; /* Hace que el botón ocupe todo el ancho de la tarjeta */
+    margin-top:15px; /* Agrega espacio superior */
+    padding:10px; /* Agrega espacio interno */
+    background:#1f3c88; /* Establece un fondo azul */
+    color:white; /* Define el texto en color blanco */
+    border:none; /* Elimina el borde del botón */
+    border-radius:8px; /* Redondea las esquinas */
+    font-weight:bold; /* Hace el texto más grueso */
+    cursor:pointer; /* Cambia el cursor a una mano */
+    transition:.3s; /* Suaviza los cambios */
+}
+
+
+/* Efecto del botón préstamo */
+.prestamo:hover{
+    background:#ffd54f; /* Cambia el fondo a amarillo */
+    color:#000; /* Cambia el texto a negro */
+}
+
+
+/* Botón regresar */
+.boton{
+    display:inline-block; /* Permite controlar tamaño y posición del enlace */
+    margin-top:20px; /* Agrega espacio superior */
+    background:#1f3c88; /* Fondo azul */
+    color:white; /* Texto blanco */
+    text-decoration:none; /* Quita el subrayado del enlace */
+    padding:12px 25px; /* Agrega espacio interno */
+    border-radius:8px; /* Redondea esquinas */
+    font-weight:600; /* Aplica un grosor de letra seminegrita */
+    transition:.3s; /* Hace suaves los cambios */
+}
+
+
+/* Efecto botón regresar */
+.boton:hover{
+    background:#ffd54f; /* Cambia el fondo a amarillo */
+    color:#000; /* Cambia el texto a negro */
+}
+
+
+/* Vista celular */
+@media(max-width:900px){ /* Aplica cambios cuando la pantalla sea menor a 900px */
+
+.contenedor{
+    width:90%; /* Reduce el ancho del contenedor para adaptarlo al celular */
+}
+
+
+.imagen{
+    position:static; /* Quita la posición absoluta de la imagen */
+    text-align:center; /* Centra la imagen */
+    margin-top:25px; /* Agrega separación superior */
+}
+
+
+.imagen img{
+    width:250px; /* Reduce el tamaño de la imagen */
+}
+
+
+.texto h3,
+.texto p{
+    width:100%; /* Hace que el texto ocupe todo el ancho disponible */
+}
+
+
+.lista-libros{
+    grid-template-columns:1fr; /* Cambia la lista a una sola columna */
+}
+
+
+.libro{
+    width:100%; /* Hace que la tarjeta ocupe todo el ancho */
+}
+
+}
+
+
+/* Tarjetas de libros usando Flexbox */
+.lista-libros{
+
+    display:flex; /* Activa Flexbox para organizar las tarjetas */
+    flex-wrap:wrap; /* Permite que las tarjetas bajen a otra fila */
+    justify-content:center; /* Centra las tarjetas */
+    gap:20px; /* Espacio entre tarjetas */
+    margin:20px 0; /* Margen superior e inferior */
+
+}
+
+
+/* Diseño de tarjeta */
+.libro{
+
+    background:white; /* Fondo blanco */
+    padding:18px; /* Espacio interno */
+    width:240px; /* Ancho de tarjeta */
+    border-radius:12px; /* Esquinas redondeadas */
+    box-shadow:0 4px 12px rgba(0,0,0,.15); /* Sombra de tarjeta */
+
+    text-transform:uppercase; /* Convierte el texto a mayúsculas */
+
+}
+
+
+/* Título de tarjeta */
+.libro h3{
+
+    margin-top:0; /* Elimina margen superior */
+    font-size:18px; /* Tamaño del título */
+
+}
+
+
+/* Texto de tarjeta */
+.libro p{
+
+    margin:8px 0; /* Separación vertical del texto */
+
+}
+
+
+/* Botón préstamo */
+.prestamo{
+
+    background:#022875; /* Fondo azul oscuro */
+    color:white; /* Texto blanco */
+    border:none; /* Sin borde */
+    padding:10px 15px; /* Espacio interno */
+    border-radius:8px; /* Esquinas redondeadas */
+    cursor:pointer; /* Cursor de botón */
+    transition:.3s; /* Transición suave */
+
+}
+
+
+/* Efecto botón préstamo */
+.prestamo:hover{
+
+    background:#FFD54F; /* Cambia a amarillo */
+    color:black; /* Cambia texto a negro */
+
+}
+
+
+/* Organización final de tarjetas */
+.lista-libros{
+    display:flex; /* Usa Flexbox */
+    flex-wrap:wrap; /* Permite varias filas */
+    justify-content:center; /* Centra los elementos */
+    gap:20px; /* Espacio entre tarjetas */
+    margin:25px 0; /* Margen vertical */
+}
+
+
+.libro{
+    background:#fff; /* Fondo blanco */
+    width:240px; /* Ancho de tarjeta */
+    padding:18px; /* Espacio interno */
+    border-radius:12px; /* Redondea esquinas */
+    box-shadow:0 4px 12px rgba(0,0,0,.15); /* Sombra */
+
+    display:flex; /* Activa Flexbox dentro de la tarjeta */
+    flex-direction:column; /* Ordena elementos verticalmente */
+}
+
+
+/* Título centrado */
+.libro h3{
+    text-align:center; /* Centra el texto */
+    text-transform:uppercase; /* Convierte a mayúsculas */
+    margin-bottom:10px; /* Espacio inferior */
+}
+
+
+/* Información */
+.libro p{
+    margin:6px 0; /* Separación entre datos */
+}
+
+
+/* Botón ajustado al final de la tarjeta */
+.prestamo{
+    margin-top:auto; /* Empuja el botón hacia abajo */
+    align-self:center; /* Centra el botón */
+
+    background:#022875; /* Fondo azul oscuro */
+    color:#fff; /* Texto blanco */
+    border:none; /* Sin borde */
+    padding:10px 18px; /* Espacio interno */
+    border-radius:8px; /* Esquinas redondeadas */
+    cursor:pointer; /* Cursor de botón */
+    font-weight:600; /* Texto más marcado */
+    transition:.3s; /* Cambio suave */
+}
+
+
+/* Efecto final del botón */
+.prestamo:hover{
+    background:#FFD54F; /* Fondo amarillo */
+    color:#000; /* Texto negro */
+}

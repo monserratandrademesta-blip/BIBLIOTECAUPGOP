@@ -1,0 +1,183 @@
+/* ESTILOS GENERALES */
+
+* {
+    box-sizing: border-box; /* hace que los tamaños sean más fáciles de controlar */
+}
+
+body {
+    margin: 0; /* Elimina el margen por defecto que traen los navegadores*/
+    font-family: "Segoe UI", Arial, sans-serif; /* Define la tipografia principal */
+    background: #f4f9ff; /* Fondo general */
+    color: #1e2a3a; /* color del texto */
+    overflow-x: hidden; /* oculta cualquier elemento que sobrepase el ancho horizontal */
+}
+
+/* ENCABEZADO PRINCIPAL (HEADER) */
+
+.header {
+    background: linear-gradient(90deg, #a2c3ec, #A7B9DB); /* degradado de color */
+    color: white; /* texto blanco */
+    padding: 20px; /* Añade un colchón o relleno interno */
+    text-align: center; /* centra el texto */
+    box-shadow: 0 4px 12px rgba(0,0,0,.15); /* una sombra suave */
+}
+
+.header h1 {
+    margin: 0 0 20px; /* Quita el margen superior/laterales */
+}
+
+/* BARRA DE BÚSQUEDA Y SUS COMPONENTES */
+
+.buscador {
+    display: flex; /* acomoda elementos en línea */
+    justify-content: center; /* centra horizontalmente */
+    align-items: center; /* centra verticalmente */
+    flex-wrap: wrap; /* permite que baje si no cabe */
+    gap: 10px; /* espacio entre elementos */
+}
+
+.buscador input {
+    width: 300px; /* Define un ancho fijo deseado para la caja de texto  */
+    max-width: 100%; /* evita que se salga en celular */
+    padding: 10px; /* espacio interno */
+    border: none; /* sin borde */
+    border-radius: 8px; /* bordes redondeados */
+    outline: none; /* quita borde al hacer clic */
+}
+
+.buscador button {
+    background: #1f3c88; /* color del botón de búsqueda  */
+    color: white; /* texto blanco */
+    border: none; /* sin borde */
+    padding: 10px 18px; /* tamaño interno del botón */
+    border-radius: 8px; /* bordes redondeados */
+    cursor: pointer; /* cursor de mano */
+    transition: .3s; /* animación suave */
+    white-space: nowrap; /* evita que el texto se parta */
+}
+
+.buscador button:hover {
+    background: #ffd54f; /* color al pasar el mouse */
+     color: rgb(0, 0, 0); /* texto blanco */
+}
+
+/* botón especial de agregar */
+
+.btn-add {
+    background: #1f3c88; /* color del botón */
+    color: white; /* texto blanco */
+    border: none; /* sin borde */
+    padding: 10px 18px; /* tamaño del botón */
+    border-radius: 8px; /* bordes redondeados */
+    cursor: pointer; /* cursor de mano */
+    transition: .3s; /* animación suave */
+    white-space: nowrap; /* evita que el texto se parta */
+}
+
+/* SECCIÓN Y REJILLA DE CATEGORÍAS */
+
+.categorias {
+    display: grid; /* usa cuadrícula */
+    grid-template-columns: repeat(auto-fit, 160px); /* columnas automáticas */
+    justify-content: center; /* centra horizontalmente */
+    gap: 20px; /* espacio entre tarjetas */
+    padding: 35px; /* espacio interno */
+}
+
+/* botones de categorías */
+
+.categorias button { /* Tarjetas/botones individuales */
+    width: 160px;
+    height: 180px;
+
+    display: flex; /* Convierte el botón en un contenedor */
+    flex-direction: column; /* coloca imagen arriba y texto abajo */
+    justify-content: center; /*centra el contenido  verticalmente*/
+    align-items: center; /* centra el contenido horizoltalmente */
+
+    background: white;
+    border: none;
+    border-radius: 15px; /* bordes suaves y redondeados */
+
+    padding: 10px;
+    margin: 0;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.1); /* sombra suave */
+
+    cursor: pointer;
+
+    transition: transform .3s ease; /* animación suave */
+
+    overflow: hidden;
+}
+
+.categorias button:hover {
+    transform: translateY(-5px); /* levanta el botón */
+}
+
+/* imágenes dentro de las categorías */
+
+.categorias img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* ajusta imagen sin deformar */
+    border-radius: 10px; /* redondea levemente las esqinas */
+}
+
+/* texto de las categorías */
+
+.categorias span {
+    margin-top: 10px; /* separacion con respecto a la imagen superior */
+    font-size: 14px; 
+    font-weight: bold; /* aplica formato en negritas */
+    color: #2f6fb2; /* color para el texto */
+    text-align: center; 
+
+    width: 100%; /* ocupa todo el ancho de la tarjeta para centrarse */
+
+    white-space: nowrap; /* evita salto de línea */
+    overflow: hidden; /* oculta lo que sobra */
+    text-overflow: ellipsis; /* pone "..." si es muy largo */
+}
+
+/* BOTONES DE NAVEGACIÓN (VOLVER / REGESAR) */
+
+.btn-regresar {
+    background: #1f3c88;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: block; /* permiten manipular márgenes */
+    width: fit-content; /* ajusta el ancho del botón */
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none; /* elimina el sibrayado */
+    transition: .25s;
+}
+
+.btn-regresar:hover {
+    background: #FFD54F;
+    transform: translateY(-2px);
+     color: rgb(0, 0, 0); /* texto blanco */
+}
+/* Quitar apariencia de enlace en libros */
+.lista-libros,
+.lista-libros *,
+.libro,
+.libro *{
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+/* Quita subrayado de las categorías */
+.categorias a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* Quita subrayado de botones dentro de enlaces */
+.buscador a,
+.buscador button{
+    text-decoration:none;
+}

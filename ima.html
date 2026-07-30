@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Define la codificación UTF-8 para procesar acentos y caracteres como la ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Configura el viewport para que la interfaz sea responsiva en dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Texto descriptivo que se muestra en la pestaña superior del navegador -->
+    <title>IMA</title>
+
+
+    <!-- Hoja de estilos CSS propia para la presentación visual de IMA -->
+    <link rel="stylesheet" href="../css/ima.css">
+
+</head>
+
+
+
+<!-- El atributo data-categoria almacena la clave 'IMA' que recupera libros.js para consultar la base de datos -->
+<body data-categoria="IMA">
+
+
+<!-- Contenedor general que estructura la maquetación principal -->
+<div class="contenedor">
+
+
+    <!-- Sección izquierda dedicada a la información, encabezados y catálogo -->
+    <div class="texto">
+
+
+        <!-- Sigla representativa de la carrera -->
+        <h1>IMA</h1>
+
+
+        <!-- Nombre completo oficial de la carrera -->
+        <h3>
+            Ingeniería en Manufactura Avanzada
+        </h3>
+
+
+        <!-- Descripción explicativa con el propósito de la biblioteca para esta sección -->
+        <p>
+            Bienvenido a la sección IMA de la biblioteca.
+            Aquí encontrarás información, guías y material especializado de consulta
+            para apoyar tus actividades académicas y proyectos de innovación digital.
+        </p>
+
+
+
+        <!-- Título secundario que precede al listado de elementos -->
+        <h2>Libros disponibles</h2>
+
+
+        <!-- Div dinámico con ID específico que libros.js selecciona para inyectar las tarjetas HTML de la base de datos -->
+        <div id="listaLibros" class="lista-libros"></div>
+
+
+
+        <!-- Enlace que redirige a la vista principal del catálogo de categorías -->
+        <a href="catalogo.html" class="boton">
+            Regresar al Catálogo
+        </a>
+
+
+    </div>
+
+
+
+
+    <!-- Sección derecha destinada a mostrar el recurso gráfico o ilustración de la sección -->
+    <div class="imagen">
+
+
+        <!-- Etiqueta de imagen con su respectiva ruta local y texto alternativo -->
+        <img src="../img/ima.jpeg" alt="IMA">
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- Carga del script que realiza la petición a MySQL y llena el contenedor listaLibros -->
+<script src="../js/libros.js"></script>
+
+
+</body>
+
+</html>

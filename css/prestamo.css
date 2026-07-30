@@ -1,0 +1,339 @@
+/* Estilos generales de toda la página */
+*{
+    margin:0; /* Elimina el margen predeterminado de todos los elementos */
+    padding:0; /* Elimina el espacio interno predeterminado de todos los elementos */
+    box-sizing:border-box; /* Hace que el tamaño incluya el contenido, padding y borde */
+    font-family:Arial, Helvetica, sans-serif; /* Define la fuente general de la página */
+}
+
+/* Cuerpo de la página */
+body{
+    background:#A7B9DB; /* Establece el color de fondo de toda la pantalla */
+}
+
+/* Contenedor principal de la página */
+.contenedor{
+    width:95%; /* Hace que el contenedor ocupe el 95% del ancho disponible */
+    max-width:1200px; /* Define un ancho máximo de 1200px */
+    margin:30px auto; /* Agrega un margen superior e inferior de 30px y centra el contenedor */
+}
+
+/* Encabezado superior */
+.encabezado{
+    background:#022875; /* Establece un fondo azul oscuro */
+    color:#FFFFFF; /* Define el color del texto en blanco */
+    padding:25px; /* Agrega espacio interno alrededor del contenido */
+    border-radius:20px 20px 0 0; /* Redondea únicamente las esquinas superiores */
+
+    display:flex; /* Activa Flexbox para organizar los elementos */
+    justify-content:space-between; /* Coloca los elementos separados hacia los extremos */
+    align-items:center; /* Centra los elementos verticalmente */
+}
+
+/* Título del encabezado */
+.encabezado h1{
+    font-size:42px; /* Define un tamaño de letra de 42px */
+    color:#FFFFFF; /* Establece el color del texto en blanco */
+}
+
+/* Botón del menú */
+.menu{
+    background:#FFD54F; /* Establece un fondo amarillo */
+    color:#000000; /* Define el color del texto en negro */
+
+    border:none; /* Elimina el borde predeterminado del botón */
+
+    padding:15px 35px; /* Agrega espacio interno de 15px arriba y abajo y 35px a los lados */
+
+    border-radius:18px; /* Redondea las esquinas del botón */
+
+    font-size:22px; /* Define el tamaño de letra del botón */
+    font-weight:bold; /* Muestra el texto en negrita */
+
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+
+    transition:.4s; /* Hace que los cambios de estilo sean suaves durante 0.4 segundos */
+
+    text-decoration:none; /* Elimina el subrayado si es un enlace */
+    display:inline-block; /* Permite controlar el tamaño y posición del elemento */
+}
+
+/* Efecto del botón menú al pasar el cursor */
+.menu:hover{
+
+    background:#022875; /* Cambia el fondo a azul oscuro */
+    color:#FFFFFF; /* Cambia el color del texto a blanco */
+
+    transform:translateY(-5px); /* Mueve el botón 5px hacia arriba */
+
+    box-shadow:0px 10px 20px rgba(0,0,0,.3); /* Agrega una sombra al botón */
+}
+
+
+/* Contenido principal */
+.contenido{
+
+    display:flex; /* Activa Flexbox para organizar las secciones */
+    gap:30px; /* Agrega una separación de 30px entre elementos */
+
+    background:#FFFFFF; /* Establece un fondo blanco */
+
+    padding:30px; /* Agrega espacio interno alrededor del contenido */
+
+    border-radius:0 0 20px 20px; /* Redondea únicamente las esquinas inferiores */
+
+    box-shadow:0px 10px 25px rgba(0,0,0,.15); /* Agrega una sombra al contenedor */
+}
+
+
+/* Formulario */
+.formulario{
+    flex:2; /* Hace que el formulario ocupe más espacio dentro del contenedor flexible */
+}
+
+
+/* Campos del formulario */
+.campo{
+    margin-bottom:22px; /* Agrega separación inferior de 22px entre campos */
+}
+
+
+/* Etiquetas de los campos */
+.campo label{
+
+    display:block; /* Hace que la etiqueta ocupe una línea completa */
+
+    margin-bottom:8px; /* Agrega espacio debajo de la etiqueta */
+
+    font-weight:bold; /* Muestra el texto en negrita */
+
+    font-size:24px; /* Define un tamaño de letra de 24px */
+
+    color:#000000; /* Establece el color del texto en negro */
+}
+
+
+/* Cajas de texto */
+.campo input{
+
+    width:100%; /* Hace que la caja ocupe todo el ancho disponible */
+
+    padding:18px; /* Agrega espacio interno dentro del campo */
+
+    border-radius:15px; /* Redondea las esquinas del campo */
+
+    border:2px solid #A7B9DB; /* Agrega un borde de 2px color azul claro */
+
+    font-size:20px; /* Define el tamaño del texto dentro del campo */
+
+    transition:.3s; /* Hace que los cambios visuales sean suaves */
+}
+
+
+/* Efecto cuando el usuario selecciona un input */
+.campo input:focus{
+
+    border-color:#022875; /* Cambia el color del borde a azul oscuro */
+
+    outline:none; /* Elimina el contorno predeterminado del navegador */
+
+    box-shadow:0 0 10px rgba(2,40,117,.3); /* Agrega una sombra azul alrededor del campo */
+}
+
+/* Panel lateral */
+.panel{
+
+    flex:1; /* Hace que el panel ocupe una parte proporcional del espacio disponible */
+
+    display:flex; /* Activa Flexbox para organizar los elementos internos */
+
+    flex-direction:column; /* Coloca los elementos uno debajo de otro */
+
+    align-items:center; /* Centra los elementos horizontalmente */
+
+    justify-content:center; /* Centra los elementos verticalmente */
+}
+
+
+/* Imagen */
+.imagen img{
+
+    width:180px; /* Define el ancho de la imagen en 180px */
+
+    transition:.5s; /* Hace que los cambios de la imagen sean suaves durante 0.5 segundos */
+}
+
+
+/* Efecto al pasar el cursor sobre la imagen */
+.imagen img:hover{
+
+    transform:scale(1.12) rotate(-8deg); /* Aumenta el tamaño de la imagen y la gira 8 grados */
+}
+
+
+/* Botón guardar */
+.guardar{
+
+    margin-top:35px; /* Agrega un espacio superior de 35px */
+
+    background:#FFD54F; /* Establece un fondo amarillo */
+
+    color:#000000; /* Define el color del texto en negro */
+
+    border:none; /* Elimina el borde predeterminado del botón */
+
+    padding:18px 45px; /* Agrega espacio interno de 18px arriba y abajo y 45px a los lados */
+
+    border-radius:15px; /* Redondea las esquinas del botón */
+
+    font-size:24px; /* Define el tamaño del texto del botón */
+
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+
+    transition:.4s; /* Hace que los cambios de estilo sean suaves durante 0.4 segundos */
+}
+
+
+/* Efecto al pasar el cursor sobre guardar */
+.guardar:hover{
+
+    background:#022875; /* Cambia el fondo a azul oscuro */
+
+    color:#FFFFFF; /* Cambia el color del texto a blanco */
+
+    transform:translateY(-6px); /* Mueve el botón 6px hacia arriba */
+
+    box-shadow:0px 12px 20px rgba(0,0,0,.25); /* Agrega una sombra debajo del botón */
+}
+
+
+/* Ventana modal */
+.modal{
+
+    display:none; /* Oculta el modal hasta que sea activado */
+
+    position:fixed; /* Mantiene el modal fijo en la pantalla */
+
+    top:0; /* Coloca el modal desde la parte superior de la pantalla */
+
+    left:0; /* Coloca el modal desde el lado izquierdo de la pantalla */
+
+    width:100%; /* Hace que ocupe todo el ancho de la pantalla */
+
+    height:100%; /* Hace que ocupe toda la altura de la pantalla */
+
+    background:rgba(0,0,0,.55); /* Agrega un fondo negro transparente para oscurecer la pantalla */
+
+    justify-content:center; /* Centra el contenido horizontalmente */
+
+    align-items:center; /* Centra el contenido verticalmente */
+
+    z-index:1000; /* Coloca el modal encima de otros elementos */
+}
+
+
+/* Contenido del modal */
+.modal-contenido{
+
+    background:#FFFFFF; /* Establece un fondo blanco */
+
+    padding:35px; /* Agrega espacio interno de 35px */
+
+    border-radius:20px; /* Redondea las esquinas del contenido */
+
+    width:420px; /* Define un ancho de 420px */
+
+    text-align:center; /* Centra el texto dentro del modal */
+
+    animation:aparecer .4s; /* Aplica una animación llamada aparecer durante 0.4 segundos */
+}
+
+
+/* Título del modal */
+.modal-contenido h2{
+
+    color:#022875; /* Establece un color azul oscuro para el título */
+
+    margin-bottom:15px; /* Agrega un espacio debajo del título */
+}
+
+
+/* Texto del modal */
+.modal-contenido p{
+
+    font-size:22px; /* Define un tamaño de letra de 22px */
+
+    margin-bottom:15px; /* Agrega un espacio inferior de 15px */
+
+    color:#000000; /* Define el color del texto en negro */
+}
+
+
+/* Mensaje principal del modal */
+.modal-contenido h1{
+
+    color:#022875; /* Define el color del título en azul oscuro */
+
+    font-size:42px; /* Establece el tamaño de letra del título en 42px */
+
+    margin-bottom:25px; /* Agrega un espacio inferior de 25px para separarlo de otros elementos */
+}
+
+
+/* Botón del modal */
+.modal-contenido button{
+
+    background:#022875; /* Establece un fondo azul oscuro para el botón */
+
+    color:#FFFFFF; /* Define el color del texto en blanco */
+
+    border:none; /* Elimina el borde predeterminado del botón */
+
+    padding:14px 30px; /* Agrega espacio interno de 14px arriba y abajo y 30px a los lados */
+
+    border-radius:10px; /* Redondea las esquinas del botón */
+
+    font-size:20px; /* Define un tamaño de letra de 20px */
+
+    cursor:pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+
+    transition:.3s; /* Hace que los cambios de estilo sean suaves durante 0.3 segundos */
+}
+
+
+/* Efecto al pasar el cursor sobre el botón del modal */
+.modal-contenido button:hover{
+
+    background:#FFD54F; /* Cambia el fondo del botón a amarillo */
+
+    color:#000000; /* Cambia el color del texto a negro */
+}
+
+
+/* Subtítulo */
+.subtitulo{
+
+    font-size:24px; /* Define un tamaño de letra de 24px */
+
+    margin-top:10px; /* Agrega un margen superior de 10px */
+
+    color:#FFFFFF; /* Establece el color del texto en blanco */
+
+    font-weight:bold; /* Hace que el texto aparezca en negrita */
+}
+
+
+/* Animación del modal */
+@keyframes aparecer{
+
+    from{
+        transform:scale(.6); /* Inicia la animación con el elemento reducido al 60% de su tamaño */
+        opacity:0; /* Hace que el elemento comience completamente transparente */
+    }
+
+    to{
+        transform:scale(1); /* Termina la animación con el tamaño original del elemento */
+        opacity:1; /* Hace que el elemento termine completamente visible */
+    }
+
+}

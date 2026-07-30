@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Codificación UTF-8 para interpretar correctamente acentos y la letra ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Configuración del viewport para asegurar la adaptación en pantallas móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Texto que se muestra en la pestaña superior del navegador -->
+    <title>TID</title>
+
+    <!-- Hoja de estilos CSS propia para la vista de la categoría TID -->
+    <link rel="stylesheet" href="../css/tid.css">
+
+</head>
+
+
+<!-- El atributo data-categoria almacena la clave 'TID' que libros.js lee para consultar en MySQL -->
+<body data-categoria="TID">
+
+
+<!-- Contenedor principal que organiza el contenido en dos columnas -->
+<div class="contenedor">
+
+
+    <!-- Columna izquierda: Información, encabezados y catálogo dinámico -->
+    <div class="texto">
+
+
+        <!-- Sigla identificadora de la carrera -->
+        <h1>TID</h1>
+
+
+        <!-- Nombre completo de la ingeniería -->
+        <h3>
+            Ingeniería en Tecnologías de la Información e Innovación Digital
+        </h3>
+
+
+        <!-- Texto introductorio y de bienvenida para los estudiantes de la materia -->
+        <p>
+            Bienvenido a la sección TID de la biblioteca.
+            Aquí encontrarás información y material de consulta
+            para apoyar tus actividades académicas.
+        </p>
+
+
+        <!-- Subtítulo que encabeza el listado de elementos -->
+        <h2>Libros disponibles</h2>
+
+
+        <!-- Div contenedor con ID único donde JavaScript inyectará las tarjetas de los libros -->
+        <div id="listaLibros" class="lista-libros"></div>
+
+
+        <!-- Enlace con aspecto de botón para regresar al catálogo general -->
+        <a href="catalogo.html" class="boton">
+            Regresar al Catálogo
+        </a>
+
+
+    </div>
+
+
+
+    <!-- Columna derecha: Recurso gráfico de la sección -->
+    <div class="imagen">
+
+        <!-- Imagen ilustrativa con su texto alternativo de accesibilidad -->
+        <img src="../img/tid.jpeg" alt="TID">
+
+    </div>
+
+
+</div>
+
+
+<!-- Script encargado de realizar la consulta a la base de datos y mostrar los libros -->
+<script src="../js/libros.js"></script>
+
+
+</body>
+
+</html>
