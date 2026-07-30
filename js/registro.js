@@ -5,15 +5,23 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
     event.preventDefault();
 
 
-    // Obtiene los valores ingresados en cada input del formulario mediante sus IDs
-    let nombre = document.getElementById("nombre").value;
-    let apellido = document.getElementById("apellido").value;
-    let matricula = document.getElementById("matricula").value;
-    let correo = document.getElementById("correo").value;
-    let telefono = document.getElementById("telefono").value;
-    let carrera = document.getElementById("carrera").value;
-    let password = document.getElementById("password").value;
-    let confirmar = document.getElementById("confirmar").value;
+    // Obtiene los valores ingresados en cada input del formulario mediante sus IDs, aplicando .trim() para limpiar espacios accidentales
+    let nombre = document.getElementById("nombre").value.trim();
+    let apellido = document.getElementById("apellido").value.trim();
+    let matricula = document.getElementById("matricula").value.trim();
+    let correo = document.getElementById("correo").value.trim();
+    let telefono = document.getElementById("telefono").value.trim();
+    let carrera = document.getElementById("carrera").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let confirmar = document.getElementById("confirmar").value.trim();
+
+
+
+    // NUEVO: Validación de campos vacíos antes de hacer cualquier proceso
+    if(nombre === "" || apellido === "" || matricula === "" || correo === "" || telefono === "" || carrera === "" || password === "" || confirmar === ""){
+        alert("Por favor, completa todos los campos.");
+        return; // Detiene la ejecución si falta algún dato
+    }
 
 
 
@@ -113,10 +121,10 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
 
 
         // Imprime el detalle en consola para revisión técnica
-        console.log("Error:", error);
+        console.log("Error de conexión:", error);
 
-        // Muestra un mensaje amigable al usuario
-        alert("Error al conectar con el servidor");
+        // Muestra un mensaje amigable al usuario sobre la falla de comunicación
+        alert("No se pudo conectar con el servidor. Inténtalo más tarde.");
 
 
     });

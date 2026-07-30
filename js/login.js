@@ -2,11 +2,16 @@
 function login(){
 
     // Captura el valor ingresado en el campo de texto del usuario
-    let usuario = document.getElementById("usuario").value;
+    let usuario = document.getElementById("usuario").value.trim();
 
     // Captura la clave ingresada en el campo de contraseña
-    let contraseña = document.getElementById("password").value;
+    let contraseña = document.getElementById("password").value.trim();
 
+    // NUEVO: Validación de campos vacíos (Evita peticiones innecesarias)
+    if(usuario === "" || contraseña === ""){
+        alert("Por favor, completa todos los campos.");
+        return; // Detiene la ejecución si falta algún dato
+    }
 
     // Realiza una petición POST al endpoint '/login' de la API de Node.js
     fetch("http://localhost:3000/login",{
