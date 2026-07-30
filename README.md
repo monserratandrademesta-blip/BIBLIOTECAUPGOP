@@ -1,4 +1,4 @@
-# Sistema de Gestión de Biblioteca
+#SISTEMA WEB DE GESTION DE PRESTAMOS EN UNA BIBLIOTECA ESCOLAR
 
 Sistema web desarrollado para administrar el proceso de préstamos de libros.
 
