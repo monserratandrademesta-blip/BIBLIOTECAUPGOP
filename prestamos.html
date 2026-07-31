@@ -1,170 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
-    <!-- Codificación UTF-8 para procesar acentos, caracteres especiales y la letra ñ -->
-    <meta charset="UTF-8">
-
-    <!-- Configuración del viewport para garantizar una correcta escala en pantallas de celulares -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Texto que se muestra en la pestaña del navegador -->
-    <title>Sistema de Préstamo de Libros</title>
-
-    <!-- Hoja de estilos CSS propia para el diseño del módulo de préstamos -->
-    <link rel="stylesheet" href="css/prestamo.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registrar Préstamo</title>
+<link rel="stylesheet" href="css/prestamo.css">
 </head>
-
 <body>
 
-<!-- Contenedor principal que agrupa todo el diseño de la pantalla -->
-<div class="contenedor">
+<div class="container">
+  <h2>📚 REGISTRAR PRÉSTAMO</h2>
 
-    <!-- Bloque superior del módulo (título y botón de navegación) -->
-    <div class="encabezado">
+  <form id="formPrestamo">
+    <label>Usuario (Matrícula):</label>
+    <input type="text" id="matricula" placeholder="Ej. 20311045" required>
 
-        <!-- Agrupador para los títulos del módulo -->
-        <div>
-            <!-- Título principal de la pantalla -->
-            <h1>Datos para tu préstamo</h1>
-
-            <!-- Párrafo para un posible subtítulo explicativo -->
-            <p class="subtitulo"></p>
-        </div>
-
-        <!-- Enlace con formato de botón para volver a la página de inicio -->
-        <a href="index.html" class="menu">
-            MENU
-        </a>
-
+    <div class="paso">
+      <span class="num">1</span>
+      <label>Selecciona la categoría</label>
+      <select id="categoria" required>
+        <option value="">Selecciona una categoría</option>
+        <option value="TID">TID</option>
+        <option value="IAEV">IAEV</option>
+        <option value="CIA">CIA</option>
+        <option value="IMA">IMA</option>
+        <option value="IBIO">IBIO</option>
+        <option value="Lectura General Español">Lectura General Español</option>
+        <option value="Lectura General Inglés">Lectura General Inglés</option>
+      </select>
     </div>
 
-    <!-- Sección que divide la vista en el formulario y el panel de acciones -->
-    <div class="contenido">
-
-        <!-- Columna de captura de información -->
-        <div class="formulario">
-
-            <!-- Campo 1: Identificador o matrícula del usuario -->
-            <div class="campo">
-                <label>Usuario</label>
-                <input id="usuario" type="text" placeholder="Ingrese el usuario" required>
-            </div>
-
-            <!-- Campo 2: Título de la obra a solicitar -->
-            <div class="campo">
-                <label>Nombre del libro</label>
-                <input id="libro" type="text" placeholder="Nombre del libro" required>
-            </div>
-
-            <!-- Campo 3: Selector de calendario para la fecha límite de devolución -->
-            <div class="campo">
-                <label>Fecha de entrega</label>
-                <input id="entrega" type="date" required>
-            </div>
-
-            <!-- Campo 4: Selector de calendario para la fecha de registro del trámite -->
-            <div class="campo">
-                <label>Fecha de trámite</label>
-                <input id="tramite" type="date" required>
-            </div>
-
-            <!-- Campo 5: Nombre del alumno o docente que recibe el libro -->
-            <div class="campo">
-                <label>Nombre del prestatario</label>
-                <input id="prestatario" type="text" placeholder="Nombre completo" required>
-            </div>
-
-        </div>
-
-        <!-- Columna lateral informativa y funcional -->
-        <div class="panel">
-
-            <!-- Contenedor para el icono o ilustración de la vista -->
-            <div class="imagen">
-                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Libro">
-            </div>
-
-            <!-- Botón de acción que ejecuta el script de validación y confirmación -->
-            <button class="guardar" onclick="mostrarModal()">
-                Guardar Préstamo
-            </button>
-
-        </div>
-
+    <div class="paso">
+      <span class="num">2</span>
+      <label>Selecciona el libro</label>
+      <select id="libro" required>
+        <option value="">Primero selecciona una categoría</option>
+      </select>
     </div>
 
+    <label>Fecha de préstamo:</label>
+    <input type="date" id="fechaPrestamo" required>
+
+    <label>Fecha de devolución:</label>
+    <input type="date" id="fechaDevolucion" required>
+
+    <button type="submit" class="btn-guardar">Guardar préstamo</button>
+  </form>
+
+  <a href="index.html" class="btn-regresar">← Volver al inicio</a>
 </div>
 
-<!-- Contenedor de la ventana modal emergente (oculta por defecto en CSS) -->
-<div id="modal" class="modal">
-
-    <!-- Cuadro blanco interno de la ventana modal -->
-    <div class="modal-contenido">
-
-        <!-- Mensaje principal de confirmación -->
-        <h2>¡Préstamo registrado!</h2>
-
-        <!-- Indicación del código generado -->
-        <p>La clave de tu préstamo es:</p>
-
-        <!-- Elemento donde JavaScript inyectará el número de préstamo único -->
-        <h1 id="clavePrestamo"></h1>
-
-        <!-- Botón para ocultar la ventana modal -->
-        <button onclick="cerrarModal()">
-            Aceptar
-        </button>
-
-    </div>
-
-</div>
-
-<!-- Lógica de programación JavaScript incrustada en el documento -->
-<script>
-
-/* Función que valida las entradas del usuario y despliega el modal con la clave */
-function mostrarModal(){
-
-    /* Recupera los valores de texto ingresados en cada input por medio de sus IDs */
-    let usuario = document.getElementById("usuario").value;
-    let libro = document.getElementById("libro").value;
-    let entrega = document.getElementById("entrega").value;
-    let tramite = document.getElementById("tramite").value;
-    let prestatario = document.getElementById("prestatario").value;
-
-    /* Estructura condicional que revisa si algún campo obligatorio está vacío */
-    if(usuario=="" || libro=="" || entrega=="" || tramite=="" || prestatario==""){
-
-        /* Notificación emergente si la validación falla */
-        alert("Debes llenar todos los campos.");
-
-        return; /* Corta la ejecución para que no avance al cálculo ni abra el modal */
-
-    }
-
-    /* Genera un valor numérico aleatorio de 4 cifras (entre 1000 y 9999) */
-    let numero = Math.floor(Math.random()*9000)+1000;
-
-    /* Concatena el prefijo, el año y el número aleatorio, e inyecta la clave en el HTML */
-    document.getElementById("clavePrestamo").innerHTML = "PR-2026-" + numero;
-
-    /* Cambia la propiedad CSS display a 'flex' para hacer visible la ventana modal */
-    document.getElementById("modal").style.display = "flex";
-
-}
-
-/* Función que oculta nuevamente la ventana emergente al hacer clic en 'Aceptar' */
-function cerrarModal(){
-
-    /* Oculta la ventana emergente cambiando la propiedad display a 'none' */
-    document.getElementById("modal").style.display = "none";
-
-}
-
-</script>
-
+<script src="js/prestamos.js"></script>
 </body>
 </html>
