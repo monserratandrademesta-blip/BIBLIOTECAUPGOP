@@ -91,10 +91,21 @@ function guardarPrestamo(){
         console.log("Respuesta servidor:", data);
 
         if(data.codigo){
-            document.getElementById("clavePrestamo").innerHTML =
-            "PR-2026-" + data.codigo;
+            const folioCompleto = "PR-2026-" + data.codigo;
 
-            document.getElementById("modal").style.display = "flex";
+            // Alerta moderna con SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: '¡Préstamo registrado correctamente!',
+                html: `Tu folio es: <b>${folioCompleto}</b>`,
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#1d3557'
+            }).then(() => {
+                // Limpia el formulario después de aceptar
+                document.getElementById("formPrestamo").reset();
+                document.getElementById("libro").innerHTML = '<option value="">Primero selecciona una categoría</option>';
+            });
+
         }else{
             alert(data.mensaje);
         }
@@ -103,9 +114,4 @@ function guardarPrestamo(){
         console.log("Error:", error);
         alert("No se pudo conectar con el servidor");
     });
-}
-
-// Cerrar ventana de confirmación
-function cerrarModal(){
-    document.getElementById("modal").style.display="none";
 }
