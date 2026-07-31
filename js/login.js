@@ -3,71 +3,119 @@ function login(){
 
 // Obtener datos escritos por el usuario
 const usuario=document.getElementById("usuario").value.trim();
+
 const contraseña=document.getElementById("password").value.trim();
 
+
 // Validar campos vacíos
-if(usuario===""||contraseña===""){
+if(usuario==="" || contraseña===""){
+
 alert("Por favor, completa todos los campos.");
+
 return;
+
 }
+
 
 // Enviar datos al servidor
 fetch("http://localhost:3000/login",{
+
 method:"POST",
+
 headers:{
+
 "Content-Type":"application/json"
+
 },
+
 body:JSON.stringify({
+
 usuario:usuario,
+
 contraseña:contraseña
+
 })
+
 })
+
 
 // Convertir respuesta a JSON
 .then(res=>res.json())
 
+
 // Procesar respuesta del servidor
 .then(data=>{
+
 
 // Verificar si el login fue correcto
 if(data.mensaje==="Login correcto"){
 
-// Guardar información del usuario y su rol
+
+// Guardar datos del usuario y rol
 localStorage.setItem(
+
 "usuario",
+
 JSON.stringify(data.usuario)
+
 );
 
-// Mensaje de bienvenida
-alert("Bienvenido "+data.usuario.nombre);
+
+
+// Mostrar bienvenida
+alert(
+"Bienvenido "+data.usuario.nombre
+);
+
+
 
 // Redireccionar según el rol
-if(data.usuario.rol==="Bibliotecario"||data.usuario.rol==="Administrador"){
 
-window.location.href="admin.html";
+if(
+data.usuario.rol==="Administrador" ||
+data.usuario.rol==="Bibliotecario"
+){
 
-}else{
 
+// Administrador y bibliotecario entran al catálogo
 window.location.href="catalogo.html";
 
-}
 
 }else{
 
-// Usuario o contraseña incorrectos
-alert("Usuario o contraseña incorrectos");
+
+// Alumno entra al catálogo
+window.location.href="catalogo.html";
+
 
 }
+
+
+
+}else{
+
+
+// Datos incorrectos
+alert("Usuario o contraseña incorrectos");
+
+
+}
+
 
 })
 
-// Capturar errores de conexión
+
+// Capturar errores
 .catch(error=>{
+
 
 console.log("Error login:",error);
 
+
 alert("Error al conectar con el servidor");
 
+
 });
+
 
 }
