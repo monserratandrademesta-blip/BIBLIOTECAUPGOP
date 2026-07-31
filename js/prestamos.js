@@ -62,5 +62,4 @@ function guardarPrestamo(){
 
 // Función para cerrar ventana de confirmación
 function cerrarModal(){
-    document.getElementById("modal").style.display = "none";
-}
+    document.getElementById("modal").style.display = "none";}
