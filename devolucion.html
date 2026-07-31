@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Registrar Devolución</title>
+
+<link rel="stylesheet" href="css/devolucion.css">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<h2>REGISTRAR DEVOLUCIÓN</h2>
+
+
+<form id="formDevolucion">
+
+
+<div class="paso">
+
+<span class="num">1</span>
+
+<label>Nombre del prestatario</label>
+
+<input
+type="text"
+id="nombre"
+placeholder="Escribe el nombre completo"
+required>
+
+</div>
+
+
+
+<div class="paso">
+
+<span class="num">2</span>
+
+<label>Préstamos activos</label>
+
+<select id="prestamos">
+
+<option value="">
+Busca primero un nombre
+</option>
+
+</select>
+
+</div>
+
+
+
+
+<div class="paso">
+
+<span class="num">3</span>
+
+<label>Información del préstamo</label>
+
+
+<div id="datosPrestamo">
+
+<p>
+Aquí aparecerán los datos.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="paso">
+
+<span class="num">4</span>
+
+<label>Estado</label>
+
+<input 
+type="text"
+id="estado"
+value="Pendiente"
+readonly>
+
+</div>
+
+
+
+
+<button
+type="button"
+class="btn-guardar"
+onclick="buscarPrestamosNombre()">
+
+Buscar préstamos
+
+</button>
+
+
+
+<button
+type="button"
+class="btn-guardar"
+onclick="devolverLibro()">
+
+Registrar devolución
+
+</button>
+
+
+
+</form>
+
+
+
+<div id="modal" style="display:none;">
+
+<div>
+
+<h3>
+Devolución registrada correctamente
+</h3>
+
+<p id="mensajeDevolucion"></p>
+
+
+<button onclick="cerrarModal()">
+Cerrar
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<a href="catalogo.html" class="btn-regresar">
+
+← Volver al catálogo
+
+</a>
+
+
+</div>
+
+
+<script src="js/devolucion.js"></script>
+
+
+</body>
+
+</html>

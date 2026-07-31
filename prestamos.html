@@ -1,55 +1,203 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Registrar Préstamo</title>
+
 <link rel="stylesheet" href="css/prestamo.css">
+
+<!-- Librería para alertas profesionales -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
+
+
 <body>
 
 <div class="container">
-  <h2>REGISTRAR PRÉSTAMO</h2>
 
-  <form id="formPrestamo">
-    <label>Usuario Matrícula:</label>
-    <input type="text" id="matricula" placeholder="Ej. 20311045" required>
 
-    <div class="paso">
-      <span class="num">1</span>
-      <label>Selecciona la categoría</label>
-      <select id="categoria" required>
-        <option value="">Selecciona una categoría</option>
-        <option value="TID">TID</option>
-        <option value="IAEV">IAEV</option>
-        <option value="CIA">CIA</option>
-        <option value="IMA">IMA</option>
-        <option value="IBIO">IBIO</option>
-        <option value="Lectura General Español">Lectura General Español</option>
-        <option value="Lectura General Inglés">Lectura General Inglés</option>
-      </select>
-    </div>
+<h2>REGISTRAR PRÉSTAMO</h2>
 
-    <div class="paso">
-      <span class="num">2</span>
-      <label>Selecciona el libro</label>
-      <select id="libro" required>
-        <option value="">Primero selecciona una categoría</option>
-      </select>
-    </div>
 
-    <label>Fecha de préstamo:</label>
-    <input type="date" id="fechaPrestamo" required>
+<form id="formPrestamo" onsubmit="event.preventDefault(); guardarPrestamo();">
 
-    <label>Fecha de devolución:</label>
-    <input type="date" id="fechaDevolucion" required>
 
-    <button type="submit" class="btn-guardar">Guardar préstamo</button>
-  </form>
+<!-- Usuario -->
+<label>Usuario</label>
 
-  <a href="index.html" class="btn-regresar">← Volver al Catalogo </a>
+<input 
+type="text" 
+id="usuario" 
+placeholder="Escribe el usuario"
+required>
+
+
+<!-- Categoría -->
+<div class="paso">
+
+<span class="num">1</span>
+
+<label>Selecciona la categoría</label>
+
+<select id="categoria" required>
+
+<option value="">Selecciona una categoría</option>
+
+<option value="TID">TID</option>
+
+<option value="IAEV">IAEV</option>
+
+<option value="CIA">CIA</option>
+
+<option value="IMA">IMA</option>
+
+<option value="IBIO">IBIO</option>
+
+<option value="Lectura General Español">Lectura General Español</option>
+
+<option value="Lectura General Inglés">Lectura General Inglés</option>
+
+</select>
+
 </div>
 
+
+
+<!-- Libro -->
+<div class="paso">
+
+<span class="num">2</span>
+
+<label>Selecciona el libro</label>
+
+<select id="libro" required>
+
+<option value="">
+Primero selecciona una categoría
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- Fechas -->
+
+<label>Fecha de entrega</label>
+
+<input 
+type="date" 
+id="entrega"
+required>
+
+
+<label>Fecha de trámite</label>
+
+<input 
+type="date" 
+id="tramite"
+required>
+
+
+
+<!-- Nombre prestatario -->
+
+<label>Nombre del prestatario</label>
+
+<input 
+type="text"
+id="prestatario"
+placeholder="Nombre completo"
+required>
+
+
+
+
+<!-- Términos -->
+
+<div class="terminos">
+
+
+<h3>Términos y condiciones</h3>
+
+
+<p>
+Antes de registrar el préstamo confirme que acepta el reglamento de la biblioteca.
+</p>
+
+
+<ul>
+
+<li>Devolver el material en la fecha establecida.</li>
+
+<li>Cuidar el libro durante el préstamo.</li>
+
+<li>Responder por daños o pérdida del ejemplar.</li>
+
+</ul>
+
+
+<a href="normas.html" target="_blank">
+Consultar reglamento completo
+</a>
+
+
+<br>
+
+
+<label class="check">
+
+<input 
+type="checkbox" 
+id="aceptarTerminos"
+required>
+
+Acepto los términos y condiciones.
+
+</label>
+
+
+</div>
+
+
+
+
+<button 
+type="submit" 
+class="btn-guardar">
+
+Guardar préstamo
+
+</button>
+
+
+
+</form>
+
+
+
+
+<a href="catalogo.html" class="btn-regresar">
+
+← Volver al catálogo
+
+</a>
+
+
+
+</div>
+
+
+
 <script src="js/prestamos.js"></script>
+
+
 </body>
+
 </html>

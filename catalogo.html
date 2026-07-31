@@ -3,33 +3,38 @@
 
 <head>
 
-<!-- Codificación de caracteres para acentos y ñ -->
+<!-- Codificación de caracteres -->
 <meta charset="UTF-8">
 
-<!-- Adaptación a pantallas móviles -->
+<!-- Adaptación para dispositivos móviles -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Título de la pestaña -->
 <title>Biblioteca Digital</title>
 
-<!-- Archivo de estilos CSS -->
+<!-- Archivo de estilos -->
 <link rel="stylesheet" href="../css/catalogo.css">
 
-<!-- Archivo de JavaScript (se ejecuta al terminar de cargar el HTML) -->
+<!-- Control de permisos -->
 <script src="../js/admin.js" defer></script>
 
 </head>
 
+
 <body>
+
 
 <!-- Encabezado principal -->
 <header class="header">
 
+
 <h1>BIBLIOTECA DIGITAL</h1>
 
-<!-- Barra de acciones y navegación -->
+
+<!-- Botones de acciones -->
 <div class="buscador">
 
+
+<!-- Disponible para todos los usuarios -->
 <a href="prestamos.html">
 
 <button type="button">
@@ -38,6 +43,9 @@ Solicitar préstamo
 
 </a>
 
+
+
+<!-- Solo Administrador o Bibliotecario -->
 <a href="reglibro.html">
 
 <button
@@ -51,14 +59,35 @@ Agregar libros
 
 </a>
 
+
+
+<!-- Solo Administrador o Bibliotecario -->
+<a href="devolucion.html">
+
+<button
+id="devoluciones"
+class="btn-add"
+type="button">
+
+Registrar devolución
+
+</button>
+
+</a>
+
+
 </div>
+
 
 </header>
 
-<!-- Sección con la cuadrícula de categorías -->
+
+
+
+<!-- Categorías de libros -->
 <section class="categorias">
 
-<!-- Categoría: Lectura General en Español -->
+
 <a href="lecturaenespañol.html">
 
 <button>
@@ -71,7 +100,8 @@ Agregar libros
 
 </a>
 
-<!-- Categoría: IAEV -->
+
+
 <a href="iaev.html">
 
 <button>
@@ -84,7 +114,8 @@ Agregar libros
 
 </a>
 
-<!-- Categoría: IBIO -->
+
+
 <a href="ibio.html">
 
 <button>
@@ -97,7 +128,8 @@ Agregar libros
 
 </a>
 
-<!-- Categoría: CIA -->
+
+
 <a href="cia.html">
 
 <button>
@@ -110,7 +142,8 @@ Agregar libros
 
 </a>
 
-<!-- Categoría: TID -->
+
+
 <a href="tid.html">
 
 <button>
@@ -123,7 +156,8 @@ Agregar libros
 
 </a>
 
-<!-- Categoría: IMA -->
+
+
 <a href="ima.html">
 
 <button>
@@ -136,7 +170,8 @@ Agregar libros
 
 </a>
 
-<!-- Categoría: Lectura General en Inglés -->
+
+
 <a href="lecturaeningles.html">
 
 <button>
@@ -149,14 +184,20 @@ Agregar libros
 
 </a>
 
+
 </section>
 
-<!-- Botón para regresar a la página principal -->
+
+
+
+<!-- Regresar al inicio -->
 <a href="index.html" class="btn-regresar">
 
 Volver al Inicio
 
 </a>
+
+
 
 </body>
 

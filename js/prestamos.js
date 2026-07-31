@@ -1,16 +1,58 @@
-// Función principal que se ejecuta al intentar guardar un préstamo
+// =========================================================
+// 1. CARGA DINÁMICA DE LIBROS AL CAMBIAR CATEGORÍA
+// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const selectCategoria = document.getElementById("categoria");
+    const selectLibro = document.getElementById("libro");
+
+    if (selectCategoria) {
+        selectCategoria.addEventListener("change", function () {
+            const categoriaSeleccionada = selectCategoria.value.trim();
+
+            selectLibro.innerHTML = '<option value="">-- Selecciona un libro --</option>';
+
+            if (categoriaSeleccionada === "") return;
+
+            fetch(`http://localhost:3000/libros/${encodeURIComponent(categoriaSeleccionada)}`)
+                .then(respuesta => {
+                    if (!respuesta.ok) throw new Error("Error en la respuesta del servidor");
+                    return respuesta.json();
+                })
+                .then(libros => {
+                    if (libros.length === 0) {
+                        const opcionVacia = document.createElement("option");
+                        opcionVacia.textContent = "No hay libros disponibles en esta categoría";
+                        selectLibro.appendChild(opcionVacia);
+                        return;
+                    }
+
+                    libros.forEach(libro => {
+                        const option = document.createElement("option");
+                        option.value = libro.id || libro.id_libro; 
+                        option.textContent = libro.titulo;
+                        selectLibro.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error al cargar los libros:", error);
+                    alert("Hubo un problema al consultar los libros de esta categoría.");
+                });
+        });
+    }
+});
+
+// =========================================================
+// 2. FUNCIÓN PARA GUARDAR EL PRÉSTAMO
+// =========================================================
 function guardarPrestamo(){
 
-    // Obtenemos lo que sea que el usuario haya escrito en el input (mayúsculas, minúsculas, etc.)
-    const campoUsuario = document.getElementById("usuario");
-    const usuario = campoUsuario ? campoUsuario.value.trim() : "";
+    const usuario = document.getElementById("usuario").value;
+    const libro = document.getElementById("libro").value;
+    const entrega = document.getElementById("entrega").value;
+    const tramite = document.getElementById("tramite").value;
+    const prestatario = document.getElementById("prestatario").value;
+    const aceptarTerminos = document.getElementById("aceptarTerminos").checked;
 
-    const libro = document.getElementById("libro").value.trim();
-    const entrega = document.getElementById("entrega").value.trim();
-    const tramite = document.getElementById("tramite").value.trim();
-    const prestatario = document.getElementById("prestatario").value.trim();
-
-    // Validamos campos obligatorios
     if(
         usuario === "" ||
         libro === "" ||
@@ -22,7 +64,11 @@ function guardarPrestamo(){
         return;
     }
 
-    // Datos que serán enviados al servidor
+    if(!aceptarTerminos){
+        alert("Debes aceptar los términos y condiciones para registrar el préstamo.");
+        return;
+    }
+
     const datos = {
         usuario: usuario,
         libro: libro,
@@ -33,28 +79,38 @@ function guardarPrestamo(){
 
     console.log("Datos enviados:", datos);
 
-    // Enviar información al servidor Node.js
     fetch("http://localhost:3000/prestamos",{
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
         },
-        body: JSON.stringify(datos)
+        body:JSON.stringify(datos)
     })
     .then(res => res.json())
     .then(data => {
         console.log("Respuesta servidor:", data);
 
         if(data.codigo){
-            document.getElementById("clavePrestamo").textContent =
-            "PR-2026-" + data.codigo;
-            document.getElementById("modal").style.display = "flex";
-        }
-        else{
+            const folioCompleto = "PR-2026-" + data.codigo;
+
+            // Alerta moderna con SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: '¡Préstamo registrado correctamente!',
+                html: `Tu folio es: <b>${folioCompleto}</b>`,
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#1d3557'
+            }).then(() => {
+                // Limpia el formulario después de aceptar
+                document.getElementById("formPrestamo").reset();
+                document.getElementById("libro").innerHTML = '<option value="">Primero selecciona una categoría</option>';
+            });
+
+        }else{
             alert(data.mensaje);
         }
     })
-    .catch(error => {
+    .catch(error=>{
         console.log("Error:", error);
         alert("No se pudo conectar con el servidor");
     });

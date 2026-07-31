@@ -9,10 +9,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f8f7f3;
+    background-color: #f4f6f9;
     color: #53627a;
     font-family: "Segoe UI", Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 
@@ -21,195 +21,366 @@ body {
    ========================================================= */
 
 .encabezado {
+
     width: 100%;
     background-color: #1d3b65;
     color: white;
-    padding: 28px 7% 18px;
-    border-bottom: 5px solid #d52f38;
+    padding: 30px 7% 20px;
+    border-bottom: 4px solid #2874c6;
+
 }
+
 
 .encabezado h1 {
-    margin: 0 0 38px;
-    font-size: 26px;
+
+    margin: 0 0 35px;
+    font-size: 27px;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #ffffff;
+
 }
 
+
 .encabezado-info {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.35);
-    padding-top: 10px;
+
+    border-top: 1px solid rgba(255,255,255,0.35);
+
+    padding-top: 12px;
+
     font-size: 13px;
+
 }
+
 
 .encabezado-info p {
+
     margin: 0;
+
 }
 
-.encabezado-info strong {
-    color: #ffffff;
-}
 
 
 /* =========================================================
    CONTENEDOR PRINCIPAL
    ========================================================= */
 
+
 .contenedor {
+
     width: 86%;
     max-width: 1200px;
-    margin: 20px auto 70px;
+
+    margin: 35px auto 70px;
+
 }
+
+
+
+/* =========================================================
+   INTRODUCCIÓN
+   ========================================================= */
+
+
+.introduccion {
+
+    background-color: white;
+
+    padding: 22px 25px;
+
+    border-radius: 8px;
+
+    border-left: 5px solid #2874c6;
+
+    margin-bottom: 30px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+
+}
+
+
+.introduccion h2 {
+
+    margin-top: 0;
+
+    color: #1d3b65;
+
+    font-size: 22px;
+
+}
+
+
+
+.introduccion p {
+
+    margin: 8px 0;
+
+    color: #53627a;
+
+}
+
+
 
 
 /* =========================================================
    TÍTULOS DE SECCIÓN
    ========================================================= */
 
+
 .seccion {
-    margin-top: 20px;
-    margin-bottom: 12px;
+
+    margin-top: 35px;
+
+    margin-bottom: 20px;
+
 }
 
+
 .seccion h2 {
-    margin: 0;
-    padding: 0 0 0 12px;
+
+    margin-bottom: 18px;
+
+    padding-left: 14px;
+
     border-left: 5px solid #d52f38;
+
     color: #1d3b65;
+
     font-size: 20px;
+
     font-weight: 700;
+
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+
 }
+
 
 
 /* =========================================================
    TARJETAS DE NORMATIVAS
    ========================================================= */
 
+
 .normativa {
+
     background-color: #ffffff;
+
     border: 1px solid #d9e0e8;
-    border-left: 4px solid #2874c6;
-    border-radius: 2px;
-    padding: 9px 13px;
-    margin: 9px 0;
-    min-height: 70px;
+
+    border-left: 5px solid #2874c6;
+
+    border-radius: 8px;
+
+    padding: 18px 20px;
+
+    margin: 14px 0;
+
+    min-height: 90px;
+
+    transition: 0.2s ease;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
 }
 
 
+
+.normativa:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+
+}
+
+
+
 /* =========================================================
-   TÍTULO DE CADA NORMATIVA
+   TÍTULO DE NORMATIVA
    ========================================================= */
+
 
 .normativa h3 {
-    margin: 0 0 2px;
+
+    margin: 0 0 8px;
+
     color: #1d3b65;
-    font-size: 15px;
+
+    font-size: 16px;
+
     font-weight: 700;
+
 }
 
 
+
 /* =========================================================
-   DESCRIPCIÓN DE LA NORMATIVA
+   TEXTO DE NORMATIVA
    ========================================================= */
+
 
 .normativa p {
+
     margin: 0;
+
     color: #53627a;
+
     font-size: 14px;
-    font-weight: 400;
+
 }
 
 
+
 /* =========================================================
-   LÍNEA FINAL DEL DOCUMENTO
+   AVISO DE ACEPTACIÓN
    ========================================================= */
 
-.linea-final {
-    width: 100%;
-    height: 1px;
-    background-color: #cfd5dc;
-    margin-top: 25px;
-    margin-bottom: 10px;
+
+.aviso {
+
+    margin-top: 35px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d9e0e8;
+
+    border-left: 5px solid #d52f38;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
 }
 
 
-/* =========================================================
-   TEXTO FINAL
-   ========================================================= */
 
-.texto-final {
-    text-align: center;
-    color: #8090a8;
-    font-size: 13px;
-    font-style: italic;
+.aviso h3 {
+
+    margin-top: 0;
+
+    color: #1d3b65;
+
+    font-size: 17px;
+
+}
+
+
+
+.aviso p {
+
     margin: 0;
+
+    color: #53627a;
+
+    font-size: 14px;
+
 }
+
 
 
 /* =========================================================
    PIE DE PÁGINA
    ========================================================= */
 
+
 .pie-pagina {
+
     width: 86%;
+
     max-width: 1200px;
-    margin: 0 auto 15px;
+
+    margin: 0 auto 20px;
+
     display: flex;
+
     justify-content: space-between;
-    align-items: center;
+
     color: #8090a8;
+
     font-size: 12px;
+
 }
 
+
+
 .pie-pagina p {
+
     margin: 0;
+
 }
+
 
 
 /* =========================================================
    DISEÑO RESPONSIVO
    ========================================================= */
 
-@media (max-width: 768px) {
+
+@media(max-width:768px){
+
 
     .encabezado {
+
         padding: 22px 5% 15px;
+
     }
+
 
     .encabezado h1 {
+
         font-size: 21px;
-        margin-bottom: 25px;
+
     }
+
 
     .encabezado-info {
+
         flex-direction: column;
+
         align-items: flex-start;
-        gap: 5px;
+
+        gap: 6px;
+
     }
+
+
 
     .contenedor {
+
         width: 90%;
+
     }
+
+
 
     .seccion h2 {
+
         font-size: 17px;
+
     }
 
-    .normativa h3 {
-        font-size: 14px;
+
+
+    .normativa {
+
+        padding: 15px;
+
     }
 
-    .normativa p {
-        font-size: 13px;
-    }
+
 
     .pie-pagina {
+
         width: 90%;
-        font-size: 11px;
+
+        flex-direction: column;
+
+        gap: 5px;
+
     }
+
+
 }
