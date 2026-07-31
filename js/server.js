@@ -63,49 +63,49 @@ app.post("/login",(req,res)=>{
 // REGISTRO USUARIOS
 app.post("/registro",(req,res)=>{
 
-const {
-nombre,
-apellido,
-matricula,
-correo,
-telefono,
-carrera,
-contraseña
-}=req.body;
+    const {
+    nombre,
+    apellido,
+    matricula,
+    correo,
+    telefono,
+    carrera,
+    contraseña
+    }=req.body;
 
 
-const usuario=(nombre.trim()+apellido.trim())
-.toLowerCase()
-.replaceAll(" ","");
+    const usuario=(nombre.trim()+apellido.trim())
+    .toLowerCase()
+    .replaceAll(" ","");
 
 
-const sql=`
-INSERT INTO usuarios
-(nombre,apellido,usuario,contraseña,correo,matricula,telefono,carrera,rol)
-VALUES(?,?,?,?,?,?,?,?,?)
-`;
+    const sql=`
+    INSERT INTO usuarios
+    (nombre,apellido,usuario,contraseña,correo,matricula,telefono,carrera,rol)
+    VALUES(?,?,?,?,?,?,?,?,?)
+    `;
 
-conexion.query(sql,[
-nombre.trim(),
-apellido.trim(),
-usuario,
-contraseña,
-correo,
-matricula,
-telefono,
-carrera,
-"Alumno"
-],error=>{
+    conexion.query(sql,[
+    nombre.trim(),
+    apellido.trim(),
+    usuario,
+    contraseña,
+    correo,
+    matricula,
+    telefono,
+    carrera,
+    "Alumno"
+    ],error=>{
 
-    if(error)
-        return res.status(500).json({mensaje:"Error registro"});
+        if(error)
+            return res.status(500).json({mensaje:"Error registro"});
 
-    res.json({
-        mensaje:"Usuario creado correctamente",
-        usuario
+        res.json({
+            mensaje:"Usuario creado correctamente",
+            usuario
+        });
+
     });
-
-});
 
 });
 
@@ -113,32 +113,32 @@ carrera,
 // REGISTRO LIBROS
 app.post("/libros",(req,res)=>{
 
-const {
-titulo,
-autor,
-categoria,
-cantidad
-}=req.body;
+    const {
+    titulo,
+    autor,
+    categoria,
+    cantidad
+    }=req.body;
 
 
-const sql=`
-INSERT INTO libros(titulo,autor,categoria,cantidad)
-VALUES(?,?,?,?)
-`;
+    const sql=`
+    INSERT INTO libros(titulo,autor,categoria,cantidad)
+    VALUES(?,?,?,?)
+    `;
 
 
-conexion.query(sql,
-[titulo.trim(),autor,categoria,cantidad],
-error=>{
+    conexion.query(sql,
+    [titulo.trim(),autor,categoria,cantidad],
+    error=>{
 
-    if(error)
-        return res.status(500).json({mensaje:"Error libro"});
+        if(error)
+            return res.status(500).json({mensaje:"Error libro"});
 
-    res.json({
-        mensaje:"Libro guardado correctamente"
+        res.json({
+            mensaje:"Libro guardado correctamente"
+        });
+
     });
-
-});
 
 });
 
@@ -146,250 +146,254 @@ error=>{
 // MOSTRAR LIBROS POR CATEGORIA
 app.get("/libros/:categoria",(req,res)=>{
 
-const categoria=req.params.categoria;
+    const categoria=req.params.categoria;
 
-conexion.query(
-"SELECT id_libro,titulo,autor,cantidad FROM libros WHERE categoria=?",
-[categoria],
-(error,resultado)=>{
+    conexion.query(
+    "SELECT id_libro,titulo,autor,cantidad FROM libros WHERE categoria=?",
+    [categoria],
+    (error,resultado)=>{
 
-    if(error)
-        return res.status(500).json({mensaje:"Error libros"});
+        if(error)
+            return res.status(500).json({mensaje:"Error libros"});
 
-    res.json(resultado);
+        res.json(resultado);
+
+    });
 
 });
 
+
+// GUARDAR PRESTAMO
+app.post("/prestamos",(req,res)=>{
+
+    const {
+    usuario,
+    libro,
+    fecha_entrega,
+    fecha_tramite,
+    nombre_prestatario
+    }=req.body;
+
+
+    const usuarioNormalizado=usuario.trim();
+    const libroNormalizado=libro.toString().trim();
+
+
+    // Buscar usuario
+    conexion.query(
+    "SELECT id_usuario FROM usuarios WHERE LOWER(usuario)=LOWER(?)",
+    [usuarioNormalizado],
+    (errorUsuario,usuarios)=>{
+
+        if(errorUsuario)
+            return res.status(500).json({mensaje:"Error usuario"});
+
+        if(usuarios.length===0)
+            return res.status(404).json({mensaje:"Usuario no encontrado"});
+
+        const id_usuario=usuarios[0].id_usuario;
+
+        // Buscar libro por ID o por Título
+        const sqlLibro = "SELECT id_libro,cantidad FROM libros WHERE id_libro=? OR LOWER(titulo)=LOWER(?)";
+
+        conexion.query(
+        sqlLibro,
+        [libroNormalizado, libroNormalizado],
+        (errorLibro,libros)=>{
+
+            if(errorLibro)
+                return res.status(500).json({mensaje:"Error libro"});
+
+            if(libros.length===0)
+                return res.status(404).json({mensaje:"Libro no encontrado"});
+
+            const id_libro=libros[0].id_libro;
+            const cantidad=libros[0].cantidad;
+
+            // Revisar disponibilidad
+            if(cantidad<=0){
+                return res.json({
+                    mensaje:"Libro no disponible"
+                });
+            }
+
+            // Insertar préstamo
+            conexion.query(
+            `
+            INSERT INTO prestamos
+            (id_usuario,id_libro,fecha_entrega,fecha_tramite,nombre_prestatario,estado)
+            VALUES(?,?,?,?,?,'Prestado')
+            `,
+            [
+            id_usuario,
+            id_libro,
+            fecha_entrega,
+            fecha_tramite,
+            nombre_prestatario
+            ],
+            (error,resultado)=>{
+
+                if(error){
+                    console.log("❌ Error préstamo:",error);
+                    return res.status(500).json({
+                        mensaje:"Error préstamo"
+                    });
+                }
+
+                // Actualizar inventario (-1)
+                conexion.query(
+                "UPDATE libros SET cantidad=cantidad-1 WHERE id_libro=?",
+                [id_libro]
+                );
+
+                res.json({
+                    mensaje:"Préstamo guardado",
+                    codigo:resultado.insertId
+                });
+
+            });
+
+        });
+
+    });
+
 });
+
+
 // BUSCAR PRESTAMOS ACTIVOS POR NOMBRE
 app.get("/prestamos/nombre/:nombre",(req,res)=>{
 
-const nombre=req.params.nombre;
+    const nombre=req.params.nombre;
 
+    conexion.query(
+    `
+    SELECT
+    prestamos.id_prestamo,
+    usuarios.nombre,
+    usuarios.apellido,
+    libros.titulo,
+    prestamos.fecha_entrega,
+    prestamos.estado
+    FROM prestamos
+    INNER JOIN usuarios ON prestamos.id_usuario=usuarios.id_usuario
+    INNER JOIN libros ON prestamos.id_libro=libros.id_libro
+    WHERE LOWER(CONCAT(usuarios.nombre,' ',usuarios.apellido)) LIKE LOWER(?)
+    AND prestamos.estado='Prestado'
+    `,
+    ["%"+nombre+"%"],
+    (error,resultado)=>{
 
-conexion.query(
+        if(error){
+            console.log("Error buscando préstamos:",error);
+            return res.status(500).json({ mensaje:"Error buscando préstamos" });
+        }
 
-`
-SELECT
+        res.json(resultado);
 
-prestamos.id_prestamo,
-usuarios.nombre,
-usuarios.apellido,
-libros.titulo,
-prestamos.fecha_entrega,
-prestamos.estado
-
-FROM prestamos
-
-INNER JOIN usuarios
-ON prestamos.id_usuario=usuarios.id_usuario
-
-INNER JOIN libros
-ON prestamos.id_libro=libros.id_libro
-
-WHERE LOWER(CONCAT(usuarios.nombre,' ',usuarios.apellido))
-LIKE LOWER(?)
-
-AND prestamos.estado='Prestado'
-`,
-
-["%"+nombre+"%"],
-
-(error,resultado)=>{
-
-
-if(error){
-
-console.log("Error buscando préstamos:",error);
-
-return res.status(500).json({
-mensaje:"Error buscando préstamos"
-});
-
-}
-
-
-res.json(resultado);
-
+    });
 
 });
 
 
-});
-// BUSCAR PRESTAMO PARA DEVOLUCION
+// BUSCAR PRESTAMO PARA DEVOLUCION POR ID
 app.get("/prestamos/:id",(req,res)=>{
 
-const id=req.params.id;
+    const id=req.params.id;
 
-conexion.query(
+    conexion.query(
+    `
+    SELECT 
+    prestamos.id_prestamo,
+    usuarios.usuario,
+    libros.titulo,
+    prestamos.fecha_entrega,
+    prestamos.estado
+    FROM prestamos
+    INNER JOIN usuarios ON prestamos.id_usuario=usuarios.id_usuario
+    INNER JOIN libros ON prestamos.id_libro=libros.id_libro
+    WHERE prestamos.id_prestamo=?
+    `,
+    [id],
+    (error,resultado)=>{
 
-`
-SELECT 
-prestamos.id_prestamo,
-usuarios.usuario,
-libros.titulo,
-prestamos.fecha_entrega,
-prestamos.estado
+        if(error){
+            console.log("Error buscando préstamo:",error);
+            return res.status(500).json({ mensaje:"Error buscando préstamo" });
+        }
 
-FROM prestamos
+        if(resultado.length===0){
+            return res.json({ mensaje:"Préstamo no encontrado" });
+        }
 
-INNER JOIN usuarios 
-ON prestamos.id_usuario=usuarios.id_usuario
+        res.json(resultado[0]);
 
-INNER JOIN libros
-ON prestamos.id_libro=libros.id_libro
-
-WHERE prestamos.id_prestamo=?
-`,
-
-[id],
-
-(error,resultado)=>{
-
-if(error){
-
-console.log("Error buscando préstamo:",error);
-
-return res.status(500).json({
-mensaje:"Error buscando préstamo"
-});
-
-}
-
-
-if(resultado.length===0){
-
-return res.json({
-mensaje:"Préstamo no encontrado"
-});
-
-}
-
-
-res.json(resultado[0]);
-
-});
+    });
 
 });
 
 
-
-// REGISTRAR DEVOLUCION
+// REGISTRAR DEVOLUCION (MARCAR DEVUELTO Y AUMENTAR INVENTARIO)
 app.put("/prestamos/:id",(req,res)=>{
 
-const id=req.params.id;
+    const id=req.params.id;
 
+    // Buscar libro relacionado al préstamo
+    conexion.query(
+    "SELECT id_libro FROM prestamos WHERE id_prestamo=?",
+    [id],
+    (error,resultado)=>{
 
-// Buscar libro relacionado al préstamo
-conexion.query(
+        if(error){
+            console.log("Error buscando préstamo:",error);
+            return res.status(500).json({ mensaje:"Error buscando préstamo" });
+        }
 
-"SELECT id_libro FROM prestamos WHERE id_prestamo=?",
+        if(resultado.length===0){
+            return res.json({ mensaje:"Préstamo no encontrado" });
+        }
 
-[id],
+        const id_libro=resultado[0].id_libro;
 
-(error,resultado)=>{
+        // Cambiar estado del préstamo a Devuelto
+        conexion.query(
+        "UPDATE prestamos SET estado='Devuelto' WHERE id_prestamo=?",
+        [id],
+        (error)=>{
 
+            if(error){
+                console.log("Error actualizando estado:",error);
+                return res.status(500).json({ mensaje:"Error devolución" });
+            }
 
-if(error){
+            // Aumentar inventario del libro (+1)
+            conexion.query(
+            "UPDATE libros SET cantidad=cantidad+1 WHERE id_libro=?",
+            [id_libro],
+            (error)=>{
 
-console.log("Error buscando préstamo:",error);
+                if(error){
+                    console.log("Error actualizando inventario:",error);
+                    return res.status(500).json({ mensaje:"Error inventario" });
+                }
 
-return res.status(500).json({
-mensaje:"Error buscando préstamo"
-});
+                res.json({ mensaje:"Devolución registrada correctamente" });
 
-}
+            });
 
+        });
 
-if(resultado.length===0){
-
-return res.json({
-mensaje:"Préstamo no encontrado"
-});
-
-}
-
-
-const id_libro=resultado[0].id_libro;
-
-
-
-// Cambiar estado del préstamo
-conexion.query(
-
-"UPDATE prestamos SET estado='Devuelto' WHERE id_prestamo=?",
-
-[id],
-
-(error)=>{
-
-
-if(error){
-
-console.log("Error actualizando estado:",error);
-
-return res.status(500).json({
-mensaje:"Error devolución"
-});
-
-}
-
-
-
-// Aumentar cantidad del libro
-conexion.query(
-
-"UPDATE libros SET cantidad=cantidad+1 WHERE id_libro=?",
-
-[id_libro],
-
-(error)=>{
-
-
-if(error){
-
-console.log("Error actualizando inventario:",error);
-
-return res.status(500).json({
-mensaje:"Error inventario"
-});
-
-}
-
-
-res.json({
-
-mensaje:"Devolución registrada correctamente"
+    });
 
 });
 
 
-}
-
-);
-
-
-}
-
-);
-
-
-}
-
-);
-
-});
 // PAGINA PRINCIPAL
 app.get("/",(req,res)=>{
-
-res.send("Servidor Biblioteca funcionando");
-
+    res.send("Servidor Biblioteca funcionando");
 });
 
 
 // INICIAR SERVIDOR
 app.listen(PORT,()=>{
-
-console.log("🚀 Servidor corriendo en puerto "+PORT);
-
+    console.log("🚀 Servidor corriendo en puerto "+PORT);
 });
