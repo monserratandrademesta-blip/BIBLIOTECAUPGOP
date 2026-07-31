@@ -1,16 +1,18 @@
-// Función principal que se ejecuta al intentar guardar un préstamo
+// Función para guardar el préstamo
 function guardarPrestamo(){
 
-    // Obtenemos lo que sea que el usuario haya escrito en el input (mayúsculas, minúsculas, etc.)
-    const campoUsuario = document.getElementById("usuario");
-    const usuario = campoUsuario ? campoUsuario.value.trim() : "";
+    // Obtener datos del formulario
+    const usuario = document.getElementById("usuario").value;
+    const libro = document.getElementById("libro").value;
+    const entrega = document.getElementById("entrega").value;
+    const tramite = document.getElementById("tramite").value;
+    const prestatario = document.getElementById("prestatario").value;
 
-    const libro = document.getElementById("libro").value.trim();
-    const entrega = document.getElementById("entrega").value.trim();
-    const tramite = document.getElementById("tramite").value.trim();
-    const prestatario = document.getElementById("prestatario").value.trim();
+    // Revisar si aceptó los términos
+    const aceptarTerminos = document.getElementById("aceptarTerminos").checked;
 
-    // Validamos campos obligatorios
+
+    // Validar que todos los campos tengan información
     if(
         usuario === "" ||
         libro === "" ||
@@ -18,49 +20,112 @@ function guardarPrestamo(){
         tramite === "" ||
         prestatario === ""
     ){
+
         alert("Debes llenar todos los campos.");
         return;
+
     }
 
-    // Datos que serán enviados al servidor
+
+    // Validar aceptación del reglamento
+    if(!aceptarTerminos){
+
+        alert("Debes aceptar los términos y condiciones para registrar el préstamo.");
+        return;
+
+    }
+
+
+
+    // Datos que se enviarán al servidor
     const datos = {
+
         usuario: usuario,
+
         libro: libro,
+
         fecha_entrega: entrega,
+
         fecha_tramite: tramite,
+
         nombre_prestatario: prestatario
+
     };
+
+
 
     console.log("Datos enviados:", datos);
 
-    // Enviar información al servidor Node.js
+
+
+    // Enviar datos a Node.js
     fetch("http://localhost:3000/prestamos",{
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+
+        method:"POST",
+
+        headers:{
+
+            "Content-Type":"application/json"
+
         },
-        body: JSON.stringify(datos)
+
+        body:JSON.stringify(datos)
+
     })
+
+
     .then(res => res.json())
+
+
     .then(data => {
+
+
         console.log("Respuesta servidor:", data);
 
+
+
+        // Si el préstamo fue creado correctamente
         if(data.codigo){
-            document.getElementById("clavePrestamo").textContent =
+
+
+            document.getElementById("clavePrestamo").innerHTML =
             "PR-2026-" + data.codigo;
+
+
             document.getElementById("modal").style.display = "flex";
-        }
-        else{
+
+
+        }else{
+
+
             alert(data.mensaje);
+
+
         }
+
+
     })
-    .catch(error => {
+
+
+
+    .catch(error=>{
+
+
         console.log("Error:", error);
+
         alert("No se pudo conectar con el servidor");
+
+
     });
+
+
 }
 
-// Función para cerrar ventana de confirmación
+
+
+// Cerrar ventana de confirmación
 function cerrarModal(){
-    document.getElementById("modal").style.display = "none";
+
+    document.getElementById("modal").style.display="none";
+
 }

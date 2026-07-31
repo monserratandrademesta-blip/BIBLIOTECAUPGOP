@@ -1,91 +1,277 @@
+/* Configuración general */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:Arial, Helvetica, sans-serif;
 }
+
 body{
     background:#A7B9DB;
 }
+
+
+/* Contenedor principal */
 .container{
+
     width:95%;
     max-width:480px;
     margin:30px auto;
     background:#FFFFFF;
     padding:30px;
     border-radius:20px;
-    box-shadow:0px 10px 25px rgba(0,0,0,.15);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
 }
+
+
+/* Título */
 h2{
+
     text-align:center;
     color:#022875;
-    font-size:32px;
+    font-size:28px;
     margin-bottom:20px;
+
 }
+
+
+/* Etiquetas */
 label{
+
     display:block;
     font-weight:bold;
-    margin: 14px 0 8px;
-    font-size:20px;
+    margin:14px 0 8px;
+    font-size:17px;
     color:#000000;
+
 }
+
+
+/* Campos */
 input, select{
+
     width:100%;
-    padding:18px;
-    border-radius:15px;
+    padding:15px;
+    border-radius:12px;
     border:2px solid #A7B9DB;
-    font-size:18px;
-    transition:.3s;
+    font-size:16px;
     outline:none;
+    transition:.3s;
+
 }
+
+
 input:focus, select:focus{
+
     border-color:#022875;
-    box-shadow:0 0 10px rgba(2,40,117,.3);
+    box-shadow:0 0 8px rgba(2,40,117,.3);
+
 }
+
+
+/* Tarjetas de pasos */
 .paso{
-    background:#E9EEFA;
-    padding:14px;
-    border-radius:15px;
-    margin:14px 0;
-    border-left:5px solid #022875;
+
+    background:#FFFFFF;
+    padding:18px;
+    border-radius:18px;
+    margin:15px 0;
+    border:1px solid #D9E2F2;
+    box-shadow:0 4px 12px rgba(0,0,0,.10);
+
 }
+
+
+/* Número del paso */
 .num{
+
     background:#022875;
     color:#FFFFFF;
-    width:28px; height:28px;
+    width:32px;
+    height:32px;
     display:inline-flex;
     justify-content:center;
     align-items:center;
     border-radius:50%;
-    font-size:14px;
-    margin-right:6px;
+    font-size:15px;
     font-weight:bold;
+    margin-right:10px;
+
 }
+
+
+/* Términos y condiciones */
+.terminos{
+
+    background:#F8FAFF;
+    border-radius:18px;
+    padding:18px;
+    margin-top:20px;
+    border:1px solid #D9E2F2;
+
+}
+
+
+.terminos h3{
+
+    color:#022875;
+    font-size:19px;
+    margin-bottom:10px;
+
+}
+
+
+.terminos p{
+
+    color:#333;
+    font-size:14px;
+    margin-bottom:10px;
+
+}
+
+
+.terminos ul{
+
+    padding-left:20px;
+    color:#444;
+    font-size:14px;
+
+}
+
+
+.terminos li{
+
+    margin-bottom:6px;
+
+}
+
+
+.terminos a{
+
+    display:block;
+    margin-top:12px;
+    color:#022875;
+    font-weight:bold;
+    text-decoration:none;
+
+}
+
+
+.terminos a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/* Checkbox de aceptación */
+.check{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:15px;
+    font-size:14px;
+
+}
+
+
+.check input{
+
+    width:18px;
+    height:18px;
+
+}
+
+
+/* Botón guardar */
 .btn-guardar{
+
     width:100%;
     margin-top:25px;
     background:#022875;
     color:#FFFFFF;
     border:none;
-    padding:18px;
+    padding:16px;
     border-radius:15px;
-    font-size:22px;
+    font-size:18px;
     font-weight:bold;
     cursor:pointer;
-    transition:.4s;
+    transition:.3s;
+
 }
+
+
 .btn-guardar:hover{
+
     background:#FFD54F;
     color:#000000;
-    transform:translateY(-5px);
-    box-shadow:0px 10px 20px rgba(0,0,0,.3);
+    transform:translateY(-3px);
+    box-shadow:0 8px 15px rgba(0,0,0,.25);
+
 }
+
+
+/* Botón regresar */
 .btn-regresar{
+
     display:block;
     text-align:center;
     margin-top:18px;
     text-decoration:none;
     color:#022875;
     font-weight:bold;
-    font-size:18px;
+    font-size:16px;
+
+}
+
+
+/* Ventana de confirmación */
+#modal{
+
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+#modal div{
+
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+
+/* Diseño para celular */
+@media(max-width:600px){
+
+    .container{
+
+        padding:20px;
+
+    }
+
+
+    h2{
+
+        font-size:24px;
+
+    }
+
+
+    label{
+
+        font-size:16px;
+
+    }
+
 }
