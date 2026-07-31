@@ -64,8 +64,8 @@ input:focus, select:focus{
 .btn-guardar{
     width:100%;
     margin-top:25px;
-    background:#FFD54F;
-    color:#000000;
+    background:#022875;
+    color:#FFFFFF;
     border:none;
     padding:18px;
     border-radius:15px;
@@ -75,8 +75,8 @@ input:focus, select:focus{
     transition:.4s;
 }
 .btn-guardar:hover{
-    background:#022875;
-    color:#FFFFFF;
+    background:#FFD54F;
+    color:#000000;
     transform:translateY(-5px);
     box-shadow:0px 10px 20px rgba(0,0,0,.3);
 }
