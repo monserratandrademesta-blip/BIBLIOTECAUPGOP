@@ -41,11 +41,20 @@ p{
 
 /* campos donde se escribe usuario y contraseña */
 input{
-    width:100%; /* ocupa todo el ancho */
-    padding:12px; /* espacio interno */
-    margin:10px 0; /* separación entre campos */
-    border-radius:8px; /* bordes redondeados */
-    border:1px solid #A7B9DB; /* borde */
+    width: 100%; /* ocupa todo el ancho */
+    padding: 12px; /* espacio interno */
+    margin: 10px 0; /* separación entre campos */
+    border-radius: 8px; /* bordes redondeados */
+    border: 1px solid #A7B9DB; /* borde */
+    box-sizing: border-box; /* evita que se desborde del contenedor */
+    outline: none; /* quita el borde feo por defecto al hacer clic */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* animación suave */
+}
+
+/* efecto cuando el usuario hace clic para escribir */
+input:focus{
+    border-color: #022875; /* cambia a azul institucional */
+    box-shadow: 0 0 5px rgba(2, 40, 117, 0.4); /* resplandor azul suave */
 }
 
 /* botón de iniciar sesión */
@@ -64,8 +73,10 @@ button{
 
 /* efecto cuando pasa el mouse */
 button:hover{
-    background:#FFD54F; /* amarillo */
-    color:#000000; /* texto negro */
+    background: #FFD54F; /* amarillo */
+    color: #000000; /* texto negro */
+    transform: translateY(-2px); /* sube ligeramente el botón */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* crea sombra al flotar */
 }
 
 /* botón de cerrar (la X) */
