@@ -1,0 +1,215 @@
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f7f3;
+    color: #53627a;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ENCABEZADO PRINCIPAL
+   ========================================================= */
+
+.encabezado {
+    width: 100%;
+    background-color: #1d3b65;
+    color: white;
+    padding: 28px 7% 18px;
+    border-bottom: 5px solid #d52f38;
+}
+
+.encabezado h1 {
+    margin: 0 0 38px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.encabezado-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+.encabezado-info p {
+    margin: 0;
+}
+
+.encabezado-info strong {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.contenedor {
+    width: 86%;
+    max-width: 1200px;
+    margin: 20px auto 70px;
+}
+
+
+/* =========================================================
+   TÍTULOS DE SECCIÓN
+   ========================================================= */
+
+.seccion {
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.seccion h2 {
+    margin: 0;
+    padding: 0 0 0 12px;
+    border-left: 5px solid #d52f38;
+    color: #1d3b65;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   TARJETAS DE NORMATIVAS
+   ========================================================= */
+
+.normativa {
+    background-color: #ffffff;
+    border: 1px solid #d9e0e8;
+    border-left: 4px solid #2874c6;
+    border-radius: 2px;
+    padding: 9px 13px;
+    margin: 9px 0;
+    min-height: 70px;
+}
+
+
+/* =========================================================
+   TÍTULO DE CADA NORMATIVA
+   ========================================================= */
+
+.normativa h3 {
+    margin: 0 0 2px;
+    color: #1d3b65;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN DE LA NORMATIVA
+   ========================================================= */
+
+.normativa p {
+    margin: 0;
+    color: #53627a;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   LÍNEA FINAL DEL DOCUMENTO
+   ========================================================= */
+
+.linea-final {
+    width: 100%;
+    height: 1px;
+    background-color: #cfd5dc;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   TEXTO FINAL
+   ========================================================= */
+
+.texto-final {
+    text-align: center;
+    color: #8090a8;
+    font-size: 13px;
+    font-style: italic;
+    margin: 0;
+}
+
+
+/* =========================================================
+   PIE DE PÁGINA
+   ========================================================= */
+
+.pie-pagina {
+    width: 86%;
+    max-width: 1200px;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #8090a8;
+    font-size: 12px;
+}
+
+.pie-pagina p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   DISEÑO RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .encabezado {
+        padding: 22px 5% 15px;
+    }
+
+    .encabezado h1 {
+        font-size: 21px;
+        margin-bottom: 25px;
+    }
+
+    .encabezado-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .contenedor {
+        width: 90%;
+    }
+
+    .seccion h2 {
+        font-size: 17px;
+    }
+
+    .normativa h3 {
+        font-size: 14px;
+    }
+
+    .normativa p {
+        font-size: 13px;
+    }
+
+    .pie-pagina {
+        width: 90%;
+        font-size: 11px;
+    }
+}

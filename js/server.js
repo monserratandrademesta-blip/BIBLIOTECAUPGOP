@@ -388,6 +388,18 @@ mensaje:"Libro no encontrado"
 
 
 const id_libro=libros[0].id_libro;
+const cantidad=libros[0].cantidad;
+
+
+
+if(cantidad<=0){
+
+return res.json({
+mensaje:"Libro no disponible"
+});
+
+}
+
 
 
 

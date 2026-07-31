@@ -1,199 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
-    <!-- Codificación UTF-8 para procesar acentos, caracteres especiales y la letra ñ -->
-    <meta charset="UTF-8">
-
-    <!-- Configuración del viewport para garantizar una correcta escala en pantallas de celulares -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Texto que se muestra en la pestaña del navegador -->
-    <title>Sistema de Préstamo de Libros</title>
-
-    <!-- Hoja de estilos CSS propia para el diseño del módulo de préstamos -->
-    <link rel="stylesheet" href="css/prestamo.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registrar Préstamo</title>
+<link rel="stylesheet" href="css/prestamo.css">
 </head>
-
-
 <body>
 
+<div class="container">
+  <h2>REGISTRAR PRÉSTAMO</h2>
 
-<!-- Contenedor principal que agrupa todo el diseño -->
-<div class="contenedor">
+  <form id="formPrestamo">
+    <label>Usuario Matrícula:</label>
+    <input type="text" id="matricula" placeholder="Ej. 20311045" required>
 
-
-    <!-- Bloque superior del módulo -->
-    <div class="encabezado">
-
-
-        <div>
-
-            <h1>Datos para tu préstamo</h1>
-
-            <p class="subtitulo"></p>
-
-        </div>
-
-
-        <a href="index.html" class="menu">
-            MENU
-        </a>
-
-
+    <div class="paso">
+      <span class="num">1</span>
+      <label>Selecciona la categoría</label>
+      <select id="categoria" required>
+        <option value="">Selecciona una categoría</option>
+        <option value="TID">TID</option>
+        <option value="IAEV">IAEV</option>
+        <option value="CIA">CIA</option>
+        <option value="IMA">IMA</option>
+        <option value="IBIO">IBIO</option>
+        <option value="Lectura General Español">Lectura General Español</option>
+        <option value="Lectura General Inglés">Lectura General Inglés</option>
+      </select>
     </div>
 
-
-
-    <!-- Sección del formulario -->
-    <div class="contenido">
-
-
-        <div class="formulario">
-
-
-            <!-- Usuario que solicita el préstamo -->
-            <div class="campo">
-
-                <label>Usuario</label>
-
-                <input id="usuario" 
-                type="text" 
-                placeholder="Ingrese el usuario" 
-                required>
-
-            </div>
-
-
-
-            <!-- Libro solicitado -->
-            <div class="campo">
-
-                <label>Nombre del libro</label>
-
-                <input id="libro" 
-                type="text" 
-                placeholder="Nombre del libro" 
-                required>
-
-            </div>
-
-
-
-            <!-- Fecha límite de entrega -->
-            <div class="campo">
-
-                <label>Fecha de entrega</label>
-
-                <input id="entrega" 
-                type="date" 
-                required>
-
-            </div>
-
-
-
-            <!-- Fecha en que se registra el préstamo -->
-            <div class="campo">
-
-                <label>Fecha de trámite</label>
-
-                <input id="tramite" 
-                type="date" 
-                required>
-
-            </div>
-
-
-
-            <!-- Persona que recibe el libro -->
-            <div class="campo">
-
-                <label>Nombre del prestatario</label>
-
-                <input id="prestatario" 
-                type="text" 
-                placeholder="Nombre completo" 
-                required>
-
-            </div>
-
-
-        </div>
-
-
-
-
-        <!-- Panel derecho -->
-        <div class="panel">
-
-
-            <div class="imagen">
-
-                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" 
-                alt="Libro">
-
-            </div>
-
-
-
-            <!-- Ahora llama al JS que guarda en MySQL -->
-            <button class="guardar" onclick="guardarPrestamo()">
-
-                Guardar Préstamo
-
-            </button>
-
-
-        </div>
-
-
+    <div class="paso">
+      <span class="num">2</span>
+      <label>Selecciona el libro</label>
+      <select id="libro" required>
+        <option value="">Primero selecciona una categoría</option>
+      </select>
     </div>
 
+    <label>Fecha de préstamo:</label>
+    <input type="date" id="fechaPrestamo" required>
 
+    <label>Fecha de devolución:</label>
+    <input type="date" id="fechaDevolucion" required>
+
+    <button type="submit" class="btn-guardar">Guardar préstamo</button>
+  </form>
+
+  <a href="index.html" class="btn-regresar">← Volver al Catalogo </a>
 </div>
 
-
-
-
-
-<!-- Ventana de confirmación -->
-<div id="modal" class="modal">
-
-
-    <div class="modal-contenido">
-
-
-        <h2>¡Préstamo registrado!</h2>
-
-
-        <p>La clave de tu préstamo es:</p>
-
-
-        <h1 id="clavePrestamo"></h1>
-
-
-        <button onclick="cerrarModal()">
-
-            Aceptar
-
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-
-
-<!-- Archivo JavaScript encargado de enviar los datos al servidor -->
 <script src="js/prestamos.js"></script>
-
-
 </body>
-
 </html>
