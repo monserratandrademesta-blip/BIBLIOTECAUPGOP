@@ -17,154 +17,183 @@
 
 </head>
 
+
 <body>
 
-<!-- Contenedor principal que agrupa todo el diseño de la pantalla -->
+
+<!-- Contenedor principal que agrupa todo el diseño -->
 <div class="contenedor">
 
-    <!-- Bloque superior del módulo (título y botón de navegación) -->
+
+    <!-- Bloque superior del módulo -->
     <div class="encabezado">
 
-        <!-- Agrupador para los títulos del módulo -->
+
         <div>
-            <!-- Título principal de la pantalla -->
+
             <h1>Datos para tu préstamo</h1>
 
-            <!-- Párrafo para un posible subtítulo explicativo -->
             <p class="subtitulo"></p>
+
         </div>
 
-        <!-- Enlace con formato de botón para volver a la página de inicio -->
+
         <a href="index.html" class="menu">
             MENU
         </a>
 
+
     </div>
 
-    <!-- Sección que divide la vista en el formulario y el panel de acciones -->
+
+
+    <!-- Sección del formulario -->
     <div class="contenido">
 
-        <!-- Columna de captura de información -->
+
         <div class="formulario">
 
-            <!-- Campo 1: Identificador o matrícula del usuario -->
+
+            <!-- Usuario que solicita el préstamo -->
             <div class="campo">
+
                 <label>Usuario</label>
-                <input id="usuario" type="text" placeholder="Ingrese el usuario" required>
+
+                <input id="usuario" 
+                type="text" 
+                placeholder="Ingrese el usuario" 
+                required>
+
             </div>
 
-            <!-- Campo 2: Título de la obra a solicitar -->
+
+
+            <!-- Libro solicitado -->
             <div class="campo">
+
                 <label>Nombre del libro</label>
-                <input id="libro" type="text" placeholder="Nombre del libro" required>
+
+                <input id="libro" 
+                type="text" 
+                placeholder="Nombre del libro" 
+                required>
+
             </div>
 
-            <!-- Campo 3: Selector de calendario para la fecha límite de devolución -->
+
+
+            <!-- Fecha límite de entrega -->
             <div class="campo">
+
                 <label>Fecha de entrega</label>
-                <input id="entrega" type="date" required>
+
+                <input id="entrega" 
+                type="date" 
+                required>
+
             </div>
 
-            <!-- Campo 4: Selector de calendario para la fecha de registro del trámite -->
+
+
+            <!-- Fecha en que se registra el préstamo -->
             <div class="campo">
+
                 <label>Fecha de trámite</label>
-                <input id="tramite" type="date" required>
+
+                <input id="tramite" 
+                type="date" 
+                required>
+
             </div>
 
-            <!-- Campo 5: Nombre del alumno o docente que recibe el libro -->
+
+
+            <!-- Persona que recibe el libro -->
             <div class="campo">
+
                 <label>Nombre del prestatario</label>
-                <input id="prestatario" type="text" placeholder="Nombre completo" required>
+
+                <input id="prestatario" 
+                type="text" 
+                placeholder="Nombre completo" 
+                required>
+
             </div>
+
 
         </div>
 
-        <!-- Columna lateral informativa y funcional -->
+
+
+
+        <!-- Panel derecho -->
         <div class="panel">
 
-            <!-- Contenedor para el icono o ilustración de la vista -->
+
             <div class="imagen">
-                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Libro">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" 
+                alt="Libro">
+
             </div>
 
-            <!-- Botón de acción que ejecuta el script de validación y confirmación -->
-            <button class="guardar" onclick="mostrarModal()">
+
+
+            <!-- Ahora llama al JS que guarda en MySQL -->
+            <button class="guardar" onclick="guardarPrestamo()">
+
                 Guardar Préstamo
+
             </button>
+
 
         </div>
 
+
     </div>
+
 
 </div>
 
-<!-- Contenedor de la ventana modal emergente (oculta por defecto en CSS) -->
+
+
+
+
+<!-- Ventana de confirmación -->
 <div id="modal" class="modal">
 
-    <!-- Cuadro blanco interno de la ventana modal -->
+
     <div class="modal-contenido">
 
-        <!-- Mensaje principal de confirmación -->
+
         <h2>¡Préstamo registrado!</h2>
 
-        <!-- Indicación del código generado -->
+
         <p>La clave de tu préstamo es:</p>
 
-        <!-- Elemento donde JavaScript inyectará el número de préstamo único -->
+
         <h1 id="clavePrestamo"></h1>
 
-        <!-- Botón para ocultar la ventana modal -->
+
         <button onclick="cerrarModal()">
+
             Aceptar
+
         </button>
+
 
     </div>
 
+
 </div>
 
-<!-- Lógica de programación JavaScript incrustada en el documento -->
-<script>
 
-/* Función que valida las entradas del usuario y despliega el modal con la clave */
-function mostrarModal(){
 
-    /* Recupera los valores de texto ingresados en cada input por medio de sus IDs */
-    let usuario = document.getElementById("usuario").value;
-    let libro = document.getElementById("libro").value;
-    let entrega = document.getElementById("entrega").value;
-    let tramite = document.getElementById("tramite").value;
-    let prestatario = document.getElementById("prestatario").value;
 
-    /* Estructura condicional que revisa si algún campo obligatorio está vacío */
-    if(usuario=="" || libro=="" || entrega=="" || tramite=="" || prestatario==""){
+<!-- Archivo JavaScript encargado de enviar los datos al servidor -->
+<script src="js/prestamos.js"></script>
 
-        /* Notificación emergente si la validación falla */
-        alert("Debes llenar todos los campos.");
-
-        return; /* Corta la ejecución para que no avance al cálculo ni abra el modal */
-
-    }
-
-    /* Genera un valor numérico aleatorio de 4 cifras (entre 1000 y 9999) */
-    let numero = Math.floor(Math.random()*9000)+1000;
-
-    /* Concatena el prefijo, el año y el número aleatorio, e inyecta la clave en el HTML */
-    document.getElementById("clavePrestamo").innerHTML = "PR-2026-" + numero;
-
-    /* Cambia la propiedad CSS display a 'flex' para hacer visible la ventana modal */
-    document.getElementById("modal").style.display = "flex";
-
-}
-
-/* Función que oculta nuevamente la ventana emergente al hacer clic en 'Aceptar' */
-function cerrarModal(){
-
-    /* Oculta la ventana emergente cambiando la propiedad display a 'none' */
-    document.getElementById("modal").style.display = "none";
-
-}
-
-</script>
 
 </body>
+
 </html>
