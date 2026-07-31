@@ -1,93 +1,73 @@
-// Función principal que procesa el inicio de sesión del usuario
+// Función principal del inicio de sesión
 function login(){
 
-    // Captura el valor ingresado en el campo de texto del usuario
-    let usuario = document.getElementById("usuario").value.trim();
+// Obtener datos escritos por el usuario
+const usuario=document.getElementById("usuario").value.trim();
+const contraseña=document.getElementById("password").value.trim();
 
-    // Captura la clave ingresada en el campo de contraseña
-    let contraseña = document.getElementById("password").value.trim();
+// Validar campos vacíos
+if(usuario===""||contraseña===""){
+alert("Por favor, completa todos los campos.");
+return;
+}
 
-    // NUEVO: Validación de campos vacíos (Evita peticiones innecesarias)
-    if(usuario === "" || contraseña === ""){
-        alert("Por favor, completa todos los campos.");
-        return; // Detiene la ejecución si falta algún dato
-    }
+// Enviar datos al servidor
+fetch("http://localhost:3000/login",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+usuario:usuario,
+contraseña:contraseña
+})
+})
 
-    // Realiza una petición POST al endpoint '/login' de la API de Node.js
-    fetch("http://localhost:3000/login",{
+// Convertir respuesta a JSON
+.then(res=>res.json())
 
-        // Especifica el método HTTP utilizado para enviar datos
-        method:"POST",
+// Procesar respuesta del servidor
+.then(data=>{
 
-        // Define las cabeceras de la petición indicando formato JSON
-        headers:{
-            "Content-Type":"application/json"
-        },
+// Verificar si el login fue correcto
+if(data.mensaje==="Login correcto"){
 
-        // Convierte el objeto de datos en una cadena JSON para enviarlo al servidor
-        body:JSON.stringify({
+// Guardar información del usuario y su rol
+localStorage.setItem(
+"usuario",
+JSON.stringify(data.usuario)
+);
 
-            usuario:usuario,
-            contraseña:contraseña
+// Mensaje de bienvenida
+alert("Bienvenido "+data.usuario.nombre);
 
-        })
+// Redireccionar según el rol
+if(data.usuario.rol==="Bibliotecario"||data.usuario.rol==="Administrador"){
 
-    })
+window.location.href="admin.html";
 
+}else{
 
-    // Recibe la respuesta de la API y la parsea a un objeto JSON de JavaScript
-    .then(res=>res.json())
+window.location.href="catalogo.html";
 
+}
 
-    // Evalúa la respuesta enviada por el servidor
-    .then(data=>{
+}else{
 
+// Usuario o contraseña incorrectos
+alert("Usuario o contraseña incorrectos");
 
-        // Condicional: verifica si la autenticación fue exitosa
-        if(data.mensaje==="Login correcto"){
+}
 
+})
 
-            // Guarda en el almacenamiento local (localStorage) los datos e información del rol del usuario
-            localStorage.setItem(
-                "usuario",
-                JSON.stringify(data.usuario)
-            );
+// Capturar errores de conexión
+.catch(error=>{
 
+console.log("Error login:",error);
 
-            // Despliega una alerta de bienvenida con el nombre del usuario
-            alert("Bienvenido "+data.usuario.nombre);
+alert("Error al conectar con el servidor");
 
-
-            // Redirige al usuario hacia la pantalla del catálogo principal
-            window.location.href="catalogo.html";
-
-
-        }
-        else{
-
-
-            // Notifica al usuario en caso de datos erróneos
-            alert("Usuario o contraseña incorrectos");
-
-
-        }
-
-
-    })
-
-
-    // Captura errores de red o caídas del servidor
-    .catch(error=>{
-
-
-        // Muestra el detalle técnico en la consola para depuración
-        console.log(error);
-
-        // Muestra una alerta amigable al usuario sobre la falla de conexión
-        alert("Error al conectar con el servidor");
-
-
-    });
-
+});
 
 }
