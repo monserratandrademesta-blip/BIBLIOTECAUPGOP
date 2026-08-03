@@ -183,3 +183,11 @@ input:focus{
     text-align:center;
 
 }
+select{
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-border-box;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden ;
+}
