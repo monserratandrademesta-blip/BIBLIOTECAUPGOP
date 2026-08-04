@@ -1,11 +1,47 @@
-// Escucha el evento de envío (submit) del formulario de registro de usuario
+// ==============================
+// REGISTRO DE USUARIO
+// ==============================
+
+// Genera automáticamente el usuario conforme el alumno escribe
+function generarUsuario() {
+
+    let nombre = document.getElementById("nombre").value.trim();
+    let apellido = document.getElementById("apellido").value.trim();
+    let matricula = document.getElementById("matricula").value.trim();
+
+    // Si aún no hay información suficiente, limpia el campo
+    if (nombre === "" || apellido === "" || matricula.length < 4) {
+        document.getElementById("usuarioGenerado").value = "";
+        return;
+    }
+
+    // Toma los últimos 4 dígitos de la matrícula
+    let ultimos4 = matricula.slice(-4);
+
+    // Genera el usuario
+    let usuario = (nombre + apellido + ultimos4)
+        .toLowerCase()
+        .replaceAll(" ", "");
+
+    // Lo muestra en el formulario
+    document.getElementById("usuarioGenerado").value = usuario;
+}
+
+// Detecta cambios en los campos para actualizar el usuario automáticamente
+document.getElementById("nombre").addEventListener("input", generarUsuario);
+document.getElementById("apellido").addEventListener("input", generarUsuario);
+document.getElementById("matricula").addEventListener("input", generarUsuario);
+
+// ==============================
+// ENVÍO DEL FORMULARIO
+// ==============================
+
 document.getElementById("formRegistro").addEventListener("submit", function(event){
 
-    // Cancela la recarga automática de la página que realiza el navegador por defecto al enviar un formulario
+    // Evita que la página se recargue
     event.preventDefault();
 
-
-    // Obtiene los valores ingresados en cada input del formulario mediante sus IDs, aplicando .trim() para limpiar espacios accidentales
+    // Obtiene los datos del formulario
     let nombre = document.getElementById("nombre").value.trim();
     let apellido = document.getElementById("apellido").value.trim();
     let matricula = document.getElementById("matricula").value.trim();
@@ -15,120 +51,81 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
     let password = document.getElementById("password").value.trim();
     let confirmar = document.getElementById("confirmar").value.trim();
 
+    // Obtiene el usuario generado
+    let usuario = document.getElementById("usuarioGenerado").value.trim();
 
-
-    // NUEVO: Validación de campos vacíos antes de hacer cualquier proceso
-    if(nombre === "" || apellido === "" || matricula === "" || correo === "" || telefono === "" || carrera === "" || password === "" || confirmar === ""){
+    // Validación de campos vacíos
+    if(
+        nombre === "" ||
+        apellido === "" ||
+        matricula === "" ||
+        correo === "" ||
+        telefono === "" ||
+        carrera === "" ||
+        password === "" ||
+        confirmar === ""
+    ){
         alert("Por favor, completa todos los campos.");
-        return; // Detiene la ejecución si falta algún dato
+        return;
     }
 
+    // Validación de longitud mínima de matrícula
+    if(matricula.length < 4){
+        alert("La matrícula debe tener al menos 4 caracteres.");
+        return;
+    }
 
-
-    // Estructura condicional para validar que ambas contraseñas escritas sean exactamente iguales
+    // Validación de contraseñas
     if(password !== confirmar){
-
-        // Notifica al usuario que cometió un error al escribir las claves
-        alert("Las contraseñas no coinciden");
-        return; // Detiene la ejecución para que no se envíe la petición al backend
-
+        alert("Las contraseñas no coinciden.");
+        return;
     }
 
-
-
-    // Genera automáticamente un nombre de usuario uniendo nombre y apellido, todo en minúsculas y sin espacios
-    // Ejemplo: Monserrat Andrade -> monserratandrade
-
-    let usuario = (nombre + apellido)
-        .toLowerCase()
-        .replaceAll(" ", "");
-
-
-
-    // Realiza la petición HTTP POST enviando el paquete de datos al endpoint de registro
+    // Envía los datos al servidor
     fetch("http://localhost:3000/registro", {
 
-
-        // Establece el método de envío POST
         method: "POST",
 
-
-        // Indica al servidor backend que el cuerpo del mensaje va en formato JSON
         headers: {
-
             "Content-Type": "application/json"
-
         },
 
-
-        // Convierte el objeto de datos recopilados en una cadena JSON
         body: JSON.stringify({
 
             nombre: nombre,
-
             apellido: apellido,
-
             usuario: usuario,
-
             contraseña: password,
-
             correo: correo,
-
             matricula: matricula,
-
             telefono: telefono,
-
             carrera: carrera,
-
-            rol: "Alumno" // Asigna por defecto el rol de Alumno a todo nuevo usuario registrado
+            rol: "Alumno"
 
         })
 
-
     })
 
-
-
-    // Parsea y convierte la respuesta del servidor a formato JSON legible por JS
     .then(respuesta => respuesta.json())
 
-
-
-    // Recibe la respuesta formateada en la variable 'datos'
     .then(datos => {
 
-
-        // Muestra en una ventana de alerta el mensaje que devuelve la API (ej. "Usuario creado correctamente")
         alert(datos.mensaje);
 
-
-
-        // Si la inserción en MySQL fue exitosa, redirige automáticamente a la pantalla de Login
         if(datos.mensaje === "Usuario creado correctamente"){
+
+            alert("Tu usuario para iniciar sesión es:\n\n" + usuario);
 
             window.location.href = "iniciodesesion.html";
 
         }
 
-
-
     })
 
-
-
-    // Captura fallas de red o errores cuando el servidor Node.js no está encendido
     .catch(error => {
 
-
-        // Imprime el detalle en consola para revisión técnica
         console.log("Error de conexión:", error);
 
-        // Muestra un mensaje amigable al usuario sobre la falla de comunicación
         alert("No se pudo conectar con el servidor. Inténtalo más tarde.");
-
-
     });
-
-
-
 });
