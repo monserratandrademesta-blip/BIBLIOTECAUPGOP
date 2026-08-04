@@ -17,193 +17,151 @@
 
 </head>
 
-
 <body>
 
+    <!-- Contenedor principal que centra y encierra la tarjeta del formulario -->
+    <div class="contenedor">
+
+        <!-- Título principal del formulario de registro -->
+        <h1>Registro de Usuario</h1>
+
+        <!-- Indicación breve para guiar al usuario -->
+        <p>
+            Complete la siguiente información para crear una cuenta.
+        </p>
+
+        <!-- Formulario estructurado para captura de datos con ID para manejo en JS -->
+        <form class="formulario" id="formRegistro">
+
+            <!-- Columna izquierda: Datos personales y académicos -->
+            <div class="izquierda">
+
+                <!-- Campo para el nombre del usuario -->
+                <label>Nombre</label>
+
+                <input
+                    id="nombre"
+                    type="text"
+                    placeholder="Ingrese su nombre"
+                    required>
+
+                <!-- Campo para los apellidos del usuario -->
+                <label>Apellido</label>
+
+                <input
+                    id="apellido"
+                    type="text"
+                    placeholder="Ingrese su apellido"
+                    required>
+
+                <!-- Campo para la matrícula universitaria del estudiante -->
+                <label>Matrícula</label>
+
+                <input
+                    id="matricula"
+                    type="text"
+                    placeholder="Ingrese su matrícula"
+                    required>
+
+                <!-- Campo para mostrar el usuario generado automáticamente -->
+                <label>Usuario para iniciar sesión</label>
+
+                <input
+                    id="usuarioGenerado"
+                    type="text"
+                    placeholder="Se mostrará automáticamente"
+                    readonly>
+
+                <!-- Campo para el correo con validación nativa de formato de e-mail -->
+                <label>Correo institucional</label>
+
+                <input
+                    id="correo"
+                    type="email"
+                    placeholder="ejemplo@upgop.edu.mx"
+                    required>
+
+                <!-- Campo para el número telefónico de contacto -->
+                <label>Teléfono</label>
+
+                <input
+                    id="telefono"
+                    type="text"
+                    placeholder="Ingrese su teléfono"
+                    required>
+
+                <!-- Campo para la carrera a la que pertenece -->
+                <label for="carrera">Carrera</label>
+
+                <select
+                    id="carrera"
+                    name="carrera"
+                    required>
+
+                    <option value="" selected disabled>Seleccione su carrera</option>
+                    <option value="TID">TID</option>
+                    <option value="IBIO">IBIO</option>
+                    <option value="IAEV">IAEV</option>
+                    <option value="CIA">CIA</option>
+                    <option value="IMA">IMA</option>
+
+                </select>
+
+            </div>
+
+            <!-- Columna derecha: Seguridad y botones de acción -->
+            <div class="derecha">
+
+                <!-- Campo tipo password para ocultar la contraseña -->
+                <label>Contraseña</label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Ingrese una contraseña"
+                    required>
 
-<!-- Contenedor principal que centra y encierra la tarjeta del formulario -->
-<div class="contenedor">
+                <!-- Campo de verificación para validar coincidencia de contraseña en JS -->
+                <label>Confirmar contraseña</label>
 
+                <input
+                    id="confirmar"
+                    type="password"
+                    placeholder="Repita la contraseña"
+                    required>
 
-    <!-- Título principal del formulario de registro -->
-    <h1>Registro de Usuario</h1>
+                <br>
 
-
-    <!-- Indicación breve para guiar al usuario -->
-    <p>
-        Complete la siguiente información para crear una cuenta.
-    </p>
-
-
-
-    <!-- Formulario estructurado para captura de datos con ID para manejo en JS -->
-    <form class="formulario" id="formRegistro">
-
-
-
-        <!-- Columna izquierda: Datos personales y académicos -->
-        <div class="izquierda">
-
-
-
-            <!-- Campo para el nombre del usuario -->
-            <label>Nombre</label>
-
-            <input
-                id="nombre"
-                type="text"
-                placeholder="Ingrese su nombre"
-                required>
-
-
-
-            <!-- Campo para los apellidos del usuario -->
-            <label>Apellido</label>
-
-            <input
-                id="apellido"
-                type="text"
-                placeholder="Ingrese su apellido"
-                required>
-
-
-
-            <!-- Campo para la matrícula universitaria del estudiante -->
-            <label>Matrícula</label>
-
-            <input
-                id="matricula"
-                type="text"
-                placeholder="Ingrese su matrícula"
-                required>
-
-
-
-            <!-- Campo para mostrar el usuario generado automáticamente -->
-            <label>Usuario para iniciar sesión</label>
-
-<input
-    id="usuarioGenerado"
-    type="text"
-    placeholder="Se mostrará automáticamente"
-    readonly>
-
-
-            <!-- Campo para el correo con validación nativa de formato de e-mail -->
-            <label>Correo institucional</label>
-
-            <input
-                id="correo"
-                type="email"
-                placeholder="ejemplo@upgop.edu.mx"
-                required>
-
-
-
-            <!-- Campo para el número telefónico de contacto -->
-            <label>Teléfono</label>
-
-            <input
-                id="telefono"
-                type="text"
-                placeholder="Ingrese su teléfono"
-                required>
-
-
-
-            <!-- Campo para la carrera a la que pertenece -->
-            <label>Carrera</label>
-
-            <input
-                id="carrera"
-                type="text"
-                placeholder="Ingrese su carrera"
-                required>
-
-
-
-        </div>
-
-
-
-
-        <!-- Columna derecha: Seguridad y botones de acción -->
-        <div class="derecha">
-
-
-
-            <!-- Campo tipo password para ocultar la contraseña -->
-            <label>Contraseña</label>
-
-            <input
-                id="password"
-                type="password"
-                placeholder="Ingrese una contraseña"
-                required>
-
-
-
-
-            <!-- Campo de verificación para validar coincidencia de contraseña en JS -->
-            <label>Confirmar contraseña</label>
-
-            <input
-                id="confirmar"
-                type="password"
-                placeholder="Repita la contraseña"
-                required>
-
-
-
-
-            <br>
-
-
-
-            <!-- Botón de envío del formulario que activa el evento submit -->
-            <button
-                type="submit"
-                class="crear">
-
-                CREAR USUARIO
-
-            </button>
-
-
-
-
-
-            <!-- Enlace alternativo para usuarios ya registrados con tipo button para no enviar el form -->
-            <a href="iniciodesesion.html">
-
+                <!-- Botón de envío del formulario que activa el evento submit -->
                 <button
-                    type="button"
-                    class="menu">
+                    type="submit"
+                    class="crear">
 
-                    INICIAR SESION
+                    CREAR USUARIO
 
                 </button>
 
-            </a>
+                <!-- Enlace alternativo para usuarios ya registrados -->
+                <a href="iniciodesesion.html">
 
+                    <button
+                        type="button"
+                        class="menu">
 
+                        INICIAR SESION
 
+                    </button>
 
-        </div>
+                </a>
 
+            </div>
 
+        </form>
 
-    </form>
+    </div>
 
-
-
-</div>
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="js/registro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/registro.js"></script>
 
 </body>
 

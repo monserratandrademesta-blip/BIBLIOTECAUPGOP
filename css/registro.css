@@ -73,24 +73,26 @@ label {
     color: #000000; /* Define el color del texto en negro */
 }
 
-/* Campos de texto */
-input {
-    width: 100%; /* Hace que el campo ocupe todo el ancho disponible */
-    padding: 12px; /* Agrega espacio interno de 12px */
-    border: 1px solid #A7B9DB; /* Define un borde de 1px con color azul claro */
-    border-radius: 10px; /* Redondea las esquinas del campo */
-    background: #FFFFFF; /* Establece un fondo blanco */
-    font-size: 15px; /* Define el tamaño de letra */
-    transition: .3s; /* Hace que los cambios visuales sean suaves */
+/* Campos de texto y lista desplegable */
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #A7B9DB;
+    border-radius: 10px;
+    background: #FFFFFF;
+    font-size: 15px;
+    transition: .3s;
+    font-family: "Georgia", serif;
 }
 
-/* Efecto cuando se escribe en un campo */
-input:focus {
-    outline: none; /* Elimina el borde de selección predeterminado */
-    border: 2px solid #022875; /* Cambia el borde a un grosor de 2px y color azul oscuro */
-    background: #FFFFFF; /* Mantiene el fondo blanco */
+/* Efecto al seleccionar un campo */
+input:focus,
+select:focus {
+    outline: none;
+    border: 2px solid #A7B9DB;
+    background: #FFFFFF;
 }
-
 /* Estilo base de botones */
 button {
     padding: 14px; /* Agrega espacio interno al botón */
