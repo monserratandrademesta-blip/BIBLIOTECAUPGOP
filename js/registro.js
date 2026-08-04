@@ -9,61 +9,134 @@ function generarUsuario() {
     let apellido = document.getElementById("apellido").value.trim();
     let matricula = document.getElementById("matricula").value.trim();
 
-    // Si aún no hay información suficiente, limpia el campo
     if (nombre === "" || apellido === "" || matricula.length < 4) {
         document.getElementById("usuarioGenerado").value = "";
         return;
     }
 
-    // Toma la primera letra del nombre y la primera letra del apellido
     let inicialNombre = nombre.charAt(0);
     let inicialApellido = apellido.charAt(0);
 
-    // Toma los últimos 4 dígitos de la matrícula
     let ultimos4 = matricula.slice(-4);
 
-    // Genera el usuario combinando iniciales y matrícula
     let usuario = (inicialNombre + inicialApellido + ultimos4)
         .toLowerCase()
         .replaceAll(" ", "");
 
-    // Lo muestra en el formulario
     document.getElementById("usuarioGenerado").value = usuario;
 }
 
 
-// Detecta cambios en los campos para actualizar el usuario automáticamente
-document.getElementById("nombre").addEventListener("input", generarUsuario);
-document.getElementById("apellido").addEventListener("input", generarUsuario);
-document.getElementById("matricula").addEventListener("input", generarUsuario);
+
+// ==============================
+// VALIDACIONES MIENTRAS ESCRIBE
+// ==============================
+
+// Nombre
+document.getElementById("nombre").addEventListener("input", function () {
+
+    this.value = this.value
+        .replace(/[^a-zA-Z\s]/g, "")
+        .replace(/\s{2,}/g, " ")
+        .slice(0,25);
+
+    generarUsuario();
+
+});
+
+
+
+// Apellido
+document.getElementById("apellido").addEventListener("input", function () {
+
+    this.value = this.value
+        .replace(/[^a-zA-Z\s]/g, "")
+        .replace(/\s{2,}/g, " ")
+        .slice(0,25);
+
+    generarUsuario();
+
+});
+
+
+
+// Matrícula
+document.getElementById("matricula").addEventListener("input", function(){
+
+    this.value = this.value.replace(/\D/g,"");
+
+    generarUsuario();
+
+});
+
+
+
+// Teléfono
+document.getElementById("telefono").addEventListener("input", function(){
+
+    this.value = this.value.replace(/\D/g,"").slice(0,10);
+
+});
+
+
+
+// Correo
+document.getElementById("correo").addEventListener("input", function(){
+
+    let correo = this.value.toLowerCase();
+
+    // Solo permite letras, números, punto, guion, guion bajo y @
+    correo = correo.replace(/[^a-z0-9@._-]/g,"");
+
+    // No permite comenzar con . _ o -
+    correo = correo.replace(/^[._-]+/,"");
+
+    // No permite dos puntos seguidos
+    correo = correo.replace(/\.{2,}/g,".");
+
+    // No permite dos guiones bajos seguidos
+    correo = correo.replace(/_{2,}/g,"_");
+
+    // No permite dos guiones seguidos
+    correo = correo.replace(/-{2,}/g,"-");
+
+    // Solo permite un @
+    let partes = correo.split("@");
+
+    if(partes.length>2){
+
+        correo = partes[0] + "@" + partes.slice(1).join("");
+
+    }
+
+    this.value = correo;
+
+});
+
 
 
 // ==============================
 // ENVÍO DEL FORMULARIO
 // ==============================
 
-document.getElementById("formRegistro").addEventListener("submit", function(event){
+document.getElementById("formRegistro").addEventListener("submit",function(event){
 
-    // Evita que la página se recargue
     event.preventDefault();
 
+    let nombre=document.getElementById("nombre").value.trim();
+    let apellido=document.getElementById("apellido").value.trim();
+    let matricula=document.getElementById("matricula").value.trim();
+    let correo=document.getElementById("correo").value.trim();
+    let telefono=document.getElementById("telefono").value.trim();
+    let carrera=document.getElementById("carrera").value.trim();
+    let password=document.getElementById("password").value.trim();
+    let confirmar=document.getElementById("confirmar").value.trim();
 
-    // Obtiene los datos del formulario
-    let nombre = document.getElementById("nombre").value.trim();
-    let apellido = document.getElementById("apellido").value.trim();
-    let matricula = document.getElementById("matricula").value.trim();
-    let correo = document.getElementById("correo").value.trim();
-    let telefono = document.getElementById("telefono").value.trim();
-    let carrera = document.getElementById("carrera").value.trim();
-    let password = document.getElementById("password").value.trim();
-    let confirmar = document.getElementById("confirmar").value.trim();
+    let usuario=document.getElementById("usuarioGenerado").value.trim();
+    // ==============================
+    // VALIDACIÓN DE CAMPOS VACÍOS
+    // ==============================
 
-
-    // Obtiene el usuario generado
-    let usuario = document.getElementById("usuarioGenerado").value.trim();
-
-
-    // Validación de campos vacíos
     if(
         nombre === "" ||
         apellido === "" ||
@@ -76,97 +149,179 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
     ){
 
         Swal.fire({
-            icon: "warning",
-            title: "Campos incompletos",
-            text: "Por favor, completa todos los campos.",
-            confirmButtonColor: "#022875"
+            icon:"warning",
+            title:"Campos incompletos",
+            text:"Por favor, completa todos los campos.",
+            confirmButtonColor:"#022875"
         });
 
         return;
     }
 
 
-    // Validación de longitud mínima de matrícula
+    // ==============================
+    // VALIDACIÓN DEL NOMBRE
+    // ==============================
+
+    if(nombre.length < 2 || nombre.length > 25){
+
+        Swal.fire({
+            icon:"warning",
+            title:"Nombre inválido",
+            text:"El nombre debe contener entre 2 y 25 letras.",
+            confirmButtonColor:"#022875"
+        });
+
+        return;
+    }
+
+
+    // ==============================
+    // VALIDACIÓN DEL APELLIDO
+    // ==============================
+
+    if(apellido.length < 2 || apellido.length > 25){
+
+        Swal.fire({
+            icon:"warning",
+            title:"Apellido inválido",
+            text:"El apellido debe contener entre 2 y 25 letras.",
+            confirmButtonColor:"#022875"
+        });
+
+        return;
+    }
+
+
+    // ==============================
+    // VALIDACIÓN DE MATRÍCULA
+    // ==============================
+
     if(matricula.length < 4){
 
         Swal.fire({
-            icon: "warning",
-            title: "Matrícula inválida",
-            text: "La matrícula debe tener al menos 4 caracteres.",
-            confirmButtonColor: "#022875"
+            icon:"warning",
+            title:"Matrícula inválida",
+            text:"La matrícula debe contener al menos 4 números.",
+            confirmButtonColor:"#022875"
         });
 
         return;
     }
 
 
-    // Validación de contraseñas
+    // ==============================
+    // VALIDACIÓN DEL TELÉFONO
+    // ==============================
+
+    if(telefono.length !== 10){
+
+        Swal.fire({
+            icon:"warning",
+            title:"Teléfono inválido",
+            text:"El teléfono debe contener exactamente 10 números.",
+            confirmButtonColor:"#022875"
+        });
+
+        return;
+    }
+
+
+    // ==============================
+    // VALIDACIÓN DEL CORREO
+    // ==============================
+
+    const regexCorreo =
+    /^(?![._-])[a-z0-9]+([._-]?[a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)+$/;
+
+    if(!regexCorreo.test(correo)){
+
+        Swal.fire({
+            icon:"warning",
+            title:"Correo inválido",
+            text:"Ingrese un correo electrónico válido.",
+            confirmButtonColor:"#022875"
+        });
+
+        return;
+    }
+
+
+    // ==============================
+    // VALIDACIÓN DE CONTRASEÑA
+    // ==============================
+
+    if(password.length < 8){
+
+        Swal.fire({
+            icon:"warning",
+            title:"Contraseña insegura",
+            text:"La contraseña debe contener al menos 8 caracteres.",
+            confirmButtonColor:"#022875"
+        });
+
+        return;
+    }
+
+
     if(password !== confirmar){
 
         Swal.fire({
-            icon: "error",
-            title: "Contraseñas diferentes",
-            text: "Las contraseñas no coinciden.",
-            confirmButtonColor: "#022875"
+            icon:"error",
+            title:"Contraseñas diferentes",
+            text:"Las contraseñas no coinciden.",
+            confirmButtonColor:"#022875"
         });
 
         return;
     }
 
 
+    // ==============================
+    // ENVÍO AL SERVIDOR
+    // ==============================
 
-    // Envía los datos al servidor
-    fetch("http://localhost:3000/registro", {
+    fetch("http://localhost:3000/registro",{
 
-        method: "POST",
+        method:"POST",
 
-        headers: {
-            "Content-Type": "application/json"
+        headers:{
+            "Content-Type":"application/json"
         },
 
+        body:JSON.stringify({
 
-        body: JSON.stringify({
-
-            nombre: nombre,
-            apellido: apellido,
-            usuario: usuario,
-            contraseña: password,
-            correo: correo,
-            matricula: matricula,
-            telefono: telefono,
-            carrera: carrera,
-            rol: "Alumno"
+            nombre:nombre,
+            apellido:apellido,
+            usuario:usuario,
+            contraseña:password,
+            correo:correo,
+            matricula:matricula,
+            telefono:telefono,
+            carrera:carrera,
+            rol:"Alumno"
 
         })
 
     })
 
-
-    .then(respuesta => respuesta.json())
-
-
-    .then(datos => {
-
-
+    .then(respuesta=>respuesta.json())
+    .then(datos=>{
         if(datos.mensaje === "Usuario creado correctamente"){
-
 
             Swal.fire({
 
-                icon: "success",
+                icon:"success",
 
-                title: "¡Registro exitoso!",
+                title:"¡Registro exitoso!",
 
-                html: `
+                html:`
 
                     <p>Tu cuenta fue creada correctamente.</p>
 
                     <p>
-                    <strong>
-                    Tu usuario para iniciar sesión es:
-                    </strong>
+                        <strong>Tu usuario para iniciar sesión es:</strong>
                     </p>
-
 
                     <div style="
                         background:#f4f7ff;
@@ -181,108 +336,87 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
                         ${usuario}
                     </div>
 
-
-                    <button id="copiarUsuario"
-                    style="
-                        background:#022875;
-                        color:white;
-                        border:none;
-                        padding:10px 20px;
-                        border-radius:8px;
-                        cursor:pointer;
-                    ">
-                         Copiar usuario
+                    <button
+                        id="copiarUsuario"
+                        style="
+                            background:#022875;
+                            color:white;
+                            border:none;
+                            padding:10px 20px;
+                            border-radius:8px;
+                            cursor:pointer;
+                        ">
+                        Copiar usuario
                     </button>
 
-
                     <p style="margin-top:15px;">
-                    Guárdalo para iniciar sesión.
+                        Guárdalo para iniciar sesión.
                     </p>
 
                 `,
 
+                confirmButtonText:"Ir a iniciar sesión",
 
-                confirmButtonText: "Ir a iniciar sesión",
+                confirmButtonColor:"#022875",
 
-                confirmButtonColor: "#022875",
+                allowOutsideClick:false,
 
-                allowOutsideClick: false,
-
-
-                didOpen: () => {
-
+                didOpen:()=>{
 
                     document
                     .getElementById("copiarUsuario")
-                    .addEventListener("click", function(){
-
+                    .addEventListener("click",function(){
 
                         navigator.clipboard.writeText(usuario);
 
-
                         Swal.showValidationMessage(
-                            " Usuario copiado correctamente"
+                            "Usuario copiado correctamente"
                         );
-
 
                     });
 
-
                 }
 
+            }).then(()=>{
 
-            }).then(() => {
-
-
-                window.location.href = "iniciodesesion.html";
-
+                window.location.href="iniciodesesion.html";
 
             });
-
-
 
         }else{
 
-
             Swal.fire({
 
-                icon: "error",
+                icon:"error",
 
-                title: "Error",
+                title:"Error",
 
-                text: datos.mensaje,
+                text:datos.mensaje,
 
-                confirmButtonColor: "#022875"
+                confirmButtonColor:"#022875"
 
             });
 
-
         }
-
 
     })
 
+    .catch(error=>{
 
-    .catch(error => {
-
-
-        console.log("Error de conexión:", error);
-
+        console.log("Error de conexión:",error);
 
         Swal.fire({
 
-            icon: "error",
+            icon:"error",
 
-            title: "Error de conexión",
+            title:"Error de conexión",
 
-            text: "No se pudo conectar con el servidor. Inténtalo más tarde.",
+            text:"No se pudo conectar con el servidor. Inténtalo más tarde.",
 
-            confirmButtonColor: "#022875"
+            confirmButtonColor:"#022875"
 
         });
 
-
     });
-
 
 });
