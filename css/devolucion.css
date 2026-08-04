@@ -191,3 +191,15 @@ select{
     white-space: nowrap;
     overflow:hidden ;
 }
+#estado {
+    background-color: #e8eef9;
+    color: #022875;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+#datosPrestamo {
+    background:#f4f7ff;
+    border-left:5px solid #022875;
+    padding:15px;
+    border-radius:10px;
+}
