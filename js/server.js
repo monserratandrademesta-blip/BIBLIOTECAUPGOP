@@ -63,21 +63,16 @@ app.post("/login",(req,res)=>{
 // REGISTRO USUARIOS
 app.post("/registro",(req,res)=>{
 
-    const {
+   const {
     nombre,
     apellido,
+    usuario,
     matricula,
     correo,
     telefono,
     carrera,
     contraseña
-    }=req.body;
-
-
-    const usuario=(nombre.trim()+apellido.trim())
-    .toLowerCase()
-    .replaceAll(" ","");
-
+} = req.body;
 
     const sql=`
     INSERT INTO usuarios
@@ -95,18 +90,21 @@ app.post("/registro",(req,res)=>{
     telefono,
     carrera,
     "Alumno"
-    ],error=>{
+    ], (error) => {
 
-        if(error)
-            return res.status(500).json({mensaje:"Error registro"});
-
-        res.json({
-            mensaje:"Usuario creado correctamente",
-            usuario
+    if (error) {
+        console.log("ERROR EN REGISTRO:", error);
+        return res.status(500).json({
+            mensaje: error.sqlMessage
         });
+    }
 
+    res.json({
+        mensaje: "Usuario creado correctamente",
+        usuario
     });
 
+});
 });
 
 

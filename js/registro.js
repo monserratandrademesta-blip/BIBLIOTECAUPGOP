@@ -15,11 +15,15 @@ function generarUsuario() {
         return;
     }
 
+    // Toma la primera letra del nombre y la primera letra del apellido
+    let inicialNombre = nombre.charAt(0);
+    let inicialApellido = apellido.charAt(0);
+
     // Toma los últimos 4 dígitos de la matrícula
     let ultimos4 = matricula.slice(-4);
 
-    // Genera el usuario
-    let usuario = (nombre + apellido + ultimos4)
+    // Genera el usuario combinando iniciales y matrícula
+    let usuario = (inicialNombre + inicialApellido + ultimos4)
         .toLowerCase()
         .replaceAll(" ", "");
 
