@@ -1,9 +1,14 @@
 /* Configuración general */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Georgia, sans-serif;
     margin: 0;
     background-color: #a7b9db;
 }
+
 
 /* Icono de menú ☰ */
 .menu-icono {
@@ -20,6 +25,7 @@ body {
     color: #FFD54F;
 }
 
+
 /* Encabezado principal */
 .header {
     position: relative;
@@ -31,12 +37,14 @@ body {
     justify-content: space-between;
 }
 
+
 /* Logos */
 .logo {
     width: 120px;
     height: auto;
     object-fit: contain;
 }
+
 
 /* Texto central */
 .titulo {
@@ -45,21 +53,24 @@ body {
     padding: 0 20px;
 }
 
+
 .header h1 {
     margin: 0;
     font-size: 30px;
 }
+
 
 .header p {
     margin-top: 10px;
     font-size: 17px;
 }
 
+
 /* Menú lateral */
 .menu-lateral {
     position: fixed;
     top: 0;
-    left: -280px;
+    left: -330px;
     width: 270px;
     height: 100vh;
     background-color: white;
@@ -69,14 +80,17 @@ body {
     z-index: 1500;
 }
 
+
 .menu-lateral.activo {
     left: 0;
 }
+
 
 .menu-lateral h2 {
     color: #022875;
     text-align: center;
 }
+
 
 .menu-lateral a {
     display: block;
@@ -86,10 +100,13 @@ body {
     font-weight: bold;
 }
 
+
 .menu-lateral a:hover {
     background-color: #a7b9db;
     border-radius: 8px;
 }
+
+
 /* Contenedor de tarjetas */
 .menu {
     display: flex;
@@ -98,6 +115,7 @@ body {
     padding: 45px 20px;
     flex-wrap: wrap;
 }
+
 
 /* Tarjetas principales */
 .card {
@@ -113,23 +131,28 @@ body {
     transition: 0.3s;
 }
 
+
 .card:hover {
     transform: translateY(-8px);
 }
+
 
 .card h2 {
     color: #022875;
     font-size: 20px;
 }
 
+
 .card p {
     flex-grow: 1;
     font-size: 16px;
 }
 
+
 .card a {
     text-decoration: none;
 }
+
 
 /* Botones */
 button {
@@ -141,30 +164,38 @@ button {
     cursor: pointer;
 }
 
+
 button:hover {
     background-color: #FFD54F;
     color: black;
 }
 
+
 /* Ajuste para celular */
 @media(max-width:768px){
+
     .header {
         padding: 25px 20px;
     }
+
 
     .logo {
         width: 80px;
     }
 
+
     .header h1 {
         font-size: 21px;
     }
+
 
     .header p {
         font-size: 14px;
     }
 
+
     .card {
         width: 85%;
     }
+
 }
