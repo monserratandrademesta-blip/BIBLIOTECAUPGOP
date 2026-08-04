@@ -146,3 +146,7 @@ button {
     padding: 10px; /* Agrega espacio interno de 10px */
     background: #FFFFFF; /* Establece un fondo blanco */
 }
+#usuarioGenerado{
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
