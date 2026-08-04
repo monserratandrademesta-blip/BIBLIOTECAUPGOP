@@ -49,10 +49,10 @@
             <!-- Campo para el nombre del usuario -->
             <label>Nombre</label>
 
-            <input 
+            <input
                 id="nombre"
-                type="text" 
-                placeholder="Ingrese su nombre" 
+                type="text"
+                placeholder="Ingrese su nombre"
                 required>
 
 
@@ -60,10 +60,10 @@
             <!-- Campo para los apellidos del usuario -->
             <label>Apellido</label>
 
-            <input 
+            <input
                 id="apellido"
-                type="text" 
-                placeholder="Ingrese su apellido" 
+                type="text"
+                placeholder="Ingrese su apellido"
                 required>
 
 
@@ -71,21 +71,32 @@
             <!-- Campo para la matrícula universitaria del estudiante -->
             <label>Matrícula</label>
 
-            <input 
+            <input
                 id="matricula"
-                type="text" 
-                placeholder="Ingrese su matrícula" 
+                type="text"
+                placeholder="Ingrese su matrícula"
                 required>
+
+
+
+            <!-- Campo para mostrar el usuario generado automáticamente -->
+            <label>Usuario generado</label>
+
+            <input
+                id="usuarioGenerado"
+                type="text"
+                placeholder="Se generará automáticamente"
+                readonly>
 
 
 
             <!-- Campo para el correo con validación nativa de formato de e-mail -->
             <label>Correo institucional</label>
 
-            <input 
+            <input
                 id="correo"
-                type="email" 
-                placeholder="ejemplo@upgop.edu.mx" 
+                type="email"
+                placeholder="ejemplo@upgop.edu.mx"
                 required>
 
 
@@ -93,10 +104,10 @@
             <!-- Campo para el número telefónico de contacto -->
             <label>Teléfono</label>
 
-            <input 
+            <input
                 id="telefono"
-                type="text" 
-                placeholder="Ingrese su teléfono" 
+                type="text"
+                placeholder="Ingrese su teléfono"
                 required>
 
 
@@ -104,10 +115,10 @@
             <!-- Campo para la carrera a la que pertenece -->
             <label>Carrera</label>
 
-            <input 
+            <input
                 id="carrera"
-                type="text" 
-                placeholder="Ingrese su carrera" 
+                type="text"
+                placeholder="Ingrese su carrera"
                 required>
 
 
@@ -125,10 +136,10 @@
             <!-- Campo tipo password para ocultar la contraseña -->
             <label>Contraseña</label>
 
-            <input 
+            <input
                 id="password"
-                type="password" 
-                placeholder="Ingrese una contraseña" 
+                type="password"
+                placeholder="Ingrese una contraseña"
                 required>
 
 
@@ -137,10 +148,10 @@
             <!-- Campo de verificación para validar coincidencia de contraseña en JS -->
             <label>Confirmar contraseña</label>
 
-            <input 
+            <input
                 id="confirmar"
-                type="password" 
-                placeholder="Repita la contraseña" 
+                type="password"
+                placeholder="Repita la contraseña"
                 required>
 
 
@@ -151,8 +162,8 @@
 
 
             <!-- Botón de envío del formulario que activa el evento submit -->
-            <button 
-                type="submit" 
+            <button
+                type="submit"
                 class="crear">
 
                 CREAR USUARIO
@@ -166,8 +177,8 @@
             <!-- Enlace alternativo para usuarios ya registrados con tipo button para no enviar el form -->
             <a href="iniciodesesion.html">
 
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     class="menu">
 
                     INICIAR SESION
@@ -192,10 +203,8 @@
 
 
 
-<!-- Archivo JavaScript encargado de procesar la validación y el envío hacia MySQL/Backend -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="js/registro.js"></script>
-
-
 
 </body>
 

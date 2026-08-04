@@ -65,20 +65,34 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
         password === "" ||
         confirmar === ""
     ){
-        alert("Por favor, completa todos los campos.");
+       Swal.fire({
+    icon: "warning",
+    title: "Campos incompletos",
+    text: "Por favor, completa todos los campos.",
+    confirmButtonColor: "#022875"
+});
         return;
     }
 
     // Validación de longitud mínima de matrícula
     if(matricula.length < 4){
-        alert("La matrícula debe tener al menos 4 caracteres.");
+     Swal.fire({
+    icon: "warning",
+    title: "Matrícula inválida",
+    text: "La matrícula debe tener al menos 4 caracteres.",
+    confirmButtonColor: "#022875"
+});
         return;
     }
 
     // Validación de contraseñas
     if(password !== confirmar){
-        alert("Las contraseñas no coinciden.");
-        return;
+Swal.fire({
+    icon: "error",
+    title: "Contraseñas diferentes",
+    text: "Las contraseñas no coinciden.",
+    confirmButtonColor: "#022875"
+});        return;
     }
 
     // Envía los datos al servidor
@@ -110,22 +124,61 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
 
     .then(datos => {
 
-        alert(datos.mensaje);
-
         if(datos.mensaje === "Usuario creado correctamente"){
 
-            alert("Tu usuario para iniciar sesión es:\n\n" + usuario);
+    Swal.fire({
+        icon: "success",
+        title: "¡Registro exitoso!",
+        html: `
+            <p>Tu cuenta fue creada correctamente.</p>
 
-            window.location.href = "iniciodesesion.html";
+            <p><strong>Tu usuario para iniciar sesión es:</strong></p>
 
-        }
+            <div style="
+                background:#f4f7ff;
+                border:2px solid #022875;
+                border-radius:10px;
+                padding:15px;
+                font-size:24px;
+                font-weight:bold;
+                color:#022875;
+                margin:15px 0;
+            ">
+                ${usuario}
+            </div>
 
+            <p>Guárdalo para iniciar sesión.</p>
+        `,
+        iconColor: "#022875",
+        confirmButtonText: "Ir a iniciar sesión",
+        confirmButtonColor: "#022875",
+        allowOutsideClick: false
+    }).then(() => {
+
+        window.location.href = "iniciodesesion.html";
+
+    });
+
+}else{
+
+    Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: datos.mensaje,
+        confirmButtonColor: "#022875"
+    });
+
+}
     })
 
     .catch(error => {
 
         console.log("Error de conexión:", error);
 
-        alert("No se pudo conectar con el servidor. Inténtalo más tarde.");
-    });
+Swal.fire({
+    icon: "error",
+    title: "Error de conexión",
+    text: "No se pudo conectar con el servidor. Inténtalo más tarde.",
+    confirmButtonColor: "#022875"
+});    });
 });
