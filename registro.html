@@ -105,7 +105,10 @@
                     name="carrera"
                     required>
 
-                    <option value="" selected disabled>Seleccione su carrera</option>
+                    <option value="" selected disabled>
+                        Seleccione su carrera
+                    </option>
+
                     <option value="TID">TID</option>
                     <option value="IBIO">IBIO</option>
                     <option value="IAEV">IAEV</option>
@@ -115,6 +118,7 @@
                 </select>
 
             </div>
+
 
             <!-- Columna derecha: Seguridad y botones de acción -->
             <div class="derecha">
@@ -137,9 +141,78 @@
                     placeholder="Repita la contraseña"
                     required>
 
+
+                <!-- ================================================= -->
+                <!-- TÉRMINOS Y CONDICIONES -->
+                <!-- ================================================= -->
+
+                <div class="terminos-registro">
+
+                    <h3>Términos y condiciones</h3>
+
+                    <p>
+                        Para crear una cuenta y utilizar el Sistema de
+                        Gestión de Biblioteca, deberá aceptar las
+                        condiciones de uso.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            La cuenta es personal e intransferible.
+                        </li>
+
+                        <li>
+                            El usuario es responsable del material
+                            solicitado.
+                        </li>
+
+                        <li>
+                            Los libros deberán devolverse en la fecha
+                            establecida.
+                        </li>
+
+                        <li>
+                            Los datos personales serán utilizados
+                            para la gestión de la biblioteca.
+                        </li>
+
+                    </ul>
+
+
+                    <!-- Enlace al reglamento completo -->
+
+                    <a
+                        href="normas.html"
+                        target="_blank"
+                        class="link-terminos">
+
+                        Consultar términos y condiciones completos
+
+                    </a>
+
+
+                    <!-- Casilla de aceptación -->
+
+                    <label class="aceptar-terminos">
+
+                        <input
+                            type="checkbox"
+                            id="aceptarTerminos"
+                            required>
+
+                        Acepto los términos y condiciones.
+
+                    </label>
+
+                </div>
+
+
                 <br>
 
-                <!-- Botón de envío del formulario que activa el evento submit -->
+
+                <!-- Botón de envío del formulario -->
+
                 <button
                     type="submit"
                     class="crear">
@@ -148,7 +221,9 @@
 
                 </button>
 
+
                 <!-- Enlace alternativo para usuarios ya registrados -->
+
                 <a href="iniciodesesion.html">
 
                     <button
@@ -167,7 +242,11 @@
 
     </div>
 
+
+    <!-- Librería para alertas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- JavaScript del registro -->
     <script src="js/registro.js"></script>
 
 </body>

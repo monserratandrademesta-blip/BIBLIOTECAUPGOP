@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -11,33 +12,32 @@
 <link rel="stylesheet" href="css/prestamo.css">
 
 <!-- Librería para alertas profesionales -->
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-
 
 <body>
 
 <div class="container">
 
-
 <h2>REGISTRAR PRÉSTAMO</h2>
-
 
 <form id="formPrestamo" onsubmit="event.preventDefault(); guardarPrestamo();">
 
-
 <!-- Usuario -->
+
 <label>Usuario</label>
 
 <input 
 type="text" 
-id="usuario" 
-placeholder="Escribe el usuario"
+id="usuario"
+placeholder="Usuario de la sesión"
+readonly
 required>
 
-
 <!-- Categoría -->
+
 <div class="paso">
 
 <span class="num">1</span>
@@ -66,9 +66,8 @@ required>
 
 </div>
 
-
-
 <!-- Libro -->
+
 <div class="paso">
 
 <span class="num">2</span>
@@ -85,8 +84,6 @@ Primero selecciona una categoría
 
 </div>
 
-
-
 <!-- Fechas -->
 
 <label>Fecha de entrega</label>
@@ -96,15 +93,12 @@ type="date"
 id="entrega"
 required>
 
-
 <label>Fecha de trámite</label>
 
 <input 
 type="date" 
 id="tramite"
 required>
-
-
 
 <!-- Nombre prestatario -->
 
@@ -113,24 +107,19 @@ required>
 <input 
 type="text"
 id="prestatario"
-placeholder="Nombre completo"
+placeholder="Nombre del usuario"
+readonly
 required>
-
-
-
 
 <!-- Términos -->
 
 <div class="terminos">
 
-
 <h3>Términos y condiciones</h3>
-
 
 <p>
 Antes de registrar el préstamo confirme que acepta el reglamento de la biblioteca.
 </p>
-
 
 <ul>
 
@@ -142,14 +131,11 @@ Antes de registrar el préstamo confirme que acepta el reglamento de la bibliote
 
 </ul>
 
-
 <a href="normas.html" target="_blank">
 Consultar reglamento completo
 </a>
 
-
 <br>
-
 
 <label class="check">
 
@@ -162,11 +148,7 @@ Acepto los términos y condiciones.
 
 </label>
 
-
 </div>
-
-
-
 
 <button 
 type="submit" 
@@ -176,12 +158,7 @@ Guardar préstamo
 
 </button>
 
-
-
 </form>
-
-
-
 
 <a href="catalogo.html" class="btn-regresar">
 
@@ -189,14 +166,9 @@ Guardar préstamo
 
 </a>
 
-
-
 </div>
 
-
-
 <script src="js/prestamos.js"></script>
-
 
 </body>
 

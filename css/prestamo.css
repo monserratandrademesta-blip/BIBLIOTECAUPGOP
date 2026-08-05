@@ -275,3 +275,12 @@ input:focus, select:focus{
     }
 
 }
+/* Campos automáticos */
+#usuario[readonly],
+#prestatario[readonly] {
+    background-color: #e8eef8;
+    color: #022875;
+    border: 2px solid #8FA8D8;
+    cursor: not-allowed;
+    font-weight: 600;
+}

@@ -384,3 +384,46 @@ body {
 
 
 }
+/* =========================================================
+   BOTONES DE REGRESO
+   ========================================================= */
+
+.botones-regreso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 35px 0;
+}
+
+/* Estilo general de los botones */
+.btn-regresar,
+.btn-registro {
+    display: inline-block;
+    padding: 13px 25px;
+    background: #022875;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: "Georgia", serif;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Cuando pasas el mouse */
+.btn-regresar:hover,
+.btn-registro:hover {
+    background: #FFD54F;
+    color: #022875;
+    transform: translateY(-2px);
+}
+
+/* Cuando haces clic */
+.btn-regresar:active,
+.btn-registro:active {
+    transform: translateY(0);
+}
